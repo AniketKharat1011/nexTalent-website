@@ -1,0 +1,3261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recruiters | NexTalent</title>
+
+    <meta
+        name="description"
+        content="Build better teams with NexTalent. Connect organizations with skilled talent and support continuous employee development."
+    >
+
+    <link rel="icon" href="../assets/images/logo.png">
+
+    <style>
+        /* =========================================================
+           NEX TALENT — RECRUITERS PAGE
+           Premium Editorial Design
+        ========================================================= */
+
+        :root {
+            --navy: #073b73;
+            --navy-dark: #052b55;
+            --blue: #0a4d8c;
+            --teal: #159eac;
+            --teal-dark: #087e8b;
+            --orange: #f7941d;
+            --orange-dark: #e87800;
+
+            --white: #ffffff;
+            --background: #eef4f8;
+            --background-light: #f7fafc;
+
+            --text: #14213d;
+            --text-light: #5b6878;
+            --border: #d8e3eb;
+
+            --shadow-sm: 0 10px 30px rgba(7, 59, 115, 0.08);
+            --shadow-md: 0 20px 55px rgba(7, 59, 115, 0.12);
+
+            --radius-sm: 14px;
+            --radius-md: 24px;
+            --radius-lg: 34px;
+
+            --container: 1240px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .recruiter-container {
+            width: min(var(--container), calc(100% - 48px));
+            margin: auto;
+        }
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .recruiter-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            padding: 18px 0;
+
+            transition:
+                background .3s ease,
+                box-shadow .3s ease,
+                padding .3s ease;
+        }
+
+        .recruiter-nav.scrolled {
+            background: rgba(255, 255, 255, 0.93);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 8px 30px rgba(7, 59, 115, .08);
+            padding: 12px 0;
+        }
+
+        .recruiter-nav-inner {
+            width: min(var(--container), calc(100% - 48px));
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .recruiter-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .recruiter-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .recruiter-nav-links a {
+            position: relative;
+
+            padding: 8px 0;
+
+            color: var(--text);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: color .25s ease;
+        }
+
+        .recruiter-nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--teal);
+
+            transition: width .25s ease;
+        }
+
+        .recruiter-nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .recruiter-nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .recruiter-nav-cta {
+            padding: 12px 20px !important;
+
+            background: var(--navy);
+            color: white !important;
+
+            border-radius: 100px;
+
+            box-shadow: 0 8px 20px rgba(7,59,115,.18);
+        }
+
+        .recruiter-nav-cta::after {
+            display: none;
+        }
+
+        .recruiter-nav-cta:hover {
+            background: var(--blue);
+        }
+
+        .recruiter-menu-btn {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 0;
+            border-radius: 12px;
+
+            background: transparent;
+
+            cursor: pointer;
+        }
+
+        .recruiter-menu-btn span {
+            display: block;
+
+            width: 22px;
+            height: 2px;
+
+            margin: 5px auto;
+
+            background: var(--navy);
+        }
+
+        .recruiter-mobile-menu {
+            display: none;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .recruiter-hero {
+            position: relative;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 82% 22%,
+                    rgba(21,158,172,.18),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 12% 80%,
+                    rgba(247,148,29,.08),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f5f9fb 0%,
+                    #e5eff5 100%
+                );
+        }
+
+        .recruiter-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 680px;
+            height: 680px;
+
+            right: -280px;
+            top: 70px;
+
+            border: 1px solid rgba(7,59,115,.08);
+
+            border-radius: 50%;
+        }
+
+        .recruiter-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            right: -100px;
+            top: 185px;
+
+            border: 1px solid rgba(21,158,172,.13);
+
+            border-radius: 50%;
+        }
+
+        .recruiter-hero-grid {
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns: 1.05fr .95fr;
+
+            align-items: center;
+
+            gap: 75px;
+
+            padding-top: 90px;
+        }
+
+        .recruiter-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 24px;
+
+            color: var(--teal-dark);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .recruiter-eyebrow::before {
+            content: "";
+
+            width: 28px;
+            height: 2px;
+
+            background: var(--orange);
+        }
+
+        .recruiter-hero h1 {
+            max-width: 760px;
+
+            font-family: "Trebuchet MS", Inter, sans-serif;
+
+            font-size: clamp(48px, 6vw, 82px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+
+            color: var(--navy);
+        }
+
+        .recruiter-hero h1 span {
+            color: var(--teal);
+        }
+
+        .recruiter-hero-text {
+            max-width: 610px;
+
+            margin-top: 28px;
+
+            color: var(--text-light);
+
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .recruiter-hero-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            margin-top: 34px;
+        }
+
+        .recruiter-primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            padding: 0 25px;
+
+            border-radius: 100px;
+
+            background: var(--navy);
+            color: white;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            box-shadow: 0 15px 30px rgba(7,59,115,.17);
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+        .recruiter-primary-btn:hover {
+            transform: translateY(-3px);
+
+            background: var(--blue);
+        }
+
+        .recruiter-secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            padding: 0 24px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 100px;
+
+            background: rgba(255,255,255,.55);
+
+            color: var(--navy);
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+        .recruiter-secondary-btn:hover {
+            transform: translateY(-3px);
+
+            background: white;
+        }
+
+        /* =========================================================
+           HERO VISUAL
+        ========================================================= */
+
+        .recruiter-hero-visual {
+            position: relative;
+
+            min-height: 560px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .recruiter-orbit {
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            border: 1px solid rgba(7,59,115,.12);
+
+            border-radius: 50%;
+        }
+
+        .recruiter-orbit.two {
+            width: 350px;
+            height: 350px;
+
+            border-color: rgba(21,158,172,.17);
+
+            transform: rotate(25deg);
+        }
+
+        .recruiter-orbit.three {
+            width: 540px;
+            height: 540px;
+
+            border-color: rgba(247,148,29,.10);
+
+            transform: rotate(-20deg);
+        }
+
+        .recruiter-core {
+            position: relative;
+            z-index: 4;
+
+            width: 205px;
+            height: 205px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 25%,
+                    #1aa2b0,
+                    var(--navy) 70%
+                );
+
+            color: white;
+
+            box-shadow:
+                0 35px 80px rgba(7,59,115,.28),
+                inset 0 0 0 10px rgba(255,255,255,.08);
+        }
+
+        .recruiter-core-small {
+            margin-bottom: 8px;
+
+            color: rgba(255,255,255,.62);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: .17em;
+            text-transform: uppercase;
+        }
+
+        .recruiter-core-title {
+            font-size: 27px;
+            font-weight: 800;
+
+            letter-spacing: -.04em;
+        }
+
+        .recruiter-core-line {
+            width: 40px;
+            height: 2px;
+
+            margin-top: 13px;
+
+            background: var(--orange);
+        }
+
+        .recruiter-floating {
+            position: absolute;
+            z-index: 6;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 14px 17px;
+
+            border: 1px solid rgba(255,255,255,.8);
+            border-radius: 16px;
+
+            background: rgba(255,255,255,.90);
+
+            backdrop-filter: blur(12px);
+
+            box-shadow: 0 18px 45px rgba(7,59,115,.13);
+
+            color: var(--navy);
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .recruiter-floating-icon {
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: var(--background);
+
+            font-size: 17px;
+        }
+
+        .recruiter-floating.one {
+            top: 60px;
+            right: 35px;
+        }
+
+        .recruiter-floating.two {
+            top: 175px;
+            left: 5px;
+        }
+
+        .recruiter-floating.three {
+            right: 0;
+            bottom: 90px;
+        }
+
+        .recruiter-floating.four {
+            left: 55px;
+            bottom: 48px;
+        }
+
+        /* =========================================================
+           STAT STRIP
+        ========================================================= */
+
+        .recruiter-stat-strip {
+            background: var(--navy);
+
+            color: white;
+        }
+
+        .recruiter-stats {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .recruiter-stat {
+            padding: 35px 30px;
+
+            border-right: 1px solid rgba(255,255,255,.10);
+        }
+
+        .recruiter-stat:last-child {
+            border-right: 0;
+        }
+
+        .recruiter-stat-title {
+            color: white;
+
+            font-size: 27px;
+            font-weight: 800;
+
+            margin-bottom: 5px;
+        }
+
+        .recruiter-stat-text {
+            color: rgba(255,255,255,.62);
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .recruiter-intro {
+            position: relative;
+
+            padding: 120px 0;
+
+            background: var(--navy-dark);
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .recruiter-intro::after {
+            content: "01";
+
+            position: absolute;
+
+            right: 4%;
+            bottom: -65px;
+
+            color: rgba(255,255,255,.035);
+
+            font-size: 210px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .recruiter-intro-grid {
+            display: grid;
+
+            grid-template-columns: .8fr 1.2fr;
+
+            gap: 100px;
+        }
+
+        .recruiter-section-number {
+            color: var(--orange);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: .18em;
+        }
+
+        .recruiter-intro h2 {
+            margin-top: 20px;
+
+            font-size: clamp(38px, 5vw, 65px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .recruiter-intro-content {
+            max-width: 700px;
+        }
+
+        .recruiter-intro-content p {
+            margin-bottom: 24px;
+
+            color: rgba(255,255,255,.70);
+
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .recruiter-intro-highlight {
+            margin-top: 35px;
+
+            padding-left: 22px;
+
+            border-left: 3px solid var(--teal);
+
+            color: white;
+
+            font-size: 19px;
+            font-weight: 600;
+
+            line-height: 1.65;
+        }
+
+        /* =========================================================
+           RECRUITER BENEFITS
+        ========================================================= */
+
+        .recruiter-benefits {
+            padding: 125px 0;
+
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(21,158,172,.07),
+                    transparent 30%
+                ),
+                var(--background-light);
+        }
+
+        .recruiter-section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            gap: 50px;
+
+            margin-bottom: 60px;
+        }
+
+        .recruiter-section-label {
+            color: var(--teal-dark);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+        }
+
+        .recruiter-section-head h2 {
+            max-width: 700px;
+
+            margin-top: 15px;
+
+            color: var(--navy);
+
+            font-size: clamp(38px, 4.5vw, 60px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .recruiter-section-description {
+            max-width: 430px;
+
+            color: var(--text-light);
+
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .recruiter-benefit-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .recruiter-benefit-card {
+            position: relative;
+
+            min-height: 325px;
+
+            padding: 30px;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            background: white;
+
+            overflow: hidden;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                border-color .3s ease;
+        }
+
+        .recruiter-benefit-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 140px;
+            height: 140px;
+
+            top: -60px;
+            right: -60px;
+
+            border-radius: 50%;
+
+            background: rgba(21,158,172,.07);
+        }
+
+        .recruiter-benefit-card:hover {
+            transform: translateY(-8px);
+
+            border-color: rgba(21,158,172,.35);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .recruiter-benefit-number {
+            color: rgba(7,59,115,.15);
+
+            font-size: 54px;
+            font-weight: 900;
+        }
+
+        .recruiter-benefit-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: var(--background);
+
+            color: var(--navy);
+
+            font-size: 21px;
+        }
+
+        .recruiter-benefit-card h3 {
+            margin-top: 25px;
+
+            color: var(--navy);
+
+            font-size: 21px;
+
+            letter-spacing: -.025em;
+        }
+
+        .recruiter-benefit-card p {
+            margin-top: 10px;
+
+            color: var(--text-light);
+
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        /* =========================================================
+           TWO PILLARS
+        ========================================================= */
+
+        .recruiter-pillars {
+            padding: 125px 0;
+
+            background: white;
+        }
+
+        .recruiter-pillars-header {
+            max-width: 800px;
+
+            margin-bottom: 60px;
+        }
+
+        .recruiter-pillars-header h2 {
+            margin-top: 15px;
+
+            color: var(--navy);
+
+            font-size: clamp(40px, 5vw, 62px);
+
+            line-height: .98;
+
+            letter-spacing: -.05em;
+        }
+
+        .recruiter-pillar-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .recruiter-pillar-card {
+            position: relative;
+
+            min-height: 450px;
+
+            padding: 45px;
+
+            border-radius: var(--radius-lg);
+
+            overflow: hidden;
+
+            background: var(--background);
+
+            border: 1px solid var(--border);
+        }
+
+        .recruiter-pillar-card.dark {
+            background: var(--navy);
+
+            border-color: var(--navy);
+
+            color: white;
+        }
+
+        .recruiter-pillar-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 330px;
+            height: 330px;
+
+            right: -130px;
+            bottom: -160px;
+
+            border: 1px solid rgba(7,59,115,.10);
+
+            border-radius: 50%;
+        }
+
+        .recruiter-pillar-card.dark::after {
+            border-color: rgba(255,255,255,.08);
+        }
+
+        .recruiter-pillar-number {
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: .15em;
+
+            color: var(--orange);
+        }
+
+        .recruiter-pillar-card h3 {
+            max-width: 480px;
+
+            margin-top: 35px;
+
+            font-size: 36px;
+
+            line-height: 1.03;
+
+            letter-spacing: -.04em;
+        }
+
+        .recruiter-pillar-card:not(.dark) h3 {
+            color: var(--navy);
+        }
+
+        .recruiter-pillar-card p {
+            max-width: 520px;
+
+            margin-top: 18px;
+
+            color: var(--text-light);
+
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .recruiter-pillar-card.dark p {
+            color: rgba(255,255,255,.65);
+        }
+
+        .recruiter-pillar-list {
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+
+            margin-top: 28px;
+        }
+
+        .recruiter-pillar-list div {
+            padding: 13px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: var(--navy);
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .recruiter-pillar-card.dark .recruiter-pillar-list div {
+            background: rgba(255,255,255,.08);
+
+            color: rgba(255,255,255,.85);
+        }
+
+        /* =========================================================
+           ORGANIZATION FLOW
+        ========================================================= */
+
+        .recruiter-flow {
+            position: relative;
+
+            padding: 125px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e6f0f5,
+                    #f4f8fa
+                );
+
+            overflow: hidden;
+        }
+
+        .recruiter-flow::before {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            left: -300px;
+            top: 80px;
+
+            border: 1px solid rgba(7,59,115,.07);
+
+            border-radius: 50%;
+        }
+
+        .recruiter-flow-header {
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns: .75fr 1.25fr;
+
+            gap: 90px;
+
+            margin-bottom: 70px;
+        }
+
+        .recruiter-flow-header h2 {
+            color: var(--navy);
+
+            font-size: clamp(40px, 5vw, 64px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .recruiter-flow-header p {
+            max-width: 620px;
+
+            color: var(--text-light);
+
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .recruiter-flow-grid {
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .recruiter-flow-card {
+            position: relative;
+
+            min-height: 270px;
+
+            padding: 28px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 24px;
+
+            background: rgba(255,255,255,.75);
+
+            backdrop-filter: blur(8px);
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .recruiter-flow-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .recruiter-flow-number {
+            color: rgba(7,59,115,.18);
+
+            font-size: 48px;
+            font-weight: 900;
+        }
+
+        .recruiter-flow-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+
+            border-radius: 14px;
+
+            background: var(--navy);
+
+            color: white;
+
+            font-size: 18px;
+        }
+
+        .recruiter-flow-card h3 {
+            margin-top: 20px;
+
+            color: var(--navy);
+
+            font-size: 19px;
+        }
+
+        .recruiter-flow-card p {
+            margin-top: 8px;
+
+            color: var(--text-light);
+
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           EMPLOYEE UPSKILLING
+        ========================================================= */
+
+        .recruiter-upskill {
+            padding: 125px 0;
+
+            background: white;
+        }
+
+        .recruiter-upskill-layout {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 90px;
+
+            align-items: center;
+        }
+
+        .recruiter-upskill-visual {
+            position: relative;
+
+            min-height: 500px;
+
+            border-radius: var(--radius-lg);
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--navy),
+                    var(--blue)
+                );
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .recruiter-upskill-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            right: -180px;
+            top: -160px;
+
+            border: 1px solid rgba(255,255,255,.12);
+
+            border-radius: 50%;
+        }
+
+        .recruiter-upskill-visual::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            left: -140px;
+            bottom: -140px;
+
+            border: 1px solid rgba(21,158,172,.30);
+
+            border-radius: 50%;
+        }
+
+        .recruiter-upskill-panel {
+            position: absolute;
+
+            z-index: 2;
+
+            left: 45px;
+            right: 45px;
+            top: 45px;
+            bottom: 45px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .recruiter-upskill-label {
+            color: rgba(255,255,255,.55);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: .17em;
+            text-transform: uppercase;
+        }
+
+        .recruiter-upskill-title {
+            max-width: 430px;
+
+            margin-top: 12px;
+
+            color: white;
+
+            font-size: 43px;
+
+            line-height: 1;
+
+            letter-spacing: -.045em;
+        }
+
+        .recruiter-upskill-tags {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 35px;
+        }
+
+        .recruiter-upskill-tag {
+            padding: 10px 14px;
+
+            border: 1px solid rgba(255,255,255,.15);
+
+            border-radius: 100px;
+
+            background: rgba(255,255,255,.08);
+
+            color: rgba(255,255,255,.88);
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .recruiter-upskill-copy .recruiter-section-label {
+            margin-bottom: 16px;
+        }
+
+        .recruiter-upskill-copy h2 {
+            color: var(--navy);
+
+            font-size: clamp(40px, 4.5vw, 60px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .recruiter-upskill-copy > p {
+            margin-top: 24px;
+
+            color: var(--text-light);
+
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .recruiter-check-list {
+            display: grid;
+
+            gap: 14px;
+
+            margin-top: 30px;
+        }
+
+        .recruiter-check {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 12px;
+
+            color: var(--text);
+
+            font-size: 14px;
+
+            line-height: 1.55;
+        }
+
+        .recruiter-check-mark {
+            flex: 0 0 auto;
+
+            width: 23px;
+            height: 23px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(21,158,172,.12);
+
+            color: var(--teal-dark);
+
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           COMING SOON / HIRING SUPPORT
+        ========================================================= */
+
+        .recruiter-coming {
+            padding: 115px 0;
+
+            background: var(--background);
+        }
+
+        .recruiter-coming-card {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns: 1fr .75fr;
+
+            gap: 60px;
+
+            align-items: center;
+
+            padding: 60px;
+
+            border-radius: var(--radius-lg);
+
+            background: var(--navy);
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .recruiter-coming-card::after {
+            content: "02";
+
+            position: absolute;
+
+            right: -10px;
+            bottom: -90px;
+
+            color: rgba(255,255,255,.035);
+
+            font-size: 250px;
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+        .recruiter-coming-label {
+            color: var(--orange);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+        }
+
+        .recruiter-coming-card h2 {
+            max-width: 700px;
+
+            margin-top: 17px;
+
+            font-size: clamp(38px, 4.5vw, 57px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .recruiter-coming-card p {
+            max-width: 650px;
+
+            margin-top: 20px;
+
+            color: rgba(255,255,255,.66);
+
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .recruiter-coming-button {
+            position: relative;
+            z-index: 3;
+
+            justify-self: end;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 15px 24px;
+
+            border-radius: 100px;
+
+            background: white;
+
+            color: var(--navy);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .recruiter-coming-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow: 0 15px 30px rgba(0,0,0,.15);
+        }
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .recruiter-cta {
+            padding: 110px 0;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(21,158,172,.18),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--navy)
+                );
+
+            color: white;
+        }
+
+        .recruiter-cta-inner {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns: 1.2fr .8fr;
+
+            align-items: center;
+
+            gap: 70px;
+        }
+
+        .recruiter-cta-inner::after {
+            content: "03";
+
+            position: absolute;
+
+            right: -15px;
+            bottom: -100px;
+
+            color: rgba(255,255,255,.035);
+
+            font-size: 250px;
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+        .recruiter-cta h2 {
+            position: relative;
+            z-index: 2;
+
+            max-width: 800px;
+
+            font-size: clamp(42px, 5vw, 70px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .recruiter-cta h2 span {
+            color: #6bd5dd;
+        }
+
+        .recruiter-cta-copy {
+            position: relative;
+            z-index: 2;
+        }
+
+        .recruiter-cta-copy p {
+            color: rgba(255,255,255,.68);
+
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .recruiter-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 25px;
+
+            padding: 15px 24px;
+
+            border-radius: 100px;
+
+            background: white;
+
+            color: var(--navy);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .recruiter-cta-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow: 0 15px 30px rgba(0,0,0,.16);
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .recruiter-footer {
+            padding: 70px 0 30px;
+
+            background: #031f3d;
+
+            color: white;
+        }
+
+        .recruiter-footer-top {
+            display: grid;
+
+            grid-template-columns: 1.3fr .7fr .7fr .9fr;
+
+            gap: 50px;
+
+            padding-bottom: 55px;
+
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .recruiter-footer-brand img {
+            width: 155px;
+
+            margin-bottom: 20px;
+
+            filter: brightness(0) invert(1);
+        }
+
+        .recruiter-footer-brand p {
+            max-width: 300px;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .recruiter-footer-column h4 {
+            margin-bottom: 18px;
+
+            color: white;
+
+            font-size: 12px;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+        .recruiter-footer-column a {
+            display: block;
+
+            margin-bottom: 11px;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: 13px;
+
+            transition: color .2s ease;
+        }
+
+        .recruiter-footer-column a:hover {
+            color: white;
+        }
+
+        .recruiter-footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-top: 25px;
+
+            color: rgba(255,255,255,.4);
+
+            font-size: 11px;
+        }
+
+        .recruiter-footer-social {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .recruiter-footer-social a {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,.12);
+
+            color: rgba(255,255,255,.65);
+
+            font-size: 11px;
+        }
+
+        /* =========================================================
+           REVEAL
+        ========================================================= */
+
+        .recruiter-reveal {
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .recruiter-reveal.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .recruiter-hero-grid {
+                gap: 35px;
+            }
+
+            .recruiter-benefit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .recruiter-flow-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .recruiter-upskill-layout {
+                gap: 45px;
+            }
+
+            .recruiter-footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .recruiter-container,
+            .recruiter-nav-inner {
+                width: min(100% - 32px, var(--container));
+            }
+
+            .recruiter-nav {
+                padding: 13px 0;
+            }
+
+            .recruiter-nav-links {
+                display: none;
+            }
+
+            .recruiter-menu-btn {
+                display: block;
+            }
+
+            .recruiter-mobile-menu {
+                position: absolute;
+
+                top: calc(100% + 8px);
+
+                left: 16px;
+                right: 16px;
+
+                padding: 18px;
+
+                border: 1px solid var(--border);
+
+                border-radius: 20px;
+
+                background: rgba(255,255,255,.97);
+
+                backdrop-filter: blur(18px);
+
+                box-shadow: var(--shadow-md);
+            }
+
+            .recruiter-mobile-menu.open {
+                display: block;
+            }
+
+            .recruiter-mobile-menu a {
+                display: block;
+
+                padding: 13px 10px;
+
+                border-bottom: 1px solid var(--border);
+
+                color: var(--navy);
+
+                font-size: 14px;
+                font-weight: 700;
+            }
+
+            .recruiter-mobile-menu a:last-child {
+                border-bottom: 0;
+            }
+
+            .recruiter-hero {
+                min-height: auto;
+
+                padding: 130px 0 70px;
+            }
+
+            .recruiter-hero-grid {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                padding-top: 20px;
+            }
+
+            .recruiter-eyebrow {
+                justify-content: center;
+            }
+
+            .recruiter-hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .recruiter-hero-actions {
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .recruiter-hero-visual {
+                min-height: 460px;
+            }
+
+            .recruiter-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .recruiter-stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .recruiter-stat:nth-child(-n+2) {
+                border-bottom: 1px solid rgba(255,255,255,.10);
+            }
+
+            .recruiter-intro-grid,
+            .recruiter-flow-header,
+            .recruiter-upskill-layout,
+            .recruiter-cta-inner {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .recruiter-section-head {
+                display: block;
+            }
+
+            .recruiter-section-description {
+                margin-top: 20px;
+            }
+
+            .recruiter-pillar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-coming-card {
+                grid-template-columns: 1fr;
+
+                padding: 45px;
+            }
+
+            .recruiter-coming-button {
+                justify-self: start;
+            }
+
+            .recruiter-footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .recruiter-hero h1 {
+                font-size: 47px;
+            }
+
+            .recruiter-hero-text {
+                font-size: 16px;
+            }
+
+            .recruiter-hero-actions {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .recruiter-primary-btn,
+            .recruiter-secondary-btn {
+                width: 100%;
+            }
+
+            .recruiter-hero-visual {
+                min-height: 380px;
+
+                transform: scale(.82);
+
+                margin: -35px 0;
+            }
+
+            .recruiter-floating {
+                transform: scale(.85);
+            }
+
+            .recruiter-floating.one {
+                right: 0;
+                top: 40px;
+            }
+
+            .recruiter-floating.two {
+                left: -5px;
+                top: 125px;
+            }
+
+            .recruiter-floating.three {
+                right: -10px;
+                bottom: 65px;
+            }
+
+            .recruiter-floating.four {
+                left: 0;
+                bottom: 30px;
+            }
+
+            .recruiter-orbit.three {
+                width: 450px;
+                height: 450px;
+            }
+
+            .recruiter-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-stat {
+                border-right: 0;
+
+                border-bottom: 1px solid rgba(255,255,255,.10);
+            }
+
+            .recruiter-stat:last-child {
+                border-bottom: 0;
+            }
+
+            .recruiter-intro,
+            .recruiter-benefits,
+            .recruiter-pillars,
+            .recruiter-flow,
+            .recruiter-upskill {
+                padding: 85px 0;
+            }
+
+            .recruiter-benefit-grid,
+            .recruiter-flow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-benefit-card {
+                min-height: 285px;
+            }
+
+            .recruiter-pillar-card {
+                min-height: auto;
+
+                padding: 32px;
+            }
+
+            .recruiter-pillar-list {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-upskill-visual {
+                min-height: 430px;
+            }
+
+            .recruiter-upskill-panel {
+                left: 28px;
+                right: 28px;
+            }
+
+            .recruiter-upskill-title {
+                font-size: 35px;
+            }
+
+            .recruiter-coming {
+                padding: 80px 0;
+            }
+
+            .recruiter-coming-card {
+                padding: 32px;
+            }
+
+            .recruiter-cta {
+                padding: 85px 0;
+            }
+
+            .recruiter-footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-footer-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="recruiter-nav" id="recruiterNav">
+
+    <div class="recruiter-nav-inner">
+
+        <a href="../index.html" class="recruiter-logo">
+            <img
+                src="../assets/images/logo.png"
+                alt="NexTalent"
+            >
+        </a>
+
+        <nav class="recruiter-nav-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="jobs.html">
+                Jobs
+            </a>
+
+            <a href="candidates.html">
+                Candidates
+            </a>
+
+            <a href="recruiters.html">
+                Recruiters
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a
+                href="contact.html"
+                class="recruiter-nav-cta"
+            >
+                Contact
+            </a>
+
+        </nav>
+
+        <button
+            class="recruiter-menu-btn"
+            id="recruiterMenuBtn"
+            aria-label="Open menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+
+    <div
+        class="recruiter-mobile-menu"
+        id="recruiterMobileMenu"
+    >
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="courses.html">
+            Courses
+        </a>
+
+        <a href="jobs.html">
+            Jobs
+        </a>
+
+        <a href="candidates.html">
+            Candidates
+        </a>
+
+        <a href="recruiters.html">
+            Recruiters
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="recruiter-hero">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-hero-grid">
+
+            <div class="recruiter-hero-content recruiter-reveal">
+
+                <div class="recruiter-eyebrow">
+                    For Organizations
+                </div>
+
+                <h1>
+                    Build teams
+                    <span>with better talent.</span>
+                </h1>
+
+                <p class="recruiter-hero-text">
+                    NexTalent is building a bridge between skilled
+                    candidates, learning and organizations — helping
+                    companies move toward stronger talent ecosystems.
+                </p>
+
+                <div class="recruiter-hero-actions">
+
+                    <a
+                        href="contact.html"
+                        class="recruiter-primary-btn"
+                    >
+                        Connect With NexTalent →
+                    </a>
+
+                    <a
+                        href="candidates.html"
+                        class="recruiter-secondary-btn"
+                    >
+                        Explore Candidate Journey
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="recruiter-hero-visual recruiter-reveal">
+
+                <div class="recruiter-orbit three"></div>
+
+                <div class="recruiter-orbit"></div>
+
+                <div class="recruiter-orbit two"></div>
+
+
+                <div class="recruiter-core">
+
+                    <div class="recruiter-core-small">
+                        Talent Ecosystem
+                    </div>
+
+                    <div class="recruiter-core-title">
+                        NexTalent
+                    </div>
+
+                    <div class="recruiter-core-line"></div>
+
+                </div>
+
+
+                <div class="recruiter-floating one">
+
+                    <div class="recruiter-floating-icon">
+                        ◇
+                    </div>
+
+                    <span>Discover</span>
+
+                </div>
+
+
+                <div class="recruiter-floating two">
+
+                    <div class="recruiter-floating-icon">
+                        ✓
+                    </div>
+
+                    <span>Skills</span>
+
+                </div>
+
+
+                <div class="recruiter-floating three">
+
+                    <div class="recruiter-floating-icon">
+                        ↗
+                    </div>
+
+                    <span>Connect</span>
+
+                </div>
+
+
+                <div class="recruiter-floating four">
+
+                    <div class="recruiter-floating-icon">
+                        ∞
+                    </div>
+
+                    <span>Grow</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STAT STRIP
+========================================================= -->
+
+<section class="recruiter-stat-strip">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-stats">
+
+            <div class="recruiter-stat">
+
+                <div class="recruiter-stat-title">
+                    Talent
+                </div>
+
+                <div class="recruiter-stat-text">
+                    Discover candidates building relevant skills.
+                </div>
+
+            </div>
+
+
+            <div class="recruiter-stat">
+
+                <div class="recruiter-stat-title">
+                    Skills
+                </div>
+
+                <div class="recruiter-stat-text">
+                    Understand capability beyond a simple profile.
+                </div>
+
+            </div>
+
+
+            <div class="recruiter-stat">
+
+                <div class="recruiter-stat-title">
+                    Teams
+                </div>
+
+                <div class="recruiter-stat-text">
+                    Build stronger connections between people and roles.
+                </div>
+
+            </div>
+
+
+            <div class="recruiter-stat">
+
+                <div class="recruiter-stat-title">
+                    Growth
+                </div>
+
+                <div class="recruiter-stat-text">
+                    Support continuous employee development.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section class="recruiter-intro">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-intro-grid">
+
+            <div class="recruiter-reveal">
+
+                <div class="recruiter-section-number">
+                    01 / ORGANIZATIONS
+                </div>
+
+                <h2>
+                    Great teams
+                    start with the
+                    right capabilities.
+                </h2>
+
+            </div>
+
+
+            <div class="recruiter-intro-content recruiter-reveal">
+
+                <p>
+                    Hiring is changing. Organizations increasingly
+                    need people who can understand tools, adapt to new
+                    technologies and apply knowledge to real business
+                    problems.
+                </p>
+
+                <p>
+                    NexTalent is designed to connect the learning side
+                    of the talent journey with the organizational side —
+                    creating a platform where candidates can build
+                    capabilities and organizations can eventually
+                    discover and engage with talent.
+                </p>
+
+                <div class="recruiter-intro-highlight">
+                    The goal is simple: bring skills, people and
+                    organizations closer together.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BENEFITS
+========================================================= -->
+
+<section class="recruiter-benefits">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-section-head recruiter-reveal">
+
+            <div>
+
+                <div class="recruiter-section-label">
+                    Organization Advantage
+                </div>
+
+                <h2>
+                    Build your talent
+                    strategy around skills.
+                </h2>
+
+            </div>
+
+            <p class="recruiter-section-description">
+                NexTalent is being designed to support organizations
+                that want a more connected approach to talent,
+                capability development and employee growth.
+            </p>
+
+        </div>
+
+
+        <div class="recruiter-benefit-grid">
+
+            <article class="recruiter-benefit-card recruiter-reveal">
+
+                <div>
+
+                    <div class="recruiter-benefit-number">
+                        01
+                    </div>
+
+                    <div class="recruiter-benefit-icon">
+                        ◇
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Discover Talent
+                    </h3>
+
+                    <p>
+                        Connect with candidates who are actively
+                        developing practical skills and preparing for
+                        professional opportunities.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="recruiter-benefit-card recruiter-reveal">
+
+                <div>
+
+                    <div class="recruiter-benefit-number">
+                        02
+                    </div>
+
+                    <div class="recruiter-benefit-icon">
+                        ⌘
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Understand Skills
+                    </h3>
+
+                    <p>
+                        Look beyond basic qualifications by focusing on
+                        the capabilities, learning and practical
+                        development of candidates.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="recruiter-benefit-card recruiter-reveal">
+
+                <div>
+
+                    <div class="recruiter-benefit-number">
+                        03
+                    </div>
+
+                    <div class="recruiter-benefit-icon">
+                        ↗
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Build Connections
+                    </h3>
+
+                    <p>
+                        Create stronger connections between
+                        organizations and the talent developing for
+                        future opportunities.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="recruiter-benefit-card recruiter-reveal">
+
+                <div>
+
+                    <div class="recruiter-benefit-number">
+                        04
+                    </div>
+
+                    <div class="recruiter-benefit-icon">
+                        ∞
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Support Growth
+                    </h3>
+
+                    <p>
+                        Extend the talent conversation beyond hiring
+                        toward continuous employee learning and
+                        development.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TWO PILLARS
+========================================================= -->
+
+<section class="recruiter-pillars">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-pillars-header recruiter-reveal">
+
+            <div class="recruiter-section-label">
+                Two Sides Of The Ecosystem
+            </div>
+
+            <h2>
+                Hiring talent is one part.
+                Developing talent is another.
+            </h2>
+
+        </div>
+
+
+        <div class="recruiter-pillar-grid">
+
+            <article class="recruiter-pillar-card dark recruiter-reveal">
+
+                <div class="recruiter-pillar-number">
+                    01 / TALENT
+                </div>
+
+                <h3>
+                    Connect organizations with capable people.
+                </h3>
+
+                <p>
+                    A future NexTalent recruitment ecosystem can
+                    connect organizations with candidates who are
+                    building practical technical and professional
+                    capabilities.
+                </p>
+
+                <div class="recruiter-pillar-list">
+
+                    <div>
+                        Candidate Discovery
+                    </div>
+
+                    <div>
+                        Skills
+                    </div>
+
+                    <div>
+                        Profiles
+                    </div>
+
+                    <div>
+                        Opportunities
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="recruiter-pillar-card recruiter-reveal">
+
+                <div class="recruiter-pillar-number">
+                    02 / DEVELOPMENT
+                </div>
+
+                <h3>
+                    Help employees keep pace with change.
+                </h3>
+
+                <p>
+                    Organizations can also use structured learning and
+                    upskilling to help employees develop capabilities
+                    aligned with evolving technologies and business
+                    requirements.
+                </p>
+
+                <div class="recruiter-pillar-list">
+
+                    <div>
+                        Upskilling
+                    </div>
+
+                    <div>
+                        Reskilling
+                    </div>
+
+                    <div>
+                        Technology Learning
+                    </div>
+
+                    <div>
+                        Continuous Growth
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ORGANIZATION FLOW
+========================================================= -->
+
+<section class="recruiter-flow">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-flow-header recruiter-reveal">
+
+            <h2>
+                A simpler way
+                to think about
+                talent.
+            </h2>
+
+            <p>
+                The NexTalent vision connects the different stages of
+                the talent lifecycle — from discovering capability to
+                developing it inside an organization.
+            </p>
+
+        </div>
+
+
+        <div class="recruiter-flow-grid">
+
+            <article class="recruiter-flow-card recruiter-reveal">
+
+                <div class="recruiter-flow-number">
+                    01
+                </div>
+
+                <div class="recruiter-flow-icon">
+                    ◇
+                </div>
+
+                <h3>
+                    Discover
+                </h3>
+
+                <p>
+                    Identify people and capabilities relevant to your
+                    organization's future needs.
+                </p>
+
+            </article>
+
+
+            <article class="recruiter-flow-card recruiter-reveal">
+
+                <div class="recruiter-flow-number">
+                    02
+                </div>
+
+                <div class="recruiter-flow-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    Connect
+                </h3>
+
+                <p>
+                    Create meaningful connections between organizations
+                    and developing talent.
+                </p>
+
+            </article>
+
+
+            <article class="recruiter-flow-card recruiter-reveal">
+
+                <div class="recruiter-flow-number">
+                    03
+                </div>
+
+                <div class="recruiter-flow-icon">
+                    ↗
+                </div>
+
+                <h3>
+                    Develop
+                </h3>
+
+                <p>
+                    Support employees and teams through continuous
+                    learning and capability development.
+                </p>
+
+            </article>
+
+
+            <article class="recruiter-flow-card recruiter-reveal">
+
+                <div class="recruiter-flow-number">
+                    04
+                </div>
+
+                <div class="recruiter-flow-icon">
+                    ∞
+                </div>
+
+                <h3>
+                    Grow
+                </h3>
+
+                <p>
+                    Build an organization where people and skills can
+                    continue to evolve together.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EMPLOYEE UPSKILLING
+========================================================= -->
+
+<section class="recruiter-upskill">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-upskill-layout">
+
+            <div class="recruiter-upskill-visual recruiter-reveal">
+
+                <div class="recruiter-upskill-panel">
+
+                    <div class="recruiter-upskill-label">
+                        Employee Development
+                    </div>
+
+                    <div class="recruiter-upskill-title">
+                        Keep your people ready for what comes next.
+                    </div>
+
+                    <div class="recruiter-upskill-tags">
+
+                        <span class="recruiter-upskill-tag">
+                            AI
+                        </span>
+
+                        <span class="recruiter-upskill-tag">
+                            Data
+                        </span>
+
+                        <span class="recruiter-upskill-tag">
+                            Cloud
+                        </span>
+
+                        <span class="recruiter-upskill-tag">
+                            Automation
+                        </span>
+
+                        <span class="recruiter-upskill-tag">
+                            DevOps
+                        </span>
+
+                        <span class="recruiter-upskill-tag">
+                            Digital Skills
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="recruiter-upskill-copy recruiter-reveal">
+
+                <div class="recruiter-section-label">
+                    Employee Upskilling
+                </div>
+
+                <h2>
+                    Technology changes.
+                    Your people can grow with it.
+                </h2>
+
+                <p>
+                    Employee development can become an important part
+                    of an organization's long-term talent strategy.
+                    NexTalent is designed with this broader ecosystem
+                    in mind.
+                </p>
+
+                <div class="recruiter-check-list">
+
+                    <div class="recruiter-check">
+
+                        <span class="recruiter-check-mark">
+                            ✓
+                        </span>
+
+                        <span>
+                            Identify areas where employees can develop
+                            new technical capabilities.
+                        </span>
+
+                    </div>
+
+
+                    <div class="recruiter-check">
+
+                        <span class="recruiter-check-mark">
+                            ✓
+                        </span>
+
+                        <span>
+                            Encourage continuous learning across teams.
+                        </span>
+
+                    </div>
+
+
+                    <div class="recruiter-check">
+
+                        <span class="recruiter-check-mark">
+                            ✓
+                        </span>
+
+                        <span>
+                            Support employees as technologies and
+                            business processes evolve.
+                        </span>
+
+                    </div>
+
+
+                    <div class="recruiter-check">
+
+                        <span class="recruiter-check-mark">
+                            ✓
+                        </span>
+
+                        <span>
+                            Build a culture where learning is part of
+                            professional growth.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMING SOON
+========================================================= -->
+
+<section class="recruiter-coming">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-coming-card recruiter-reveal">
+
+            <div>
+
+                <div class="recruiter-coming-label">
+                    Hiring Support — Coming Soon
+                </div>
+
+                <h2>
+                    We're building the recruitment side of NexTalent.
+                </h2>
+
+                <p>
+                    Recruitment and talent-matching capabilities are
+                    part of the NexTalent roadmap. Until those
+                    capabilities are launched, organizations can
+                    connect with us directly to discuss potential
+                    partnerships and requirements.
+                </p>
+
+            </div>
+
+
+            <a
+                href="contact.html"
+                class="recruiter-coming-button"
+            >
+                Contact NexTalent →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="recruiter-cta">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-cta-inner">
+
+            <h2 class="recruiter-reveal">
+                Build teams that
+                are ready for
+                <span>what's next.</span>
+            </h2>
+
+            <div class="recruiter-cta-copy recruiter-reveal">
+
+                <p>
+                    Whether you're exploring talent partnerships,
+                    employee upskilling or future recruitment
+                    opportunities, start a conversation with NexTalent.
+                </p>
+
+                <a
+                    href="contact.html"
+                    class="recruiter-cta-button"
+                >
+                    Start a Conversation →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="recruiter-footer">
+
+    <div class="recruiter-container">
+
+        <div class="recruiter-footer-top">
+
+            <div class="recruiter-footer-brand">
+
+                <a href="../index.html">
+
+                    <img
+                        src="../assets/images/logo.png"
+                        alt="NexTalent"
+                    >
+
+                </a>
+
+                <p>
+                    Learn skills. Build capability. Connect talent.
+                    Grow toward the future.
+                </p>
+
+            </div>
+
+
+            <div class="recruiter-footer-column">
+
+                <h4>
+                    Explore
+                </h4>
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="courses.html">
+                    Courses
+                </a>
+
+                <a href="jobs.html">
+                    Jobs
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </div>
+
+
+            <div class="recruiter-footer-column">
+
+                <h4>
+                    Ecosystem
+                </h4>
+
+                <a href="candidates.html">
+                    Candidates
+                </a>
+
+                <a href="recruiters.html">
+                    Recruiters
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="recruiter-footer-column">
+
+                <h4>
+                    Connect
+                </h4>
+
+                <a href="tel:7499869128">
+                    7499 869 128
+                </a>
+
+                <a href="mailto:nextalentindia@gmail.com">
+                    nextalentindia@gmail.com
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/nex-talent-2652a8435"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+
+                <a href="contact.html">
+                    Send an Enquiry
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="recruiter-footer-bottom">
+
+            <div>
+                © 2026 NexTalent. All rights reserved.
+            </div>
+
+            <div class="recruiter-footer-social">
+
+                <a
+                    href="https://www.linkedin.com/in/nex-talent-2652a8435"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                >
+                    in
+                </a>
+
+                <a
+                    href="mailto:nextalentindia@gmail.com"
+                    aria-label="Email"
+                >
+                    @
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =========================================================
+       NAVBAR SCROLL
+    ========================================================= */
+
+    const recruiterNav =
+        document.getElementById("recruiterNav");
+
+    function updateRecruiterNav() {
+
+        if (window.scrollY > 40) {
+
+            recruiterNav.classList.add("scrolled");
+
+        } else {
+
+            recruiterNav.classList.remove("scrolled");
+
+        }
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateRecruiterNav,
+        { passive: true }
+    );
+
+    updateRecruiterNav();
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const recruiterMenuBtn =
+        document.getElementById("recruiterMenuBtn");
+
+    const recruiterMobileMenu =
+        document.getElementById("recruiterMobileMenu");
+
+    recruiterMenuBtn.addEventListener("click", () => {
+
+        recruiterMobileMenu.classList.toggle("open");
+
+    });
+
+
+    recruiterMobileMenu
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                recruiterMobileMenu.classList.remove("open");
+
+            });
+
+        });
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    const recruiterRevealElements =
+        document.querySelectorAll(".recruiter-reveal");
+
+    const recruiterRevealObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        recruiterRevealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    recruiterRevealElements.forEach(element => {
+
+        recruiterRevealObserver.observe(element);
+
+    });
+
+
+    /* =========================================================
+       CLOSE MOBILE MENU ON RESIZE
+    ========================================================= */
+
+    window.addEventListener("resize", () => {
+
+        if (window.innerWidth > 800) {
+
+            recruiterMobileMenu.classList.remove("open");
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

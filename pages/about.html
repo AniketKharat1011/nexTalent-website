@@ -1,0 +1,3461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About NexTalent | Learn. Grow. Lead.</title>
+
+    <meta
+        name="description"
+        content="Learn about NexTalent — a platform built around learning, capability development, career growth and the future of talent."
+    >
+
+    <link rel="icon" href="../assets/images/logo.png">
+
+    <style>
+
+        /* =========================================================
+           NEX TALENT — ABOUT PAGE
+           Premium Editorial / Brand Story Design
+        ========================================================= */
+
+        :root {
+            --navy: #073b73;
+            --navy-dark: #052b55;
+            --blue: #0a4d8c;
+            --teal: #159eac;
+            --teal-dark: #087e8b;
+            --orange: #f7941d;
+            --orange-dark: #e87800;
+
+            --white: #ffffff;
+
+            --background: #eef4f8;
+            --background-light: #f7fafc;
+
+            --text: #14213d;
+            --text-light: #5b6878;
+
+            --border: #d8e3eb;
+
+            --shadow-sm:
+                0 10px 30px rgba(7, 59, 115, .08);
+
+            --shadow-md:
+                0 20px 55px rgba(7, 59, 115, .12);
+
+            --radius-md: 24px;
+            --radius-lg: 34px;
+
+            --container: 1240px;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+
+            background: var(--background-light);
+
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .about-container {
+            width:
+                min(
+                    var(--container),
+                    calc(100% - 48px)
+                );
+
+            margin: auto;
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .about-nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            padding: 18px 0;
+
+            transition:
+                background .3s ease,
+                box-shadow .3s ease,
+                padding .3s ease;
+        }
+
+        .about-nav.scrolled {
+            background:
+                rgba(255,255,255,.93);
+
+            backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 8px 30px rgba(7,59,115,.08);
+
+            padding: 12px 0;
+        }
+
+        .about-nav-inner {
+            width:
+                min(
+                    var(--container),
+                    calc(100% - 48px)
+                );
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .about-logo {
+            display: block;
+        }
+
+        .about-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .about-nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+        }
+
+        .about-nav-links a {
+            position: relative;
+
+            padding: 8px 0;
+
+            color: var(--text);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition:
+                color .25s ease;
+        }
+
+        .about-nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--teal);
+
+            transition:
+                width .25s ease;
+        }
+
+        .about-nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .about-nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .about-nav-cta {
+            padding: 12px 20px !important;
+
+            background: var(--navy);
+
+            color: white !important;
+
+            border-radius: 100px;
+
+            box-shadow:
+                0 8px 20px rgba(7,59,115,.18);
+        }
+
+        .about-nav-cta::after {
+            display: none;
+        }
+
+        .about-nav-cta:hover {
+            background: var(--blue);
+        }
+
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        .about-menu-btn {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 0;
+
+            border-radius: 12px;
+
+            background: transparent;
+
+            cursor: pointer;
+        }
+
+        .about-menu-btn span {
+            display: block;
+
+            width: 22px;
+            height: 2px;
+
+            margin: 5px auto;
+
+            background: var(--navy);
+        }
+
+        .about-mobile-menu {
+            display: none;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .about-hero {
+            position: relative;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(21,158,172,.18),
+                    transparent 31%
+                ),
+                radial-gradient(
+                    circle at 12% 82%,
+                    rgba(247,148,29,.08),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f5f9fb 0%,
+                    #e5eff5 100%
+                );
+        }
+
+        .about-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 680px;
+            height: 680px;
+
+            right: -280px;
+            top: 70px;
+
+            border:
+                1px solid
+                rgba(7,59,115,.08);
+
+            border-radius: 50%;
+        }
+
+        .about-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 440px;
+            height: 440px;
+
+            right: -80px;
+            top: 190px;
+
+            border:
+                1px solid
+                rgba(21,158,172,.13);
+
+            border-radius: 50%;
+        }
+
+        .about-hero-grid {
+            position: relative;
+
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns:
+                1.05fr
+                .95fr;
+
+            align-items: center;
+
+            gap: 80px;
+
+            padding-top: 90px;
+        }
+
+        .about-eyebrow {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-bottom: 24px;
+
+            color: var(--teal-dark);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+        }
+
+        .about-eyebrow::before {
+            content: "";
+
+            width: 28px;
+            height: 2px;
+
+            background:
+                var(--orange);
+        }
+
+        .about-hero h1 {
+            max-width: 780px;
+
+            font-family:
+                "Trebuchet MS",
+                Inter,
+                sans-serif;
+
+            font-size:
+                clamp(50px, 6.3vw, 86px);
+
+            line-height: .96;
+
+            letter-spacing: -.06em;
+
+            color: var(--navy);
+        }
+
+        .about-hero h1 span {
+            color: var(--teal);
+        }
+
+        .about-hero-text {
+            max-width: 620px;
+
+            margin-top: 28px;
+
+            color: var(--text-light);
+
+            font-size: 18px;
+
+            line-height: 1.75;
+        }
+
+        .about-hero-actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-top: 34px;
+        }
+
+        .about-primary-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            padding:
+                0 25px;
+
+            border-radius: 100px;
+
+            background:
+                var(--navy);
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 15px 30px
+                rgba(7,59,115,.17);
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+        .about-primary-btn:hover {
+            transform:
+                translateY(-3px);
+
+            background:
+                var(--blue);
+        }
+
+        .about-secondary-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            padding:
+                0 24px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 100px;
+
+            background:
+                rgba(255,255,255,.55);
+
+            color:
+                var(--navy);
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+        .about-secondary-btn:hover {
+            transform:
+                translateY(-3px);
+
+            background:
+                white;
+        }
+
+
+        /* =========================================================
+           HERO VISUAL
+        ========================================================= */
+
+        .about-hero-visual {
+            position: relative;
+
+            min-height: 560px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-orbit {
+            position: absolute;
+
+            width: 440px;
+            height: 440px;
+
+            border:
+                1px solid
+                rgba(7,59,115,.12);
+
+            border-radius: 50%;
+        }
+
+        .about-orbit.two {
+            width: 340px;
+            height: 340px;
+
+            border-color:
+                rgba(21,158,172,.17);
+
+            transform:
+                rotate(25deg);
+        }
+
+        .about-orbit.three {
+            width: 530px;
+            height: 530px;
+
+            border-color:
+                rgba(247,148,29,.10);
+
+            transform:
+                rotate(-25deg);
+        }
+
+        .about-core {
+            position: relative;
+
+            z-index: 4;
+
+            width: 215px;
+            height: 215px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 25%,
+                    #1aa2b0,
+                    var(--navy) 70%
+                );
+
+            color: white;
+
+            box-shadow:
+                0 35px 80px
+                rgba(7,59,115,.28),
+
+                inset 0 0 0 10px
+                rgba(255,255,255,.08);
+        }
+
+        .about-core-small {
+            margin-bottom: 8px;
+
+            color:
+                rgba(255,255,255,.62);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: .17em;
+
+            text-transform: uppercase;
+        }
+
+        .about-core-title {
+            font-size: 30px;
+
+            font-weight: 800;
+
+            letter-spacing: -.045em;
+        }
+
+        .about-core-line {
+            width: 40px;
+            height: 2px;
+
+            margin-top: 13px;
+
+            background:
+                var(--orange);
+        }
+
+        .about-floating {
+            position: absolute;
+
+            z-index: 6;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding:
+                14px 17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.8);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.90);
+
+            backdrop-filter:
+                blur(12px);
+
+            box-shadow:
+                0 18px 45px
+                rgba(7,59,115,.13);
+
+            color:
+                var(--navy);
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+        .about-floating-icon {
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background:
+                var(--background);
+
+            font-size: 17px;
+        }
+
+        .about-floating.one {
+            top: 65px;
+            right: 35px;
+        }
+
+        .about-floating.two {
+            top: 175px;
+            left: 5px;
+        }
+
+        .about-floating.three {
+            right: 0;
+            bottom: 95px;
+        }
+
+        .about-floating.four {
+            left: 55px;
+            bottom: 45px;
+        }
+
+
+        /* =========================================================
+           STAT STRIP
+        ========================================================= */
+
+        .about-stat-strip {
+            background:
+                var(--navy);
+
+            color: white;
+        }
+
+        .about-stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+        }
+
+        .about-stat {
+            padding:
+                35px 30px;
+
+            border-right:
+                1px solid
+                rgba(255,255,255,.10);
+        }
+
+        .about-stat:last-child {
+            border-right: 0;
+        }
+
+        .about-stat-number {
+            color: white;
+
+            font-size: 27px;
+
+            font-weight: 800;
+
+            margin-bottom: 5px;
+        }
+
+        .about-stat-text {
+            color:
+                rgba(255,255,255,.62);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           STORY
+        ========================================================= */
+
+        .about-story {
+            position: relative;
+
+            padding:
+                125px 0;
+
+            background:
+                var(--navy-dark);
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .about-story::after {
+            content: "01";
+
+            position: absolute;
+
+            right: 4%;
+            bottom: -65px;
+
+            color:
+                rgba(255,255,255,.035);
+
+            font-size: 210px;
+
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+        .about-story-grid {
+            display: grid;
+
+            grid-template-columns:
+                .8fr
+                1.2fr;
+
+            gap: 100px;
+        }
+
+        .about-section-number {
+            color:
+                var(--orange);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            letter-spacing: .18em;
+        }
+
+        .about-story h2 {
+            margin-top: 20px;
+
+            font-size:
+                clamp(40px, 5vw, 65px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .about-story-content {
+            max-width: 710px;
+        }
+
+        .about-story-content p {
+            margin-bottom: 24px;
+
+            color:
+                rgba(255,255,255,.70);
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+        .about-story-highlight {
+            margin-top: 35px;
+
+            padding-left: 22px;
+
+            border-left:
+                3px solid
+                var(--teal);
+
+            color: white;
+
+            font-size: 19px;
+
+            font-weight: 600;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================================================
+           VISION / MISSION
+        ========================================================= */
+
+        .about-vision {
+            padding:
+                125px 0;
+
+            background:
+                var(--background-light);
+        }
+
+        .about-section-heading {
+            max-width: 850px;
+
+            margin-bottom: 60px;
+        }
+
+        .about-section-label {
+            color:
+                var(--teal-dark);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+        }
+
+        .about-section-heading h2 {
+            margin-top: 15px;
+
+            color:
+                var(--navy);
+
+            font-size:
+                clamp(40px, 5vw, 64px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .about-vision-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap: 20px;
+        }
+
+        .about-vision-card {
+            position: relative;
+
+            min-height: 400px;
+
+            padding: 45px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-lg);
+
+            overflow: hidden;
+
+            background:
+                white;
+        }
+
+        .about-vision-card.dark {
+            background:
+                var(--navy);
+
+            border-color:
+                var(--navy);
+
+            color: white;
+        }
+
+        .about-vision-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 330px;
+            height: 330px;
+
+            right: -130px;
+            bottom: -160px;
+
+            border:
+                1px solid
+                rgba(7,59,115,.09);
+
+            border-radius: 50%;
+        }
+
+        .about-vision-card.dark::after {
+            border-color:
+                rgba(255,255,255,.08);
+        }
+
+        .about-card-number {
+            color:
+                var(--orange);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: .15em;
+        }
+
+        .about-vision-card h3 {
+            max-width: 500px;
+
+            margin-top: 35px;
+
+            font-size: 38px;
+
+            line-height: 1;
+
+            letter-spacing: -.045em;
+        }
+
+        .about-vision-card:not(.dark) h3 {
+            color:
+                var(--navy);
+        }
+
+        .about-vision-card p {
+            max-width: 540px;
+
+            margin-top: 20px;
+
+            color:
+                var(--text-light);
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+        .about-vision-card.dark p {
+            color:
+                rgba(255,255,255,.65);
+        }
+
+
+        /* =========================================================
+           PHILOSOPHY
+        ========================================================= */
+
+        .about-philosophy {
+            padding:
+                125px 0;
+
+            background:
+                white;
+        }
+
+        .about-philosophy-layout {
+            display: grid;
+
+            grid-template-columns:
+                .9fr
+                1.1fr;
+
+            gap: 90px;
+
+            align-items: center;
+        }
+
+        .about-philosophy-visual {
+            position: relative;
+
+            min-height: 520px;
+
+            border-radius:
+                var(--radius-lg);
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--navy),
+                    var(--blue)
+                );
+
+            box-shadow:
+                var(--shadow-md);
+        }
+
+        .about-philosophy-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 440px;
+            height: 440px;
+
+            right: -190px;
+            top: -180px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            border-radius: 50%;
+        }
+
+        .about-philosophy-visual::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            left: -140px;
+            bottom: -140px;
+
+            border:
+                1px solid
+                rgba(21,158,172,.30);
+
+            border-radius: 50%;
+        }
+
+        .about-philosophy-center {
+            position: absolute;
+
+            z-index: 2;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            width: 180px;
+            height: 180px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            backdrop-filter:
+                blur(10px);
+
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            letter-spacing: -.03em;
+        }
+
+        .about-philosophy-orbit {
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border:
+                1px solid
+                rgba(255,255,255,.13);
+
+            border-radius: 50%;
+        }
+
+        .about-philosophy-chip {
+            position: absolute;
+
+            z-index: 3;
+
+            padding:
+                12px 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            border-radius:
+                100px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            color:
+                rgba(255,255,255,.85);
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+        .about-philosophy-chip.one {
+            top: 85px;
+            left: 45px;
+        }
+
+        .about-philosophy-chip.two {
+            top: 105px;
+            right: 35px;
+        }
+
+        .about-philosophy-chip.three {
+            bottom: 105px;
+            left: 35px;
+        }
+
+        .about-philosophy-chip.four {
+            bottom: 80px;
+            right: 45px;
+        }
+
+        .about-philosophy-copy h2 {
+            margin-top: 15px;
+
+            color:
+                var(--navy);
+
+            font-size:
+                clamp(40px, 4.5vw, 60px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .about-philosophy-copy > p {
+            margin-top: 25px;
+
+            color:
+                var(--text-light);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+        .about-philosophy-list {
+            display: grid;
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+        .about-philosophy-item {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 12px;
+
+            font-size: 14px;
+
+            line-height: 1.55;
+        }
+
+        .about-check {
+            flex: 0 0 auto;
+
+            width: 23px;
+            height: 23px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(21,158,172,.12);
+
+            color:
+                var(--teal-dark);
+
+            font-size: 12px;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
+           VALUES
+        ========================================================= */
+
+        .about-values {
+            padding:
+                125px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e6f0f5,
+                    #f4f8fa
+                );
+        }
+
+        .about-values-header {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 50px;
+
+            margin-bottom: 60px;
+        }
+
+        .about-values-header h2 {
+            max-width: 700px;
+
+            margin-top: 15px;
+
+            color:
+                var(--navy);
+
+            font-size:
+                clamp(40px, 5vw, 62px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .about-values-header p {
+            max-width: 410px;
+
+            color:
+                var(--text-light);
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+        .about-values-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .about-value-card {
+            position: relative;
+
+            min-height: 315px;
+
+            padding: 30px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-md);
+
+            background:
+                rgba(255,255,255,.72);
+
+            overflow: hidden;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                border-color .3s ease;
+        }
+
+        .about-value-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 140px;
+            height: 140px;
+
+            top: -60px;
+            right: -60px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(21,158,172,.07);
+        }
+
+        .about-value-card:hover {
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                var(--shadow-md);
+
+            border-color:
+                rgba(21,158,172,.35);
+        }
+
+        .about-value-number {
+            color:
+                rgba(7,59,115,.16);
+
+            font-size: 50px;
+
+            font-weight: 900;
+        }
+
+        .about-value-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background:
+                var(--background);
+
+            color:
+                var(--navy);
+
+            font-size: 20px;
+        }
+
+        .about-value-card h3 {
+            margin-top: 25px;
+
+            color:
+                var(--navy);
+
+            font-size: 20px;
+        }
+
+        .about-value-card p {
+            margin-top: 10px;
+
+            color:
+                var(--text-light);
+
+            font-size: 14px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================================================
+           WHAT WE ARE BUILDING
+        ========================================================= */
+
+        .about-building {
+            padding:
+                125px 0;
+
+            background:
+                white;
+        }
+
+        .about-building-header {
+            max-width: 820px;
+
+            margin-bottom: 65px;
+        }
+
+        .about-building-header h2 {
+            margin-top: 15px;
+
+            color:
+                var(--navy);
+
+            font-size:
+                clamp(40px, 5vw, 64px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .about-building-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .about-building-card {
+            min-height: 330px;
+
+            padding: 34px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-md);
+
+            background:
+                var(--background-light);
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .about-building-card:hover {
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                var(--shadow-sm);
+
+            background:
+                white;
+        }
+
+        .about-building-number {
+            color:
+                var(--orange);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .15em;
+        }
+
+        .about-building-card h3 {
+            margin-top: 28px;
+
+            color:
+                var(--navy);
+
+            font-size: 25px;
+
+            letter-spacing: -.03em;
+        }
+
+        .about-building-card p {
+            margin-top: 12px;
+
+            color:
+                var(--text-light);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .about-building-status {
+            display: inline-flex;
+
+            margin-top: 25px;
+
+            padding:
+                8px 12px;
+
+            border-radius:
+                100px;
+
+            background:
+                rgba(21,158,172,.10);
+
+            color:
+                var(--teal-dark);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           BRAND STATEMENT
+        ========================================================= */
+
+        .about-statement {
+            position: relative;
+
+            padding:
+                130px 0;
+
+            background:
+                var(--navy-dark);
+
+            color: white;
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .about-statement::before {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            top: -280px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 50%;
+        }
+
+        .about-statement-label {
+            position: relative;
+
+            z-index: 2;
+
+            color:
+                var(--orange);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+        }
+
+        .about-statement h2 {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 950px;
+
+            margin:
+                25px auto 0;
+
+            color: white;
+
+            font-size:
+                clamp(43px, 6vw, 78px);
+
+            line-height: .98;
+
+            letter-spacing: -.06em;
+        }
+
+        .about-statement h2 span {
+            color:
+                #6bd5dd;
+        }
+
+        .about-statement p {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 620px;
+
+            margin:
+                28px auto 0;
+
+            color:
+                rgba(255,255,255,.62);
+
+            font-size: 16px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .about-cta {
+            padding:
+                110px 0;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(21,158,172,.18),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--navy)
+                );
+
+            color: white;
+        }
+
+        .about-cta-inner {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr
+                .8fr;
+
+            align-items: center;
+
+            gap: 70px;
+        }
+
+        .about-cta-inner::after {
+            content: "02";
+
+            position: absolute;
+
+            right: -15px;
+            bottom: -100px;
+
+            color:
+                rgba(255,255,255,.035);
+
+            font-size: 250px;
+
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+        .about-cta h2 {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 800px;
+
+            font-size:
+                clamp(42px, 5vw, 70px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .about-cta h2 span {
+            color:
+                #6bd5dd;
+        }
+
+        .about-cta-copy {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .about-cta-copy p {
+            color:
+                rgba(255,255,255,.68);
+
+            font-size: 16px;
+
+            line-height: 1.75;
+        }
+
+        .about-cta-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 25px;
+
+            padding:
+                15px 24px;
+
+            border-radius:
+                100px;
+
+            background:
+                white;
+
+            color:
+                var(--navy);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .about-cta-button:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(0,0,0,.16);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .about-footer {
+            padding:
+                70px 0 30px;
+
+            background:
+                #031f3d;
+
+            color: white;
+        }
+
+        .about-footer-top {
+            display: grid;
+
+            grid-template-columns:
+                1.3fr
+                .7fr
+                .7fr
+                .9fr;
+
+            gap: 50px;
+
+            padding-bottom: 55px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+        }
+
+        .about-footer-brand img {
+            width: 155px;
+
+            margin-bottom: 20px;
+
+            filter:
+                brightness(0)
+                invert(1);
+        }
+
+        .about-footer-brand p {
+            max-width: 300px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        .about-footer-column h4 {
+            margin-bottom: 18px;
+
+            color: white;
+
+            font-size: 12px;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+        .about-footer-column a {
+            display: block;
+
+            margin-bottom: 11px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            font-size: 13px;
+
+            transition:
+                color .2s ease;
+        }
+
+        .about-footer-column a:hover {
+            color: white;
+        }
+
+        .about-footer-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-top: 25px;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size: 11px;
+        }
+
+        .about-footer-social {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .about-footer-social a {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            color:
+                rgba(255,255,255,.65);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           REVEAL
+        ========================================================= */
+
+        .about-reveal {
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .about-reveal.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE — 1050
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .about-hero-grid {
+                gap: 35px;
+            }
+
+            .about-values-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .about-building-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .about-philosophy-layout {
+                gap: 45px;
+            }
+
+            .about-footer-top {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+        }
+
+
+        /* =========================================================
+           RESPONSIVE — 800
+        ========================================================= */
+
+        @media (max-width: 800px) {
+
+            .about-container,
+            .about-nav-inner {
+                width:
+                    min(
+                        100% - 32px,
+                        var(--container)
+                    );
+            }
+
+            .about-nav {
+                padding:
+                    13px 0;
+            }
+
+            .about-nav-links {
+                display: none;
+            }
+
+            .about-menu-btn {
+                display: block;
+            }
+
+            .about-mobile-menu {
+                position: absolute;
+
+                top:
+                    calc(100% + 8px);
+
+                left: 16px;
+                right: 16px;
+
+                padding: 18px;
+
+                border:
+                    1px solid
+                    var(--border);
+
+                border-radius: 20px;
+
+                background:
+                    rgba(255,255,255,.97);
+
+                backdrop-filter:
+                    blur(18px);
+
+                box-shadow:
+                    var(--shadow-md);
+            }
+
+            .about-mobile-menu.open {
+                display: block;
+            }
+
+            .about-mobile-menu a {
+                display: block;
+
+                padding:
+                    13px 10px;
+
+                border-bottom:
+                    1px solid
+                    var(--border);
+
+                color:
+                    var(--navy);
+
+                font-size: 14px;
+
+                font-weight: 700;
+            }
+
+            .about-mobile-menu a:last-child {
+                border-bottom: 0;
+            }
+
+            .about-hero {
+                min-height: auto;
+
+                padding:
+                    130px 0 70px;
+            }
+
+            .about-hero-grid {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                padding-top: 20px;
+            }
+
+            .about-eyebrow {
+                justify-content: center;
+            }
+
+            .about-hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .about-hero-actions {
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .about-hero-visual {
+                min-height: 460px;
+            }
+
+            .about-stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .about-stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .about-stat:nth-child(-n+2) {
+                border-bottom:
+                    1px solid
+                    rgba(255,255,255,.10);
+            }
+
+            .about-story-grid,
+            .about-philosophy-layout,
+            .about-cta-inner {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .about-values-header {
+                display: block;
+            }
+
+            .about-values-header p {
+                margin-top: 20px;
+            }
+
+            .about-vision-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-footer-top {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+        }
+
+
+        /* =========================================================
+           RESPONSIVE — 520
+        ========================================================= */
+
+        @media (max-width: 520px) {
+
+            .about-hero h1 {
+                font-size: 47px;
+            }
+
+            .about-hero-text {
+                font-size: 16px;
+            }
+
+            .about-hero-actions {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .about-primary-btn,
+            .about-secondary-btn {
+                width: 100%;
+            }
+
+            .about-hero-visual {
+                min-height: 380px;
+
+                transform:
+                    scale(.82);
+
+                margin:
+                    -35px 0;
+            }
+
+            .about-floating {
+                transform:
+                    scale(.85);
+            }
+
+            .about-floating.one {
+                right: 0;
+                top: 40px;
+            }
+
+            .about-floating.two {
+                left: -5px;
+                top: 125px;
+            }
+
+            .about-floating.three {
+                right: -10px;
+                bottom: 65px;
+            }
+
+            .about-floating.four {
+                left: 0;
+                bottom: 30px;
+            }
+
+            .about-orbit.three {
+                width: 450px;
+                height: 450px;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stat {
+                border-right: 0;
+
+                border-bottom:
+                    1px solid
+                    rgba(255,255,255,.10);
+            }
+
+            .about-stat:last-child {
+                border-bottom: 0;
+            }
+
+            .about-story,
+            .about-vision,
+            .about-philosophy,
+            .about-values,
+            .about-building {
+                padding:
+                    85px 0;
+            }
+
+            .about-values-grid,
+            .about-building-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-vision-card {
+                min-height: auto;
+
+                padding: 32px;
+            }
+
+            .about-philosophy-visual {
+                min-height: 430px;
+            }
+
+            .about-philosophy-orbit {
+                width: 300px;
+                height: 300px;
+            }
+
+            .about-philosophy-center {
+                width: 150px;
+                height: 150px;
+
+                font-size: 19px;
+            }
+
+            .about-statement {
+                padding:
+                    90px 0;
+            }
+
+            .about-cta {
+                padding:
+                    85px 0;
+            }
+
+            .about-footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .about-footer-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header
+    class="about-nav"
+    id="aboutNav"
+>
+
+    <div class="about-nav-inner">
+
+        <a
+            href="../index.html"
+            class="about-logo"
+        >
+            <img
+                id="navLogo"
+                alt="NexTalent"
+            >
+        </a>
+
+
+        <nav class="about-nav-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="jobs.html">
+                Jobs
+            </a>
+
+            <a href="candidates.html">
+                Candidates
+            </a>
+
+            <a href="recruiters.html">
+                Recruiters
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a
+                href="contact.html"
+                class="about-nav-cta"
+            >
+                Contact
+            </a>
+
+        </nav>
+
+
+        <button
+            class="about-menu-btn"
+            id="aboutMenuBtn"
+            aria-label="Open menu"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="about-mobile-menu"
+        id="aboutMobileMenu"
+    >
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="courses.html">
+            Courses
+        </a>
+
+        <a href="jobs.html">
+            Jobs
+        </a>
+
+        <a href="candidates.html">
+            Candidates
+        </a>
+
+        <a href="recruiters.html">
+            Recruiters
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="about-hero">
+
+    <div class="about-container">
+
+        <div class="about-hero-grid">
+
+            <div class="about-hero-content about-reveal">
+
+                <div class="about-eyebrow">
+                    About NexTalent
+                </div>
+
+                <h1>
+                    Learn.
+                    <span>Grow.</span>
+                    Lead.
+                </h1>
+
+                <p class="about-hero-text">
+                    NexTalent is being built around a simple idea:
+                    meaningful careers are created when people have
+                    access to the right skills, practical learning and
+                    opportunities to grow.
+                </p>
+
+                <div class="about-hero-actions">
+
+                    <a
+                        href="courses.html"
+                        class="about-primary-btn"
+                    >
+                        Explore Learning →
+                    </a>
+
+                    <a
+                        href="contact.html"
+                        class="about-secondary-btn"
+                    >
+                        Connect With Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="about-hero-visual about-reveal">
+
+                <div class="about-orbit three"></div>
+
+                <div class="about-orbit"></div>
+
+                <div class="about-orbit two"></div>
+
+
+                <div class="about-core">
+
+                    <div class="about-core-small">
+                        The NexTalent Vision
+                    </div>
+
+                    <div class="about-core-title">
+                        Learn.
+                    </div>
+
+                    <div class="about-core-line"></div>
+
+                </div>
+
+
+                <div class="about-floating one">
+
+                    <div class="about-floating-icon">
+                        ✦
+                    </div>
+
+                    <span>
+                        Learn
+                    </span>
+
+                </div>
+
+
+                <div class="about-floating two">
+
+                    <div class="about-floating-icon">
+                        ↗
+                    </div>
+
+                    <span>
+                        Build
+                    </span>
+
+                </div>
+
+
+                <div class="about-floating three">
+
+                    <div class="about-floating-icon">
+                        ✓
+                    </div>
+
+                    <span>
+                        Grow
+                    </span>
+
+                </div>
+
+
+                <div class="about-floating four">
+
+                    <div class="about-floating-icon">
+                        ∞
+                    </div>
+
+                    <span>
+                        Lead
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STAT STRIP
+========================================================= -->
+
+<section class="about-stat-strip">
+
+    <div class="about-container">
+
+        <div class="about-stats">
+
+            <div class="about-stat">
+
+                <div class="about-stat-number">
+                    Learn
+                </div>
+
+                <div class="about-stat-text">
+                    Develop relevant knowledge and practical skills.
+                </div>
+
+            </div>
+
+
+            <div class="about-stat">
+
+                <div class="about-stat-number">
+                    Grow
+                </div>
+
+                <div class="about-stat-text">
+                    Turn capability into continuous professional growth.
+                </div>
+
+            </div>
+
+
+            <div class="about-stat">
+
+                <div class="about-stat-number">
+                    Connect
+                </div>
+
+                <div class="about-stat-text">
+                    Bring candidates, organizations and learning closer.
+                </div>
+
+            </div>
+
+
+            <div class="about-stat">
+
+                <div class="about-stat-number">
+                    Lead
+                </div>
+
+                <div class="about-stat-text">
+                    Create a future shaped by adaptable talent.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OUR STORY
+========================================================= -->
+
+<section class="about-story">
+
+    <div class="about-container">
+
+        <div class="about-story-grid">
+
+            <div class="about-reveal">
+
+                <div class="about-section-number">
+                    01 / OUR STORY
+                </div>
+
+                <h2>
+                    The future of
+                    work needs
+                    better bridges.
+                </h2>
+
+            </div>
+
+
+            <div class="about-story-content about-reveal">
+
+                <p>
+                    Technology is changing the way people learn, work
+                    and build careers. New tools and technologies are
+                    creating opportunities, while also changing the
+                    skills organizations need.
+                </p>
+
+                <p>
+                    NexTalent is being built to bring these worlds
+                    closer together — learning, candidates,
+                    organizations and continuous development.
+                </p>
+
+                <p>
+                    The platform begins with learning and career
+                    development, while creating a foundation for a
+                    broader talent ecosystem.
+                </p>
+
+                <div class="about-story-highlight">
+                    We believe the strongest career journeys are built
+                    through continuous learning, practical capability
+                    and meaningful connections.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     VISION / MISSION
+========================================================= -->
+
+<section class="about-vision">
+
+    <div class="about-container">
+
+        <div class="about-section-heading about-reveal">
+
+            <div class="about-section-label">
+                Vision & Mission
+            </div>
+
+            <h2>
+                A platform designed
+                around people and capability.
+            </h2>
+
+        </div>
+
+
+        <div class="about-vision-grid">
+
+            <article
+                class="about-vision-card dark about-reveal"
+            >
+
+                <div class="about-card-number">
+                    01 / VISION
+                </div>
+
+                <h3>
+                    Build a connected talent ecosystem.
+                </h3>
+
+                <p>
+                    Our vision is to create a platform where people can
+                    continuously develop their capabilities and where
+                    organizations can connect with talent and learning
+                    in a more meaningful way.
+                </p>
+
+            </article>
+
+
+            <article
+                class="about-vision-card about-reveal"
+            >
+
+                <div class="about-card-number">
+                    02 / MISSION
+                </div>
+
+                <h3>
+                    Make learning useful for the real world.
+                </h3>
+
+                <p>
+                    Our mission is to support practical learning,
+                    career development and continuous upskilling while
+                    creating pathways between individuals and
+                    organizations.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PHILOSOPHY
+========================================================= -->
+
+<section class="about-philosophy">
+
+    <div class="about-container">
+
+        <div class="about-philosophy-layout">
+
+            <div class="about-philosophy-visual about-reveal">
+
+                <div class="about-philosophy-orbit"></div>
+
+                <div class="about-philosophy-center">
+                    Capability<br>
+                    First
+                </div>
+
+                <div class="about-philosophy-chip one">
+                    Learn
+                </div>
+
+                <div class="about-philosophy-chip two">
+                    Practice
+                </div>
+
+                <div class="about-philosophy-chip three">
+                    Build
+                </div>
+
+                <div class="about-philosophy-chip four">
+                    Grow
+                </div>
+
+            </div>
+
+
+            <div class="about-philosophy-copy about-reveal">
+
+                <div class="about-section-label">
+                    Our Philosophy
+                </div>
+
+                <h2>
+                    Skills should lead
+                    to capability.
+                </h2>
+
+                <p>
+                    NexTalent is designed around the belief that
+                    learning becomes more valuable when people can
+                    apply it, build with it and continue developing it.
+                </p>
+
+                <div class="about-philosophy-list">
+
+                    <div class="about-philosophy-item">
+
+                        <span class="about-check">
+                            ✓
+                        </span>
+
+                        <span>
+                            Focus on practical and relevant learning.
+                        </span>
+
+                    </div>
+
+
+                    <div class="about-philosophy-item">
+
+                        <span class="about-check">
+                            ✓
+                        </span>
+
+                        <span>
+                            Encourage project-based development.
+                        </span>
+
+                    </div>
+
+
+                    <div class="about-philosophy-item">
+
+                        <span class="about-check">
+                            ✓
+                        </span>
+
+                        <span>
+                            Support continuous upskilling.
+                        </span>
+
+                    </div>
+
+
+                    <div class="about-philosophy-item">
+
+                        <span class="about-check">
+                            ✓
+                        </span>
+
+                        <span>
+                            Connect learning with real career goals.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     VALUES
+========================================================= -->
+
+<section class="about-values">
+
+    <div class="about-container">
+
+        <div class="about-values-header about-reveal">
+
+            <div>
+
+                <div class="about-section-label">
+                    What We Value
+                </div>
+
+                <h2>
+                    Principles behind
+                    the platform.
+                </h2>
+
+            </div>
+
+            <p>
+                The NexTalent experience is designed around a small
+                set of principles that guide how learning, careers and
+                organizations come together.
+            </p>
+
+        </div>
+
+
+        <div class="about-values-grid">
+
+            <article class="about-value-card about-reveal">
+
+                <div class="about-value-number">
+                    01
+                </div>
+
+                <div class="about-value-icon">
+                    ◇
+                </div>
+
+                <h3>
+                    Practicality
+                </h3>
+
+                <p>
+                    Learning should help people understand how concepts
+                    translate into practical skills and real work.
+                </p>
+
+            </article>
+
+
+            <article class="about-value-card about-reveal">
+
+                <div class="about-value-number">
+                    02
+                </div>
+
+                <div class="about-value-icon">
+                    ↗
+                </div>
+
+                <h3>
+                    Growth
+                </h3>
+
+                <p>
+                    Careers evolve, so learning should continue beyond
+                    a single course, degree or first job.
+                </p>
+
+            </article>
+
+
+            <article class="about-value-card about-reveal">
+
+                <div class="about-value-number">
+                    03
+                </div>
+
+                <div class="about-value-icon">
+                        ⌘
+                </div>
+
+                <h3>
+                    Connection
+                </h3>
+
+                <p>
+                    Better connections between learners, candidates
+                    and organizations can create stronger opportunities.
+                </p>
+
+            </article>
+
+
+            <article class="about-value-card about-reveal">
+
+                <div class="about-value-number">
+                    04
+                </div>
+
+                <div class="about-value-icon">
+                    ∞
+                </div>
+
+                <h3>
+                    Adaptability
+                </h3>
+
+                <p>
+                    Technology changes quickly. The ability to keep
+                    learning is therefore a capability in itself.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHAT WE ARE BUILDING
+========================================================= -->
+
+<section class="about-building">
+
+    <div class="about-container">
+
+        <div class="about-building-header about-reveal">
+
+            <div class="about-section-label">
+                The NexTalent Ecosystem
+            </div>
+
+            <h2>
+                More than courses.
+                A broader career ecosystem.
+            </h2>
+
+        </div>
+
+
+        <div class="about-building-grid">
+
+            <article class="about-building-card about-reveal">
+
+                <div class="about-building-number">
+                    01 / LEARNING
+                </div>
+
+                <h3>
+                    Skill Development
+                </h3>
+
+                <p>
+                    Structured courses and learning experiences designed
+                    to help people build practical capabilities.
+                </p>
+
+                <span class="about-building-status">
+                    Available
+                </span>
+
+            </article>
+
+
+            <article class="about-building-card about-reveal">
+
+                <div class="about-building-number">
+                    02 / CAREERS
+                </div>
+
+                <h3>
+                    Opportunities
+                </h3>
+
+                <p>
+                    A career-focused ecosystem designed to eventually
+                    connect developing talent with relevant
+                    opportunities.
+                </p>
+
+                <span class="about-building-status">
+                    Growing
+                </span>
+
+            </article>
+
+
+            <article class="about-building-card about-reveal">
+
+                <div class="about-building-number">
+                    03 / ORGANIZATIONS
+                </div>
+
+                <h3>
+                    Talent & Upskilling
+                </h3>
+
+                <p>
+                    Future capabilities designed around organizational
+                    talent discovery, employee development and
+                    continuous learning.
+                </p>
+
+                <span class="about-building-status">
+                    Roadmap
+                </span>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BRAND STATEMENT
+========================================================= -->
+
+<section class="about-statement">
+
+    <div class="about-container">
+
+        <div class="about-statement-label">
+            The NexTalent Idea
+        </div>
+
+        <h2>
+            Learn today.
+            <span>Grow tomorrow.</span>
+            Lead the future.
+        </h2>
+
+        <p>
+            NexTalent is being built for people and organizations
+            that believe continuous learning is part of building a
+            better future.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="about-cta">
+
+    <div class="about-container">
+
+        <div class="about-cta-inner">
+
+            <h2 class="about-reveal">
+                Your next chapter
+                starts with
+                <span>learning.</span>
+            </h2>
+
+            <div class="about-cta-copy about-reveal">
+
+                <p>
+                    Explore the NexTalent ecosystem, discover learning
+                    opportunities or connect with us to be part of what
+                    we're building.
+                </p>
+
+                <a
+                    href="courses.html"
+                    class="about-cta-button"
+                >
+                    Explore NexTalent →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="about-footer">
+
+    <div class="about-container">
+
+        <div class="about-footer-top">
+
+            <div class="about-footer-brand">
+
+                <a href="../index.html">
+
+                    <img
+                        id="footerLogo"
+                        alt="NexTalent"
+                    >
+
+                </a>
+
+                <p>
+                    Learn skills. Build capability. Connect talent.
+                    Grow toward the future.
+                </p>
+
+            </div>
+
+
+            <div class="about-footer-column">
+
+                <h4>
+                    Explore
+                </h4>
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="courses.html">
+                    Courses
+                </a>
+
+                <a href="jobs.html">
+                    Jobs
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </div>
+
+
+            <div class="about-footer-column">
+
+                <h4>
+                    Ecosystem
+                </h4>
+
+                <a href="candidates.html">
+                    Candidates
+                </a>
+
+                <a href="recruiters.html">
+                    Recruiters
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="about-footer-column">
+
+                <h4>
+                    Connect
+                </h4>
+
+                <a href="tel:7499869128">
+                    7499 869 128
+                </a>
+
+                <a href="mailto:nextalentindia@gmail.com">
+                    nextalentindia@gmail.com
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/nex-talent-2652a8435"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+
+                <a href="contact.html">
+                    Send an Enquiry
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-footer-bottom">
+
+            <div>
+                © 2026 NexTalent. All rights reserved.
+            </div>
+
+            <div class="about-footer-social">
+
+                <a
+                    href="https://www.linkedin.com/in/nex-talent-2652a8435"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                >
+                    in
+                </a>
+
+                <a
+                    href="mailto:nextalentindia@gmail.com"
+                    aria-label="Email"
+                >
+                    @
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =========================================================
+       CENTRALIZED NEX TALENT ASSET PATHS
+    ========================================================= */
+
+    const NEX_TALENT_ASSETS = {
+
+        logo:
+            "../assets/images/logo.png"
+
+    };
+
+
+    /* Apply centralized logo */
+
+    document.getElementById("navLogo").src =
+        NEX_TALENT_ASSETS.logo;
+
+    document.getElementById("footerLogo").src =
+        NEX_TALENT_ASSETS.logo;
+
+
+    /* =========================================================
+       NAVBAR SCROLL
+    ========================================================= */
+
+    const aboutNav =
+        document.getElementById("aboutNav");
+
+    function updateAboutNav() {
+
+        if (window.scrollY > 40) {
+
+            aboutNav.classList.add("scrolled");
+
+        } else {
+
+            aboutNav.classList.remove("scrolled");
+
+        }
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateAboutNav,
+        { passive: true }
+    );
+
+    updateAboutNav();
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const aboutMenuBtn =
+        document.getElementById("aboutMenuBtn");
+
+    const aboutMobileMenu =
+        document.getElementById("aboutMobileMenu");
+
+    aboutMenuBtn.addEventListener(
+        "click",
+        () => {
+
+            aboutMobileMenu.classList.toggle("open");
+
+        }
+    );
+
+
+    aboutMobileMenu
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    aboutMobileMenu.classList.remove(
+                        "open"
+                    );
+
+                }
+            );
+
+        });
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    const aboutRevealElements =
+        document.querySelectorAll(
+            ".about-reveal"
+        );
+
+    const aboutRevealObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        aboutRevealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    aboutRevealElements.forEach(element => {
+
+        aboutRevealObserver.observe(element);
+
+    });
+
+
+    /* =========================================================
+       CLOSE MOBILE MENU ON RESIZE
+    ========================================================= */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (window.innerWidth > 800) {
+
+                aboutMobileMenu.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

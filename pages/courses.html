@@ -1,0 +1,3331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Courses | NexTalent</title>
+
+    <meta
+        name="description"
+        content="Explore NexTalent courses in Data Science, AI, Cloud, DevOps, Automation, Web Development and Analytics."
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* =========================================================
+           NEX TALENT — COURSES PAGE
+           ========================================================= */
+
+        :root {
+            --course-navy: #073b73;
+            --course-navy-dark: #052b55;
+            --course-blue: #0a4d8c;
+            --course-teal: #159eac;
+            --course-orange: #f7941d;
+
+            --course-bg: #eef4f8;
+            --course-bg-light: #f7fafc;
+            --course-white: #ffffff;
+
+            --course-text: #14213d;
+            --course-muted: #607083;
+            --course-border: #d8e3eb;
+
+            --course-radius: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "DM Sans", "Inter", Arial, sans-serif;
+            color: var(--course-text);
+            background: var(--course-bg-light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .courses-page {
+            overflow: hidden;
+        }
+
+        /* =========================================================
+           NAVBAR
+           ========================================================= */
+
+        .courses-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(216, 227, 235, 0.8);
+
+            transition: 0.3s ease;
+        }
+
+        .courses-navbar.scrolled {
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 8px 30px rgba(7, 59, 115, 0.08);
+        }
+
+        .courses-nav-inner {
+            width: min(1380px, 92%);
+            min-height: 82px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .courses-logo {
+            width: 210px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .courses-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .courses-nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .courses-nav-links a {
+            position: relative;
+
+            font-size: 14px;
+            font-weight: 600;
+            color: #42556c;
+
+            padding: 8px 0;
+
+            transition: color 0.25s ease;
+        }
+
+        .courses-nav-links a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--course-teal);
+
+            transition: width 0.25s ease;
+        }
+
+        .courses-nav-links a:hover,
+        .courses-nav-links a.active {
+            color: var(--course-navy);
+        }
+
+        .courses-nav-links a:hover::after,
+        .courses-nav-links a.active::after {
+            width: 100%;
+        }
+
+        .courses-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .courses-talk {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--course-navy);
+            padding: 11px 14px;
+        }
+
+        .courses-explore-btn {
+            padding: 13px 19px;
+
+            border-radius: 12px;
+
+            background: var(--course-navy);
+            color: white;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: 0.25s ease;
+        }
+
+        .courses-explore-btn:hover {
+            background: var(--course-teal);
+            transform: translateY(-2px);
+        }
+
+        .courses-menu-toggle {
+            display: none;
+
+            border: 0;
+            background: transparent;
+
+            font-size: 27px;
+            color: var(--course-navy);
+
+            cursor: pointer;
+        }
+
+        .courses-mobile-menu {
+            display: none;
+        }
+
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .courses-hero {
+            position: relative;
+            min-height: 650px;
+
+            padding: 170px 0 100px;
+
+            background:
+                radial-gradient(
+                    circle at 82% 20%,
+                    rgba(21, 158, 172, 0.17),
+                    transparent 31%
+                ),
+                radial-gradient(
+                    circle at 15% 80%,
+                    rgba(247, 148, 29, 0.08),
+                    transparent 27%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f5f9fc 0%,
+                    #e8f1f6 100%
+                );
+        }
+
+        .courses-hero::before {
+            content: "";
+
+            position: absolute;
+            width: 500px;
+            height: 500px;
+
+            right: -220px;
+            top: 100px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(7, 59, 115, 0.08);
+        }
+
+        .courses-hero::after {
+            content: "";
+
+            position: absolute;
+            width: 340px;
+            height: 340px;
+
+            right: -100px;
+            top: 180px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(21, 158, 172, 0.12);
+        }
+
+        .courses-hero-inner {
+            width: min(1380px, 92%);
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 70px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .courses-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 8px 13px;
+
+            border: 1px solid rgba(7, 59, 115, 0.12);
+            border-radius: 100px;
+
+            background: rgba(255,255,255,0.62);
+
+            color: var(--course-teal);
+
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .courses-eyebrow span {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+            background: var(--course-orange);
+        }
+
+        .courses-hero h1 {
+            margin: 24px 0 24px;
+
+            max-width: 800px;
+
+            font-family: "Manrope", "Inter", sans-serif;
+
+            font-size: clamp(54px, 6vw, 88px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+
+            font-weight: 800;
+
+            color: var(--course-navy);
+        }
+
+        .courses-hero h1 span {
+            color: var(--course-teal);
+        }
+
+        .courses-hero-description {
+            max-width: 640px;
+
+            font-size: 18px;
+            line-height: 1.75;
+
+            color: var(--course-muted);
+        }
+
+        .courses-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+
+            margin-top: 34px;
+        }
+
+        .hero-primary-btn {
+            padding: 15px 23px;
+
+            border-radius: 13px;
+
+            background: var(--course-navy);
+            color: white;
+
+            font-weight: 700;
+            font-size: 14px;
+
+            transition: 0.25s ease;
+        }
+
+        .hero-primary-btn:hover {
+            transform: translateY(-3px);
+            background: var(--course-teal);
+        }
+
+        .hero-secondary-btn {
+            padding: 15px 23px;
+
+            border: 1px solid var(--course-border);
+            border-radius: 13px;
+
+            background: rgba(255,255,255,0.7);
+            color: var(--course-navy);
+
+            font-weight: 700;
+            font-size: 14px;
+
+            transition: 0.25s ease;
+        }
+
+        .hero-secondary-btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--course-teal);
+        }
+
+
+        /* =========================================================
+           HERO VISUAL
+           ========================================================= */
+
+        .course-hero-visual {
+            position: relative;
+            height: 430px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-orbit-large {
+            width: 390px;
+            height: 390px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(7, 59, 115, 0.12);
+
+            position: absolute;
+        }
+
+        .hero-orbit-small {
+            width: 275px;
+            height: 275px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(21, 158, 172, 0.22);
+
+            position: absolute;
+        }
+
+        .hero-course-core {
+            width: 175px;
+            height: 175px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #159eac,
+                    #073b73 68%
+                );
+
+            color: white;
+
+            box-shadow:
+                0 35px 70px rgba(7, 59, 115, 0.22);
+
+            position: relative;
+            z-index: 4;
+        }
+
+        .hero-course-core strong {
+            font-family: "Manrope", sans-serif;
+            font-size: 28px;
+            letter-spacing: -1px;
+        }
+
+        .hero-course-core span {
+            margin-top: 5px;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            opacity: 0.75;
+        }
+
+        .floating-course-card {
+            position: absolute;
+
+            min-width: 180px;
+
+            padding: 16px 18px;
+
+            border-radius: 17px;
+
+            background: rgba(255,255,255,0.88);
+            border: 1px solid rgba(255,255,255,0.9);
+
+            box-shadow:
+                0 20px 45px rgba(7, 59, 115, 0.12);
+
+            backdrop-filter: blur(12px);
+
+            z-index: 5;
+        }
+
+        .floating-course-card small {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: var(--course-teal);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .floating-course-card strong {
+            display: block;
+
+            color: var(--course-navy);
+
+            font-size: 14px;
+        }
+
+        .floating-course-card:nth-of-type(1) {
+            top: 34px;
+            right: 5px;
+        }
+
+        .floating-course-card:nth-of-type(2) {
+            bottom: 45px;
+            left: 5px;
+        }
+
+        .floating-course-card:nth-of-type(3) {
+            top: 165px;
+            right: -30px;
+        }
+
+
+        /* =========================================================
+           INTRO
+           ========================================================= */
+
+        .courses-intro {
+            padding: 95px 0;
+
+            background: var(--course-navy);
+            color: white;
+        }
+
+        .courses-intro-inner {
+            width: min(1200px, 90%);
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        .intro-number {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 86px;
+            line-height: 0.8;
+
+            color: rgba(255,255,255,0.16);
+            font-weight: 800;
+        }
+
+        .courses-intro h2 {
+            margin: 0;
+
+            max-width: 950px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(32px, 4vw, 57px);
+            line-height: 1.1;
+            letter-spacing: -2.5px;
+        }
+
+        .courses-intro h2 span {
+            color: #63d1d9;
+        }
+
+        .courses-intro p {
+            max-width: 750px;
+
+            margin: 25px 0 0;
+
+            color: rgba(255,255,255,0.7);
+
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+
+        /* =========================================================
+           COURSE SECTION
+           ========================================================= */
+
+        .course-library {
+            padding: 105px 0 120px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eaf2f7 0%,
+                    #e1edf3 100%
+                );
+        }
+
+        .course-library-inner {
+            width: min(1380px, 92%);
+            margin: auto;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 40px;
+
+            margin-bottom: 48px;
+        }
+
+        .section-heading-left small {
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: var(--course-teal);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(38px, 4vw, 58px);
+            line-height: 1;
+
+            letter-spacing: -2.5px;
+
+            color: var(--course-navy);
+        }
+
+        .section-heading p {
+            max-width: 450px;
+
+            margin: 0;
+
+            color: var(--course-muted);
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           FILTERS
+           ========================================================= */
+
+        .course-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+
+            margin-bottom: 40px;
+        }
+
+        .course-filter {
+            padding: 11px 17px;
+
+            border: 1px solid rgba(7, 59, 115, 0.12);
+            border-radius: 100px;
+
+            background: rgba(255,255,255,0.55);
+
+            color: #536579;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .course-filter:hover,
+        .course-filter.active {
+            background: var(--course-navy);
+            color: white;
+            border-color: var(--course-navy);
+        }
+
+
+        /* =========================================================
+           COURSE GRID
+           ========================================================= */
+
+        .course-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 22px;
+        }
+
+        .course-card {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+
+            min-height: 520px;
+
+            background: white;
+
+            border: 1px solid rgba(7, 59, 115, 0.08);
+
+            border-radius: var(--course-radius);
+
+            overflow: hidden;
+
+            box-shadow:
+                0 15px 45px rgba(7, 59, 115, 0.07);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 28px 60px rgba(7, 59, 115, 0.13);
+        }
+
+        .course-card.hidden {
+            display: none;
+        }
+
+
+        /* =========================================================
+           COURSE VISUALS
+           ========================================================= */
+
+        .course-visual {
+            height: 235px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #edf5f8,
+                    #dbeaf1
+                );
+        }
+
+        .course-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(7,59,115,0.09);
+        }
+
+        .visual-label {
+            position: absolute;
+
+            top: 17px;
+            left: 17px;
+
+            z-index: 5;
+
+            padding: 7px 10px;
+
+            border-radius: 100px;
+
+            background: rgba(255,255,255,0.8);
+
+            color: var(--course-navy);
+
+            font-size: 9px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* PYTHON */
+
+        .python-window {
+            width: 225px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            background: #172c45;
+
+            box-shadow:
+                0 20px 40px rgba(7,59,115,0.18);
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .window-bar {
+            height: 25px;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 9px;
+
+            gap: 5px;
+
+            background: #0f2035;
+        }
+
+        .window-bar i {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #718096;
+        }
+
+        .code-lines {
+            padding: 15px;
+
+            font-family: monospace;
+            font-size: 9px;
+            line-height: 1.9;
+
+            color: #b8d3e8;
+        }
+
+        .code-lines span {
+            color: #63d1d9;
+        }
+
+        /* POWER BI */
+
+        .power-dashboard {
+            width: 225px;
+            height: 130px;
+
+            padding: 12px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 20px 45px rgba(7,59,115,0.15);
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .dashboard-top {
+            height: 8px;
+            width: 70px;
+
+            border-radius: 20px;
+
+            background: var(--course-navy);
+
+            margin-bottom: 14px;
+        }
+
+        .dashboard-bars {
+            display: flex;
+            align-items: end;
+
+            height: 73px;
+
+            gap: 7px;
+        }
+
+        .dashboard-bars i {
+            display: block;
+
+            flex: 1;
+
+            border-radius: 4px 4px 0 0;
+
+            background: var(--course-teal);
+        }
+
+        .dashboard-bars i:nth-child(1) {
+            height: 45%;
+        }
+
+        .dashboard-bars i:nth-child(2) {
+            height: 70%;
+        }
+
+        .dashboard-bars i:nth-child(3) {
+            height: 55%;
+        }
+
+        .dashboard-bars i:nth-child(4) {
+            height: 88%;
+        }
+
+        .dashboard-bars i:nth-child(5) {
+            height: 65%;
+        }
+
+        /* AI */
+
+        .ai-core {
+            width: 110px;
+            height: 110px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #159eac,
+                    #073b73 70%
+                );
+
+            box-shadow:
+                0 0 0 22px rgba(21,158,172,0.08),
+                0 0 0 45px rgba(21,158,172,0.04),
+                0 25px 55px rgba(7,59,115,0.22);
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .ai-core span {
+            color: white;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        /* UIPATH */
+
+        .automation-robot {
+            width: 125px;
+            height: 100px;
+
+            border-radius: 28px;
+
+            background: white;
+
+            border: 5px solid var(--course-navy);
+
+            position: relative;
+            z-index: 3;
+
+            box-shadow:
+                0 22px 45px rgba(7,59,115,0.16);
+        }
+
+        .automation-robot::before,
+        .automation-robot::after {
+            content: "";
+
+            position: absolute;
+
+            top: 32px;
+
+            width: 15px;
+            height: 15px;
+
+            border-radius: 50%;
+
+            background: var(--course-teal);
+        }
+
+        .automation-robot::before {
+            left: 27px;
+        }
+
+        .automation-robot::after {
+            right: 27px;
+        }
+
+        .robot-mouth {
+            position: absolute;
+
+            bottom: 20px;
+            left: 38px;
+
+            width: 39px;
+            height: 5px;
+
+            border-radius: 10px;
+
+            background: var(--course-orange);
+        }
+
+        .robot-antenna {
+            position: absolute;
+
+            width: 3px;
+            height: 28px;
+
+            background: var(--course-navy);
+
+            top: -32px;
+            left: 58px;
+        }
+
+        .robot-antenna::after {
+            content: "";
+
+            position: absolute;
+
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: var(--course-orange);
+
+            top: -5px;
+            left: -3px;
+        }
+
+        /* AZURE */
+
+        .cloud-shape {
+            width: 150px;
+            height: 70px;
+
+            border-radius: 70px;
+
+            background: white;
+
+            position: relative;
+            z-index: 3;
+
+            box-shadow:
+                0 20px 45px rgba(7,59,115,0.13);
+        }
+
+        .cloud-shape::before,
+        .cloud-shape::after {
+            content: "";
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            background: white;
+        }
+
+        .cloud-shape::before {
+            width: 72px;
+            height: 72px;
+
+            left: 25px;
+            top: -32px;
+        }
+
+        .cloud-shape::after {
+            width: 55px;
+            height: 55px;
+
+            right: 22px;
+            top: -20px;
+        }
+
+        .cloud-letter {
+            position: absolute;
+
+            left: 60px;
+            top: 17px;
+
+            z-index: 5;
+
+            font-size: 25px;
+            font-weight: 800;
+
+            color: var(--course-blue);
+        }
+
+        /* FULL STACK */
+
+        .browser-window {
+            width: 235px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            background: white;
+
+            box-shadow:
+                0 20px 45px rgba(7,59,115,0.16);
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .browser-header {
+            height: 25px;
+
+            background: #e8eef3;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 10px;
+
+            gap: 5px;
+        }
+
+        .browser-header i {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #8999a9;
+        }
+
+        .browser-body {
+            padding: 15px;
+        }
+
+        .browser-nav {
+            height: 8px;
+
+            width: 100px;
+
+            border-radius: 10px;
+
+            background: var(--course-navy);
+
+            margin-bottom: 15px;
+        }
+
+        .browser-content {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 8px;
+        }
+
+        .browser-content span {
+            height: 45px;
+
+            border-radius: 7px;
+
+            background: #e4eef3;
+        }
+
+        .browser-content span:nth-child(1) {
+            background: rgba(21,158,172,0.25);
+        }
+
+        .browser-content span:nth-child(4) {
+            background: rgba(247,148,29,0.25);
+        }
+
+        /* DEVOPS */
+
+        .pipeline {
+            width: 255px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .pipeline-node {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: white;
+
+            border: 2px solid var(--course-teal);
+
+            color: var(--course-navy);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            box-shadow:
+                0 12px 25px rgba(7,59,115,0.10);
+        }
+
+        .pipeline-line {
+            height: 2px;
+
+            flex: 1;
+
+            background: var(--course-teal);
+        }
+
+
+        /* =========================================================
+           COURSE CONTENT
+           ========================================================= */
+
+        .course-content {
+            padding: 25px 25px 27px;
+
+            display: flex;
+            flex-direction: column;
+
+            flex: 1;
+        }
+
+        .course-category {
+            margin-bottom: 10px;
+
+            color: var(--course-teal);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+        }
+
+        .course-content h3 {
+            margin: 0 0 11px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 24px;
+            line-height: 1.15;
+
+            letter-spacing: -0.7px;
+
+            color: var(--course-navy);
+        }
+
+        .course-content p {
+            margin: 0;
+
+            color: var(--course-muted);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .course-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
+            margin-top: 19px;
+        }
+
+        .course-meta span {
+            padding: 6px 9px;
+
+            border-radius: 7px;
+
+            background: #f0f5f8;
+
+            color: #5c6c7e;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .course-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-top: auto;
+            padding-top: 23px;
+        }
+
+        .course-level {
+            color: #66778a;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .course-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            color: var(--course-navy);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            transition: 0.25s ease;
+        }
+
+        .course-link span {
+            transition: transform 0.25s ease;
+        }
+
+        .course-link:hover {
+            color: var(--course-teal);
+        }
+
+        .course-link:hover span {
+            transform: translateX(4px);
+        }
+
+
+        /* =========================================================
+           LEARNING PHILOSOPHY
+           ========================================================= */
+
+        .learning-section {
+            padding: 110px 0;
+
+            background: white;
+        }
+
+        .learning-inner {
+            width: min(1200px, 90%);
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 90px;
+            align-items: center;
+        }
+
+        .learning-label {
+            color: var(--course-teal);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .learning-left h2 {
+            margin: 18px 0 0;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(40px, 4.5vw, 64px);
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            color: var(--course-navy);
+        }
+
+        .learning-left h2 span {
+            color: var(--course-teal);
+        }
+
+        .learning-left p {
+            margin-top: 24px;
+
+            color: var(--course-muted);
+
+            line-height: 1.75;
+        }
+
+        .learning-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .learning-point {
+            padding: 25px;
+
+            border-radius: 18px;
+
+            background: var(--course-bg-light);
+
+            border: 1px solid var(--course-border);
+
+            transition: 0.25s ease;
+        }
+
+        .learning-point:hover {
+            transform: translateY(-5px);
+
+            background: #eef7f8;
+
+            border-color: rgba(21,158,172,0.25);
+        }
+
+        .learning-point-number {
+            display: block;
+
+            margin-bottom: 20px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 32px;
+            font-weight: 800;
+
+            color: rgba(7,59,115,0.18);
+        }
+
+        .learning-point h3 {
+            margin: 0 0 8px;
+
+            font-size: 17px;
+
+            color: var(--course-navy);
+        }
+
+        .learning-point p {
+            margin: 0;
+
+            font-size: 13px;
+            line-height: 1.6;
+
+            color: var(--course-muted);
+        }
+
+
+        /* =========================================================
+           CTA
+           ========================================================= */
+
+        .courses-cta {
+            padding: 100px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e3edf3,
+                    #d7e7ef
+                );
+        }
+
+        .courses-cta-card {
+            width: min(1200px, 90%);
+            margin: auto;
+
+            padding: 75px 80px;
+
+            border-radius: 32px;
+
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(21,158,172,0.25),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    var(--course-navy-dark),
+                    var(--course-navy)
+                );
+
+            color: white;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .courses-cta-card::after {
+            content: "03";
+
+            position: absolute;
+
+            right: 30px;
+            bottom: -45px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 210px;
+            line-height: 1;
+
+            font-weight: 800;
+
+            color: rgba(255,255,255,0.035);
+        }
+
+        .courses-cta-card h2 {
+            position: relative;
+            z-index: 2;
+
+            max-width: 750px;
+
+            margin: 0;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(38px, 5vw, 67px);
+            line-height: 1.02;
+
+            letter-spacing: -3px;
+        }
+
+        .courses-cta-card h2 span {
+            color: #63d1d9;
+        }
+
+        .courses-cta-card p {
+            position: relative;
+            z-index: 2;
+
+            max-width: 600px;
+
+            margin: 24px 0 30px;
+
+            color: rgba(255,255,255,0.72);
+
+            line-height: 1.7;
+        }
+
+        .courses-cta-button {
+            position: relative;
+            z-index: 2;
+
+            display: inline-flex;
+
+            padding: 15px 22px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: var(--course-navy);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition: 0.25s ease;
+        }
+
+        .courses-cta-button:hover {
+            background: var(--course-teal);
+            color: white;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .courses-footer {
+            padding: 65px 0 25px;
+
+            background: #041f3f;
+
+            color: white;
+        }
+
+        .courses-footer-inner {
+            width: min(1380px, 92%);
+            margin: auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+
+            gap: 50px;
+
+            padding-bottom: 50px;
+
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand img {
+            width: 190px;
+
+            background: white;
+            padding: 8px;
+
+            border-radius: 8px;
+        }
+
+        .footer-brand p {
+            max-width: 320px;
+
+            margin-top: 20px;
+
+            color: rgba(255,255,255,0.58);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            margin: 0 0 17px;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+
+            color: white;
+        }
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 11px;
+
+            color: rgba(255,255,255,0.58);
+
+            font-size: 13px;
+
+            transition: color 0.2s ease;
+        }
+
+        .footer-column a:hover {
+            color: #63d1d9;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-top: 23px;
+
+            color: rgba(255,255,255,0.45);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           SCROLL REVEAL
+           ========================================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .courses-nav-links {
+                gap: 17px;
+            }
+
+            .courses-nav-links a {
+                font-size: 12px;
+            }
+
+            .courses-talk {
+                display: none;
+            }
+
+            .courses-hero-inner {
+                gap: 40px;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 850px) {
+
+            .courses-nav-inner {
+                min-height: 75px;
+            }
+
+            .courses-nav-links,
+            .courses-nav-actions {
+                display: none;
+            }
+
+            .courses-menu-toggle {
+                display: block;
+            }
+
+            .courses-mobile-menu {
+                width: 92%;
+                margin: 0 auto 15px;
+
+                padding: 15px;
+
+                border-radius: 18px;
+
+                background: white;
+
+                box-shadow:
+                    0 15px 40px rgba(7,59,115,0.12);
+            }
+
+            .courses-mobile-menu.open {
+                display: flex;
+
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .courses-mobile-menu a {
+                padding: 14px 13px;
+
+                border-radius: 10px;
+
+                font-size: 14px;
+                font-weight: 700;
+
+                color: var(--course-navy);
+            }
+
+            .courses-mobile-menu a:hover,
+            .courses-mobile-menu a.active {
+                background: #edf6f7;
+                color: var(--course-teal);
+            }
+
+            .courses-hero {
+                padding-top: 135px;
+            }
+
+            .courses-hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .courses-hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .course-hero-visual {
+                height: 360px;
+            }
+
+            .courses-intro-inner {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .intro-number {
+                font-size: 60px;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .section-heading p {
+                margin-top: 20px;
+            }
+
+            .learning-inner {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .courses-cta-card {
+                padding: 55px 35px;
+            }
+        }
+
+
+        @media (max-width: 620px) {
+
+            .courses-logo {
+                width: 175px;
+            }
+
+            .courses-hero {
+                min-height: auto;
+                padding: 125px 0 70px;
+            }
+
+            .courses-hero h1 {
+                font-size: 51px;
+                letter-spacing: -2.5px;
+            }
+
+            .courses-hero-description {
+                font-size: 15px;
+            }
+
+            .course-hero-visual {
+                height: 320px;
+            }
+
+            .hero-orbit-large {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-orbit-small {
+                width: 215px;
+                height: 215px;
+            }
+
+            .hero-course-core {
+                width: 135px;
+                height: 135px;
+            }
+
+            .hero-course-core strong {
+                font-size: 22px;
+            }
+
+            .floating-course-card {
+                min-width: 145px;
+                padding: 12px;
+            }
+
+            .floating-course-card strong {
+                font-size: 11px;
+            }
+
+            .floating-course-card:nth-of-type(1) {
+                right: -5px;
+            }
+
+            .floating-course-card:nth-of-type(2) {
+                left: -5px;
+            }
+
+            .floating-course-card:nth-of-type(3) {
+                right: -20px;
+                top: 140px;
+            }
+
+            .courses-intro {
+                padding: 70px 0;
+            }
+
+            .courses-intro h2 {
+                font-size: 34px;
+                letter-spacing: -1.5px;
+            }
+
+            .course-library {
+                padding: 75px 0;
+            }
+
+            .section-heading h2 {
+                font-size: 40px;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-card {
+                min-height: 500px;
+            }
+
+            .learning-section {
+                padding: 75px 0;
+            }
+
+            .learning-left h2 {
+                font-size: 44px;
+                letter-spacing: -2px;
+            }
+
+            .learning-points {
+                grid-template-columns: 1fr;
+            }
+
+            .courses-cta {
+                padding: 65px 0;
+            }
+
+            .courses-cta-card {
+                padding: 45px 25px;
+                border-radius: 24px;
+            }
+
+            .courses-cta-card h2 {
+                font-size: 43px;
+                letter-spacing: -2px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="courses-page">
+
+    <!-- =========================================================
+         NAVBAR
+         ========================================================= -->
+
+    <header class="courses-navbar" id="coursesNavbar">
+
+        <div class="courses-nav-inner">
+
+            <a href="../index.html" class="courses-logo">
+                <img
+                    src="../assets/images/logo.png"
+                    alt="NexTalent"
+                >
+            </a>
+
+            <nav class="courses-nav-links">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="courses.html" class="active">
+                    Courses
+                </a>
+
+                <a href="jobs.html">
+                    Jobs
+                </a>
+
+                <a href="candidates.html">
+                    Candidates
+                </a>
+
+                <a href="recruiters.html">
+                    Recruiters
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+            <div class="courses-nav-actions">
+
+                <a
+                    href="contact.html"
+                    class="courses-talk"
+                >
+                    Talk to Us
+                </a>
+
+                <a
+                    href="#courseLibrary"
+                    class="courses-explore-btn"
+                >
+                    Explore Courses
+                </a>
+
+            </div>
+
+            <button
+                class="courses-menu-toggle"
+                id="coursesMenuToggle"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+
+        <div
+            class="courses-mobile-menu"
+            id="coursesMobileMenu"
+        >
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="courses.html" class="active">
+                Courses
+            </a>
+
+            <a href="jobs.html">
+                Jobs
+            </a>
+
+            <a href="candidates.html">
+                Candidates
+            </a>
+
+            <a href="recruiters.html">
+                Recruiters
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+
+    <section class="courses-hero">
+
+        <div class="courses-hero-inner">
+
+            <div class="courses-hero-content reveal">
+
+                <div class="courses-eyebrow">
+                    <span></span>
+                    Future-ready learning
+                </div>
+
+                <h1>
+                    Learn skills.
+                    <br>
+                    <span>Build momentum.</span>
+                </h1>
+
+                <p class="courses-hero-description">
+                    Practical, career-focused learning designed to
+                    help you build real technical skills and prepare
+                    for the changing world of work.
+                </p>
+
+                <div class="courses-hero-actions">
+
+                    <a
+                        href="#courseLibrary"
+                        class="hero-primary-btn"
+                    >
+                        Explore Courses
+                    </a>
+
+                    <a
+                        href="contact.html"
+                        class="hero-secondary-btn"
+                    >
+                        Talk to NexTalent
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="course-hero-visual reveal">
+
+                <div class="hero-orbit-large"></div>
+
+                <div class="hero-orbit-small"></div>
+
+                <div class="hero-course-core">
+
+                    <strong>
+                        NexTalent
+                    </strong>
+
+                    <span>
+                        Learn • Grow • Lead
+                    </span>
+
+                </div>
+
+
+                <div class="floating-course-card">
+
+                    <small>
+                        Artificial Intelligence
+                    </small>
+
+                    <strong>
+                        Generative AI & LLMs
+                    </strong>
+
+                </div>
+
+
+                <div class="floating-course-card">
+
+                    <small>
+                        Data & Analytics
+                    </small>
+
+                    <strong>
+                        Power BI
+                    </strong>
+
+                </div>
+
+
+                <div class="floating-course-card">
+
+                    <small>
+                        Cloud
+                    </small>
+
+                    <strong>
+                        Azure Fundamentals
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         INTRO
+         ========================================================= -->
+
+    <section class="courses-intro">
+
+        <div class="courses-intro-inner">
+
+            <div class="intro-number">
+                01
+            </div>
+
+            <div>
+
+                <h2>
+                    Courses built around
+                    <span>real-world skills.</span>
+                </h2>
+
+                <p>
+                    NexTalent focuses on practical technology skills
+                    that can be applied to projects, business
+                    processes and professional environments.
+                    Start with the fundamentals, build projects,
+                    and keep growing.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         COURSE LIBRARY
+         ========================================================= -->
+
+    <section
+        class="course-library"
+        id="courseLibrary"
+    >
+
+        <div class="course-library-inner">
+
+            <div class="section-heading reveal">
+
+                <div class="section-heading-left">
+
+                    <small>
+                        Explore the library
+                    </small>
+
+                    <h2>
+                        Find your next skill.
+                    </h2>
+
+                </div>
+
+                <p>
+                    Explore courses across programming, analytics,
+                    artificial intelligence, automation, cloud,
+                    web development and DevOps.
+                </p>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="course-filters reveal">
+
+                <button
+                    class="course-filter active"
+                    data-filter="all"
+                >
+                    All Courses
+                </button>
+
+                <button
+                    class="course-filter"
+                    data-filter="programming"
+                >
+                    Programming & Data
+                </button>
+
+                <button
+                    class="course-filter"
+                    data-filter="analytics"
+                >
+                    Data & Analytics
+                </button>
+
+                <button
+                    class="course-filter"
+                    data-filter="ai"
+                >
+                    Artificial Intelligence
+                </button>
+
+                <button
+                    class="course-filter"
+                    data-filter="automation"
+                >
+                    Automation & RPA
+                </button>
+
+                <button
+                    class="course-filter"
+                    data-filter="cloud"
+                >
+                    Cloud Computing
+                </button>
+
+                <button
+                    class="course-filter"
+                    data-filter="web"
+                >
+                    Web Development
+                </button>
+
+                <button
+                    class="course-filter"
+                    data-filter="devops"
+                >
+                    DevOps
+                </button>
+
+            </div>
+
+
+            <!-- COURSE GRID -->
+
+            <div class="course-grid">
+
+
+                <!-- =================================================
+                     PYTHON
+                     ================================================= -->
+
+                <article
+                    class="course-card reveal"
+                    data-category="programming"
+                >
+
+                    <div class="course-visual">
+
+                        <div class="visual-label">
+                            Programming
+                        </div>
+
+                        <div class="python-window">
+
+                            <div class="window-bar">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="code-lines">
+
+                                <div>
+                                    <span>import</span> pandas
+                                </div>
+
+                                <div>
+                                    data = read_dataset()
+                                </div>
+
+                                <div>
+                                    <span>print</span>(data.head())
+                                </div>
+
+                                <div>
+                                    model.fit(X, y)
+                                </div>
+
+                                <div>
+                                    <span>return</span> results
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-content">
+
+                        <div class="course-category">
+                            Programming & Data
+                        </div>
+
+                        <h3>
+                            Python for Data Science
+                        </h3>
+
+                        <p>
+                            Build a strong Python foundation and
+                            learn how to work with data, analysis
+                            libraries and practical data science
+                            workflows.
+                        </p>
+
+                        <div class="course-meta">
+
+                            <span>
+                                8 Weeks
+                            </span>
+
+                            <span>
+                                42 Lessons
+                            </span>
+
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <span class="course-level">
+                                Beginner
+                            </span>
+
+                            <a
+                                href="course-details.html?course=python"
+                                class="course-link"
+                            >
+                                View Course
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     POWER BI
+                     ================================================= -->
+
+                <article
+                    class="course-card reveal"
+                    data-category="analytics"
+                >
+
+                    <div class="course-visual">
+
+                        <div class="visual-label">
+                            Analytics
+                        </div>
+
+                        <div class="power-dashboard">
+
+                            <div class="dashboard-top"></div>
+
+                            <div class="dashboard-bars">
+
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-content">
+
+                        <div class="course-category">
+                            Data & Analytics
+                        </div>
+
+                        <h3>
+                            Data Analytics with Power BI
+                        </h3>
+
+                        <p>
+                            Learn how to transform data into
+                            meaningful dashboards, reports and
+                            business insights using Power BI.
+                        </p>
+
+                        <div class="course-meta">
+
+                            <span>
+                                6 Weeks
+                            </span>
+
+                            <span>
+                                35 Lessons
+                            </span>
+
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <span class="course-level">
+                                Beginner
+                            </span>
+
+                            <a
+                                href="course-details.html?course=powerbi"
+                                class="course-link"
+                            >
+                                View Course
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     GENERATIVE AI
+                     ================================================= -->
+
+                <article
+                    class="course-card reveal"
+                    data-category="ai"
+                >
+
+                    <div class="course-visual">
+
+                        <div class="visual-label">
+                            AI
+                        </div>
+
+                        <div class="ai-core">
+                            <span>
+                                AI
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-content">
+
+                        <div class="course-category">
+                            Artificial Intelligence
+                        </div>
+
+                        <h3>
+                            Generative AI & LLMs
+                        </h3>
+
+                        <p>
+                            Understand modern generative AI,
+                            large language models, prompting and
+                            practical AI application development.
+                        </p>
+
+                        <div class="course-meta">
+
+                            <span>
+                                8 Weeks
+                            </span>
+
+                            <span>
+                                40 Lessons
+                            </span>
+
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <span class="course-level">
+                                Intermediate
+                            </span>
+
+                            <a
+                                href="course-details.html?course=generative-ai"
+                                class="course-link"
+                            >
+                                View Course
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     UIPATH
+                     ================================================= -->
+
+                <article
+                    class="course-card reveal"
+                    data-category="automation"
+                >
+
+                    <div class="course-visual">
+
+                        <div class="visual-label">
+                            Automation
+                        </div>
+
+                        <div class="automation-robot">
+
+                            <div class="robot-antenna"></div>
+
+                            <div class="robot-mouth"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-content">
+
+                        <div class="course-category">
+                            Automation & RPA
+                        </div>
+
+                        <h3>
+                            UiPath RPA Automation
+                        </h3>
+
+                        <p>
+                            Learn how to automate repetitive
+                            business processes using Robotic Process
+                            Automation and UiPath.
+                        </p>
+
+                        <div class="course-meta">
+
+                            <span>
+                                8 Weeks
+                            </span>
+
+                            <span>
+                                40 Lessons
+                            </span>
+
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <span class="course-level">
+                                Beginner
+                            </span>
+
+                            <a
+                                href="course-details.html?course=uipath"
+                                class="course-link"
+                            >
+                                View Course
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     AZURE
+                     ================================================= -->
+
+                <article
+                    class="course-card reveal"
+                    data-category="cloud"
+                >
+
+                    <div class="course-visual">
+
+                        <div class="visual-label">
+                            Cloud
+                        </div>
+
+                        <div class="cloud-shape">
+
+                            <span class="cloud-letter">
+                                A
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-content">
+
+                        <div class="course-category">
+                            Cloud Computing
+                        </div>
+
+                        <h3>
+                            Cloud Fundamentals with Azure
+                        </h3>
+
+                        <p>
+                            Learn essential cloud concepts,
+                            infrastructure fundamentals and the
+                            foundations of Microsoft Azure.
+                        </p>
+
+                        <div class="course-meta">
+
+                            <span>
+                                6 Weeks
+                            </span>
+
+                            <span>
+                                35 Lessons
+                            </span>
+
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <span class="course-level">
+                                Beginner
+                            </span>
+
+                            <a
+                                href="course-details.html?course=azure"
+                                class="course-link"
+                            >
+                                View Course
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     FULL STACK
+                     ================================================= -->
+
+                <article
+                    class="course-card reveal"
+                    data-category="web"
+                >
+
+                    <div class="course-visual">
+
+                        <div class="visual-label">
+                            Web Development
+                        </div>
+
+                        <div class="browser-window">
+
+                            <div class="browser-header">
+
+                                <i></i>
+                                <i></i>
+                                <i></i>
+
+                            </div>
+
+                            <div class="browser-body">
+
+                                <div class="browser-nav"></div>
+
+                                <div class="browser-content">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-content">
+
+                        <div class="course-category">
+                            Web Development
+                        </div>
+
+                        <h3>
+                            Full Stack Web Development
+                        </h3>
+
+                        <p>
+                            Build modern web applications while
+                            learning frontend, backend, databases
+                            and full-stack development fundamentals.
+                        </p>
+
+                        <div class="course-meta">
+
+                            <span>
+                                12 Weeks
+                            </span>
+
+                            <span>
+                                60 Lessons
+                            </span>
+
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <span class="course-level">
+                                Beginner
+                            </span>
+
+                            <a
+                                href="course-details.html?course=full-stack"
+                                class="course-link"
+                            >
+                                View Course
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     DEVOPS
+                     ================================================= -->
+
+                <article
+                    class="course-card reveal"
+                    data-category="devops"
+                >
+
+                    <div class="course-visual">
+
+                        <div class="visual-label">
+                            DevOps
+                        </div>
+
+                        <div class="pipeline">
+
+                            <div class="pipeline-node">
+                                CODE
+                            </div>
+
+                            <div class="pipeline-line"></div>
+
+                            <div class="pipeline-node">
+                                BUILD
+                            </div>
+
+                            <div class="pipeline-line"></div>
+
+                            <div class="pipeline-node">
+                                DEPLOY
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-content">
+
+                        <div class="course-category">
+                            DevOps
+                        </div>
+
+                        <h3>
+                            DevOps & Cloud Infrastructure
+                        </h3>
+
+                        <p>
+                            Learn Linux, networking, containers,
+                            CI/CD and cloud infrastructure concepts
+                            for modern IT environments.
+                        </p>
+
+                        <div class="course-meta">
+
+                            <span>
+                                10 Weeks
+                            </span>
+
+                            <span>
+                                50 Lessons
+                            </span>
+
+                        </div>
+
+                        <div class="course-bottom">
+
+                            <span class="course-level">
+                                Intermediate
+                            </span>
+
+                            <a
+                                href="course-details.html?course=devops"
+                                class="course-link"
+                            >
+                                View Course
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         LEARNING PHILOSOPHY
+         ========================================================= -->
+
+    <section class="learning-section">
+
+        <div class="learning-inner">
+
+            <div class="learning-left reveal">
+
+                <div class="learning-label">
+                    The NexTalent approach
+                </div>
+
+                <h2>
+                    Don't just
+                    <span>watch.</span>
+                    Build.
+                </h2>
+
+                <p>
+                    Learning becomes valuable when you can apply
+                    what you know. NexTalent is designed around
+                    practical understanding, projects and
+                    continuous skill development.
+                </p>
+
+            </div>
+
+
+            <div class="learning-points">
+
+                <div class="learning-point reveal">
+
+                    <span class="learning-point-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Understand
+                    </h3>
+
+                    <p>
+                        Build the fundamentals before moving
+                        into advanced concepts.
+                    </p>
+
+                </div>
+
+
+                <div class="learning-point reveal">
+
+                    <span class="learning-point-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Practice
+                    </h3>
+
+                    <p>
+                        Reinforce concepts through exercises
+                        and practical learning.
+                    </p>
+
+                </div>
+
+
+                <div class="learning-point reveal">
+
+                    <span class="learning-point-number">
+                        03
+                    </span>
+
+                    <h3>
+                        Build
+                    </h3>
+
+                    <p>
+                        Apply your knowledge through projects
+                        and real-world scenarios.
+                    </p>
+
+                </div>
+
+
+                <div class="learning-point reveal">
+
+                    <span class="learning-point-number">
+                        04
+                    </span>
+
+                    <h3>
+                        Grow
+                    </h3>
+
+                    <p>
+                        Continue developing skills that support
+                        your professional journey.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CTA
+         ========================================================= -->
+
+    <section class="courses-cta">
+
+        <div class="courses-cta-card reveal">
+
+            <h2>
+                Your next skill
+                could change your
+                <span>next opportunity.</span>
+            </h2>
+
+            <p>
+                Explore the NexTalent learning ecosystem and
+                start building skills for the future of work.
+            </p>
+
+            <a
+                href="contact.html"
+                class="courses-cta-button"
+            >
+                Start Your Journey →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="courses-footer">
+
+        <div class="courses-footer-inner">
+
+            <div class="footer-top">
+
+                <div class="footer-brand">
+
+                    <img
+                        src="../assets/images/logo.png"
+                        alt="NexTalent"
+                    >
+
+                    <p>
+                        NexTalent is building a connected ecosystem
+                        for learning, career growth, talent and
+                        workplace upskilling.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Explore
+                    </h4>
+
+                    <a href="courses.html">
+                        Courses
+                    </a>
+
+                    <a href="jobs.html">
+                        Jobs
+                    </a>
+
+                    <a href="candidates.html">
+                        Candidates
+                    </a>
+
+                    <a href="recruiters.html">
+                        Recruiters
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Company
+                    </h4>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                    <a href="contact.html">
+                        Partnerships
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Contact
+                    </h4>
+
+                    <a href="tel:7499869128">
+                        7499 869 128
+                    </a>
+
+                    <a href="mailto:nextalentindia@gmail.com">
+                        nextalentindia@gmail.com
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/nex-talent-2652a8435"
+                        target="_blank"
+                    >
+                        LinkedIn
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 NexTalent. All rights reserved.
+                </span>
+
+                <span>
+                    Learn • Grow • Lead the Future
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
+
+    const coursesNavbar =
+        document.getElementById("coursesNavbar");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 20) {
+            coursesNavbar.classList.add("scrolled");
+        } else {
+            coursesNavbar.classList.remove("scrolled");
+        }
+
+    });
+
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    const coursesMenuToggle =
+        document.getElementById("coursesMenuToggle");
+
+    const coursesMobileMenu =
+        document.getElementById("coursesMobileMenu");
+
+
+    coursesMenuToggle.addEventListener("click", () => {
+
+        coursesMobileMenu.classList.toggle("open");
+
+        coursesMenuToggle.textContent =
+            coursesMobileMenu.classList.contains("open")
+                ? "✕"
+                : "☰";
+
+    });
+
+
+    document
+        .querySelectorAll(".courses-mobile-menu a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                coursesMobileMenu.classList.remove("open");
+
+                coursesMenuToggle.textContent = "☰";
+
+            });
+
+        });
+
+
+    /* =========================================================
+       COURSE FILTER
+       ========================================================= */
+
+    const filterButtons =
+        document.querySelectorAll(".course-filter");
+
+    const courseCards =
+        document.querySelectorAll(".course-card");
+
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const filter =
+                button.getAttribute("data-filter");
+
+
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+
+            courseCards.forEach(card => {
+
+                const category =
+                    card.getAttribute("data-category");
+
+
+                if (
+                    filter === "all" ||
+                    category === filter
+                ) {
+
+                    card.classList.remove("hidden");
+
+                } else {
+
+                    card.classList.add("hidden");
+
+                }
+
+            });
+
+        });
+
+    });
+
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+    /* =========================================================
+       RESIZE
+       ========================================================= */
+
+    window.addEventListener("resize", () => {
+
+        if (window.innerWidth > 850) {
+
+            coursesMobileMenu.classList.remove("open");
+
+            coursesMenuToggle.textContent = "☰";
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

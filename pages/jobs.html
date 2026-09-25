@@ -1,0 +1,4123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Jobs | NexTalent</title>
+
+    <meta
+        name="description"
+        content="Discover future career opportunities with NexTalent. Jobs, skills and talent opportunities coming soon."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+           ===================================================== */
+
+        :root {
+
+            --navy: #073b73;
+            --navy-dark: #052b55;
+            --blue: #0a4d8c;
+
+            --teal: #159eac;
+            --teal-dark: #087e8b;
+
+            --orange: #f7941d;
+
+            --white: #ffffff;
+
+            --background: #eef4f8;
+            --background-light: #f7fafc;
+
+            --text: #14213d;
+            --text-light: #5b6878;
+
+            --border: #d8e3eb;
+
+            --shadow:
+                0 20px 55px rgba(7,59,115,0.09);
+        }
+
+
+        /* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                "DM Sans",
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+                var(--background-light);
+
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+           ===================================================== */
+
+        .jobs-navbar {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            background:
+                rgba(255,255,255,0.88);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            border-bottom:
+                1px solid
+                rgba(216,227,235,0.8);
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .jobs-navbar.scrolled {
+
+            background:
+                rgba(255,255,255,0.97);
+
+            box-shadow:
+                0 10px 35px
+                rgba(7,59,115,0.08);
+        }
+
+
+        .jobs-nav-inner {
+
+            width:
+                min(1380px,92%);
+
+            min-height:
+                82px;
+
+            margin:
+                auto;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                30px;
+        }
+
+
+        .jobs-logo {
+
+            width:
+                210px;
+
+            flex-shrink:
+                0;
+        }
+
+
+        .jobs-logo img {
+
+            width:
+                100%;
+
+            display:
+                block;
+        }
+
+
+        .jobs-nav-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                29px;
+
+            flex:
+                1;
+        }
+
+
+        .jobs-nav-links a {
+
+            position:
+                relative;
+
+            padding:
+                8px 0;
+
+            font-size:
+                14px;
+
+            font-weight:
+                600;
+
+            color:
+                #42556c;
+
+            transition:
+                color 0.25s ease;
+        }
+
+
+        .jobs-nav-links a::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                0;
+
+            bottom:
+                0;
+
+            width:
+                0;
+
+            height:
+                2px;
+
+            background:
+                var(--teal);
+
+            transition:
+                width 0.25s ease;
+        }
+
+
+        .jobs-nav-links a:hover,
+        .jobs-nav-links a.active {
+
+            color:
+                var(--navy);
+        }
+
+
+        .jobs-nav-links a:hover::after,
+        .jobs-nav-links a.active::after {
+
+            width:
+                100%;
+        }
+
+
+        .jobs-nav-actions {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+        }
+
+
+        .jobs-talk {
+
+            padding:
+                10px 12px;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            color:
+                var(--navy);
+        }
+
+
+        .jobs-nav-button {
+
+            padding:
+                13px 18px;
+
+            border-radius:
+                12px;
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .jobs-nav-button:hover {
+
+            background:
+                var(--teal);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .jobs-menu-toggle {
+
+            display:
+                none;
+
+            border:
+                0;
+
+            background:
+                transparent;
+
+            color:
+                var(--navy);
+
+            font-size:
+                27px;
+
+            cursor:
+                pointer;
+        }
+
+
+        .jobs-mobile-menu {
+
+            display:
+                none;
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .jobs-hero {
+
+            position:
+                relative;
+
+            min-height:
+                680px;
+
+            padding:
+                160px 0 100px;
+
+            overflow:
+                hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 82% 20%,
+                    rgba(21,158,172,0.17),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 13% 80%,
+                    rgba(247,148,29,0.08),
+                    transparent 28%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #f4f8fb 0%,
+                    #e5f0f5 100%
+                );
+        }
+
+
+        .jobs-hero::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                580px;
+
+            height:
+                580px;
+
+            right:
+                -290px;
+
+            top:
+                100px;
+
+            border:
+                1px solid
+                rgba(7,59,115,0.08);
+
+            border-radius:
+                50%;
+        }
+
+
+        .jobs-hero::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                370px;
+
+            height:
+                370px;
+
+            right:
+                -110px;
+
+            top:
+                210px;
+
+            border:
+                1px solid
+                rgba(21,158,172,0.15);
+
+            border-radius:
+                50%;
+        }
+
+
+        .jobs-hero-inner {
+
+            width:
+                min(1380px,92%);
+
+            margin:
+                auto;
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.1fr 0.9fr;
+
+            align-items:
+                center;
+
+            gap:
+                70px;
+        }
+
+
+        .jobs-eyebrow {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            padding:
+                8px 13px;
+
+            border:
+                1px solid
+                rgba(7,59,115,0.12);
+
+            border-radius:
+                100px;
+
+            background:
+                rgba(255,255,255,0.62);
+
+            color:
+                var(--teal);
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1.6px;
+        }
+
+
+        .jobs-eyebrow span {
+
+            width:
+                7px;
+
+            height:
+                7px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--orange);
+        }
+
+
+        .jobs-hero h1 {
+
+            margin:
+                24px 0 24px;
+
+            max-width:
+                800px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                clamp(52px,6vw,86px);
+
+            line-height:
+                0.98;
+
+            letter-spacing:
+                -4px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .jobs-hero h1 span {
+
+            color:
+                var(--teal);
+        }
+
+
+        .jobs-hero-description {
+
+            max-width:
+                650px;
+
+            margin:
+                0;
+
+            color:
+                var(--text-light);
+
+            font-size:
+                18px;
+
+            line-height:
+                1.75;
+        }
+
+
+        .jobs-hero-actions {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                12px;
+
+            margin-top:
+                32px;
+        }
+
+
+        .jobs-primary-button {
+
+            padding:
+                15px 22px;
+
+            border-radius:
+                12px;
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .jobs-primary-button:hover {
+
+            background:
+                var(--teal);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        .jobs-secondary-button {
+
+            padding:
+                15px 22px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(255,255,255,0.68);
+
+            color:
+                var(--navy);
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .jobs-secondary-button:hover {
+
+            border-color:
+                var(--teal);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =====================================================
+           HERO VISUAL
+           ===================================================== */
+
+        .jobs-visual {
+
+            min-height:
+                420px;
+
+            position:
+                relative;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+        }
+
+
+        .jobs-orbit {
+
+            position:
+                absolute;
+
+            border-radius:
+                50%;
+
+            border:
+                1px solid
+                rgba(7,59,115,0.10);
+        }
+
+
+        .jobs-orbit.large {
+
+            width:
+                390px;
+
+            height:
+                390px;
+        }
+
+
+        .jobs-orbit.small {
+
+            width:
+                270px;
+
+            height:
+                270px;
+
+            border-color:
+                rgba(21,158,172,0.20);
+        }
+
+
+        .jobs-core {
+
+            width:
+                170px;
+
+            height:
+                170px;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            flex-direction:
+                column;
+
+            background:
+
+                radial-gradient(
+                    circle at 35% 30%,
+                    var(--teal),
+                    var(--navy) 72%
+                );
+
+            color:
+                white;
+
+            box-shadow:
+                0 30px 65px
+                rgba(7,59,115,0.23);
+
+            position:
+                relative;
+
+            z-index:
+                4;
+        }
+
+
+        .jobs-core strong {
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                34px;
+        }
+
+
+        .jobs-core span {
+
+            margin-top:
+                5px;
+
+            font-size:
+                9px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1.7px;
+
+            opacity:
+                0.72;
+        }
+
+
+        .jobs-floating-card {
+
+            position:
+                absolute;
+
+            min-width:
+                175px;
+
+            padding:
+                16px;
+
+            border-radius:
+                16px;
+
+            background:
+                rgba(255,255,255,0.9);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.95);
+
+            box-shadow:
+                0 20px 45px
+                rgba(7,59,115,0.12);
+
+            backdrop-filter:
+                blur(12px);
+
+            z-index:
+                5;
+        }
+
+
+        .jobs-floating-card small {
+
+            display:
+                block;
+
+            margin-bottom:
+                5px;
+
+            color:
+                var(--teal);
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+        }
+
+
+        .jobs-floating-card strong {
+
+            font-size:
+                12px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .jobs-floating-card.one {
+
+            top:
+                38px;
+
+            right:
+                0;
+        }
+
+
+        .jobs-floating-card.two {
+
+            left:
+                0;
+
+            bottom:
+                45px;
+        }
+
+
+        .jobs-floating-card.three {
+
+            right:
+                -30px;
+
+            top:
+                185px;
+        }
+
+
+        /* =====================================================
+           INTRO
+           ===================================================== */
+
+        .jobs-intro {
+
+            padding:
+                95px 0;
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+        }
+
+
+        .jobs-intro-inner {
+
+            width:
+                min(1200px,90%);
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                120px 1fr;
+
+            gap:
+                55px;
+
+            align-items:
+                start;
+        }
+
+
+        .jobs-intro-number {
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                86px;
+
+            line-height:
+                0.8;
+
+            font-weight:
+                800;
+
+            color:
+                rgba(255,255,255,0.15);
+        }
+
+
+        .jobs-intro h2 {
+
+            margin:
+                0;
+
+            max-width:
+                900px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                clamp(32px,4vw,57px);
+
+            line-height:
+                1.08;
+
+            letter-spacing:
+                -2.5px;
+        }
+
+
+        .jobs-intro h2 span {
+
+            color:
+                #63d1d9;
+        }
+
+
+        .jobs-intro p {
+
+            max-width:
+                760px;
+
+            margin:
+                24px 0 0;
+
+            color:
+                rgba(255,255,255,0.70);
+
+            line-height:
+                1.75;
+        }
+
+
+        /* =====================================================
+           COMING SOON
+           ===================================================== */
+
+        .coming-section {
+
+            padding:
+                105px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eaf2f7,
+                    #e1edf3
+                );
+        }
+
+
+        .coming-inner {
+
+            width:
+                min(1200px,90%);
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                0.8fr 1.2fr;
+
+            gap:
+                80px;
+
+            align-items:
+                center;
+        }
+
+
+        .coming-label {
+
+            color:
+                var(--teal);
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                2px;
+        }
+
+
+        .coming-left h2 {
+
+            margin:
+                17px 0 20px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                clamp(40px,4.5vw,63px);
+
+            line-height:
+                1;
+
+            letter-spacing:
+                -3px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .coming-left h2 span {
+
+            color:
+                var(--teal);
+        }
+
+
+        .coming-left p {
+
+            margin:
+                0;
+
+            color:
+                var(--text-light);
+
+            line-height:
+                1.75;
+        }
+
+
+        .coming-card {
+
+            padding:
+                38px;
+
+            border-radius:
+                25px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                var(--shadow);
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+        }
+
+
+        .coming-card::after {
+
+            content:
+                "JOBS";
+
+            position:
+                absolute;
+
+            right:
+                -20px;
+
+            bottom:
+                -48px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                110px;
+
+            font-weight:
+                800;
+
+            color:
+                rgba(7,59,115,0.035);
+        }
+
+
+        .status-pill {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            padding:
+                8px 12px;
+
+            border-radius:
+                100px;
+
+            background:
+                #e8f6f4;
+
+            color:
+                var(--teal-dark);
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+        }
+
+
+        .status-pill i {
+
+            width:
+                7px;
+
+            height:
+                7px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--teal);
+        }
+
+
+        .coming-card h3 {
+
+            margin:
+                20px 0 12px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                28px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .coming-card p {
+
+            margin:
+                0;
+
+            color:
+                var(--text-light);
+
+            line-height:
+                1.7;
+
+            font-size:
+                14px;
+        }
+
+
+        .coming-card-button {
+
+            display:
+                inline-flex;
+
+            margin-top:
+                25px;
+
+            padding:
+                13px 18px;
+
+            border-radius:
+                11px;
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .coming-card-button:hover {
+
+            background:
+                var(--teal);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           OPPORTUNITY AREAS
+           ===================================================== */
+
+        .opportunities {
+
+            padding:
+                110px 0;
+
+            background:
+                white;
+        }
+
+
+        .opportunities-inner {
+
+            width:
+                min(1380px,92%);
+
+            margin:
+                auto;
+        }
+
+
+        .section-heading {
+
+            display:
+                flex;
+
+            align-items:
+                end;
+
+            justify-content:
+                space-between;
+
+            gap:
+                40px;
+
+            margin-bottom:
+                48px;
+        }
+
+
+        .section-heading small {
+
+            display:
+                block;
+
+            margin-bottom:
+                12px;
+
+            color:
+                var(--teal);
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                2px;
+        }
+
+
+        .section-heading h2 {
+
+            margin:
+                0;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                clamp(38px,4vw,57px);
+
+            line-height:
+                1;
+
+            letter-spacing:
+                -2.5px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .section-heading p {
+
+            max-width:
+                440px;
+
+            margin:
+                0;
+
+            color:
+                var(--text-light);
+
+            line-height:
+                1.7;
+        }
+
+
+        .opportunity-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4,minmax(0,1fr));
+
+            gap:
+                18px;
+        }
+
+
+        .opportunity-card {
+
+            min-height:
+                310px;
+
+            padding:
+                27px;
+
+            border-radius:
+                21px;
+
+            background:
+                var(--background-light);
+
+            border:
+                1px solid
+                var(--border);
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .opportunity-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(7,59,115,0.09);
+
+            border-color:
+                rgba(21,158,172,0.25);
+        }
+
+
+        .opportunity-number {
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                55px;
+
+            font-weight:
+                800;
+
+            color:
+                rgba(7,59,115,0.10);
+
+            line-height:
+                1;
+        }
+
+
+        .opportunity-icon {
+
+            width:
+                48px;
+
+            height:
+                48px;
+
+            margin:
+                35px 0 20px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                13px;
+
+            background:
+                #e7f5f6;
+
+            color:
+                var(--teal);
+
+            font-size:
+                19px;
+
+            font-weight:
+                800;
+        }
+
+
+        .opportunity-card h3 {
+
+            margin:
+                0 0 10px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                20px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .opportunity-card p {
+
+            margin:
+                0;
+
+            color:
+                var(--text-light);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.65;
+        }
+
+
+        /* =====================================================
+           CAREER JOURNEY
+           ===================================================== */
+
+        .career-section {
+
+            padding:
+                110px 0;
+
+            background:
+                var(--background);
+        }
+
+
+        .career-inner {
+
+            width:
+                min(1200px,90%);
+
+            margin:
+                auto;
+        }
+
+
+        .career-heading {
+
+            max-width:
+                700px;
+
+            margin-bottom:
+                55px;
+        }
+
+
+        .career-heading small {
+
+            color:
+                var(--teal);
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                2px;
+        }
+
+
+        .career-heading h2 {
+
+            margin:
+                15px 0 15px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                clamp(38px,4vw,56px);
+
+            line-height:
+                1;
+
+            letter-spacing:
+                -2.5px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .career-heading p {
+
+            margin:
+                0;
+
+            color:
+                var(--text-light);
+
+            line-height:
+                1.7;
+        }
+
+
+        .career-flow {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            position:
+                relative;
+        }
+
+
+        .career-flow::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                10%;
+
+            right:
+                10%;
+
+            top:
+                35px;
+
+            height:
+                2px;
+
+            background:
+                #c8dce5;
+        }
+
+
+        .career-step {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            text-align:
+                center;
+
+            padding:
+                0 15px;
+        }
+
+
+        .career-step-number {
+
+            width:
+                70px;
+
+            height:
+                70px;
+
+            margin:
+                0 auto 23px;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+
+            border:
+                7px solid
+                var(--background);
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                800;
+        }
+
+
+        .career-step h3 {
+
+            margin:
+                0 0 8px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                17px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .career-step p {
+
+            margin:
+                0;
+
+            color:
+                var(--text-light);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =====================================================
+           CANDIDATE / EMPLOYER
+           ===================================================== */
+
+        .ecosystem {
+
+            padding:
+                110px 0;
+
+            background:
+                white;
+        }
+
+
+        .ecosystem-inner {
+
+            width:
+                min(1200px,90%);
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                20px;
+        }
+
+
+        .ecosystem-card {
+
+            padding:
+                42px;
+
+            min-height:
+                330px;
+
+            border-radius:
+                25px;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+        }
+
+
+        .ecosystem-card.candidate {
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+        }
+
+
+        .ecosystem-card.employer {
+
+            background:
+                #e8f3f6;
+
+            color:
+                var(--navy);
+        }
+
+
+        .ecosystem-card .number {
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                70px;
+
+            font-weight:
+                800;
+
+            opacity:
+                0.13;
+        }
+
+
+        .ecosystem-card h3 {
+
+            margin:
+                35px 0 12px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                30px;
+
+            letter-spacing:
+                -1px;
+        }
+
+
+        .ecosystem-card p {
+
+            max-width:
+                470px;
+
+            margin:
+                0;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.7;
+
+            opacity:
+                0.72;
+        }
+
+
+        .ecosystem-card a {
+
+            display:
+                inline-flex;
+
+            margin-top:
+                24px;
+
+            padding:
+                12px 16px;
+
+            border-radius:
+                10px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+        }
+
+
+        .candidate a {
+
+            background:
+                white;
+
+            color:
+                var(--navy);
+        }
+
+
+        .employer a {
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+        }
+
+
+        /* =====================================================
+           ALERT SECTION
+           ===================================================== */
+
+        .alerts-section {
+
+            padding:
+                100px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e4eef3,
+                    #d8e8ef
+                );
+        }
+
+
+        .alerts-card {
+
+            width:
+                min(1100px,90%);
+
+            margin:
+                auto;
+
+            padding:
+                55px;
+
+            border-radius:
+                27px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                40px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(7,59,115,0.07);
+        }
+
+
+        .alerts-card h2 {
+
+            margin:
+                0 0 10px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                32px;
+
+            letter-spacing:
+                -1.5px;
+
+            color:
+                var(--navy);
+        }
+
+
+        .alerts-card p {
+
+            max-width:
+                570px;
+
+            margin:
+                0;
+
+            color:
+                var(--text-light);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
+        }
+
+
+        .alerts-button {
+
+            flex-shrink:
+                0;
+
+            padding:
+                14px 20px;
+
+            border-radius:
+                11px;
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .alerts-button:hover {
+
+            background:
+                var(--teal);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           CTA
+           ===================================================== */
+
+        .jobs-cta {
+
+            padding:
+                100px 0;
+
+            background:
+                var(--navy);
+        }
+
+
+        .jobs-cta-card {
+
+            width:
+                min(1200px,90%);
+
+            margin:
+                auto;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            padding:
+                70px 75px;
+
+            border-radius:
+                30px;
+
+            background:
+
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(21,158,172,0.25),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #0a477f,
+                    #073b73
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            color:
+                white;
+        }
+
+
+        .jobs-cta-card::after {
+
+            content:
+                "03";
+
+            position:
+                absolute;
+
+            right:
+                25px;
+
+            bottom:
+                -60px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                220px;
+
+            font-weight:
+                800;
+
+            color:
+                rgba(255,255,255,0.035);
+        }
+
+
+        .jobs-cta-card h2 {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            max-width:
+                800px;
+
+            margin:
+                0;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                clamp(38px,5vw,64px);
+
+            line-height:
+                1.02;
+
+            letter-spacing:
+                -3px;
+        }
+
+
+        .jobs-cta-card h2 span {
+
+            color:
+                #63d1d9;
+        }
+
+
+        .jobs-cta-card p {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            max-width:
+                620px;
+
+            margin:
+                23px 0 30px;
+
+            color:
+                rgba(255,255,255,0.70);
+
+            line-height:
+                1.7;
+        }
+
+
+        .jobs-cta-button {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            display:
+                inline-flex;
+
+            padding:
+                15px 22px;
+
+            border-radius:
+                12px;
+
+            background:
+                white;
+
+            color:
+                var(--navy);
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .jobs-cta-button:hover {
+
+            background:
+                var(--teal);
+
+            color:
+                white;
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        .jobs-footer {
+
+            padding:
+                65px 0 25px;
+
+            background:
+                #041f3f;
+
+            color:
+                white;
+        }
+
+
+        .jobs-footer-inner {
+
+            width:
+                min(1380px,92%);
+
+            margin:
+                auto;
+        }
+
+
+        .footer-top {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.3fr 1fr 1fr 1fr;
+
+            gap:
+                50px;
+
+            padding-bottom:
+                50px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.1);
+        }
+
+
+        .footer-brand img {
+
+            width:
+                190px;
+
+            padding:
+                8px;
+
+            border-radius:
+                8px;
+
+            background:
+                white;
+        }
+
+
+        .footer-brand p {
+
+            max-width:
+                330px;
+
+            margin-top:
+                20px;
+
+            color:
+                rgba(255,255,255,0.58);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
+        }
+
+
+        .footer-column h4 {
+
+            margin:
+                0 0 17px;
+
+            font-size:
+                12px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1.5px;
+        }
+
+
+        .footer-column a {
+
+            display:
+                block;
+
+            margin-bottom:
+                11px;
+
+            color:
+                rgba(255,255,255,0.58);
+
+            font-size:
+                13px;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .footer-column a:hover {
+
+            color:
+                #63d1d9;
+        }
+
+
+        .footer-bottom {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            padding-top:
+                23px;
+
+            color:
+                rgba(255,255,255,0.45);
+
+            font-size:
+                11px;
+        }
+
+
+        /* =====================================================
+           REVEAL
+           ===================================================== */
+
+        .reveal {
+
+            opacity:
+                0;
+
+            transform:
+                translateY(25px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+
+        .reveal.visible {
+
+            opacity:
+                1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width:1100px) {
+
+            .jobs-nav-links {
+
+                gap:
+                    17px;
+            }
+
+            .jobs-nav-links a {
+
+                font-size:
+                    12px;
+            }
+
+            .jobs-talk {
+
+                display:
+                    none;
+            }
+
+            .opportunity-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .footer-top {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+        }
+
+
+        @media (max-width:850px) {
+
+            .jobs-nav-inner {
+
+                min-height:
+                    75px;
+            }
+
+            .jobs-nav-links,
+            .jobs-nav-actions {
+
+                display:
+                    none;
+            }
+
+            .jobs-menu-toggle {
+
+                display:
+                    block;
+            }
+
+            .jobs-mobile-menu {
+
+                width:
+                    92%;
+
+                margin:
+                    0 auto 15px;
+
+                padding:
+                    15px;
+
+                border-radius:
+                    18px;
+
+                background:
+                    white;
+
+                box-shadow:
+                    0 15px 40px
+                    rgba(7,59,115,0.12);
+            }
+
+            .jobs-mobile-menu.open {
+
+                display:
+                    flex;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    3px;
+            }
+
+            .jobs-mobile-menu a {
+
+                padding:
+                    14px;
+
+                border-radius:
+                    10px;
+
+                font-size:
+                    14px;
+
+                font-weight:
+                    700;
+
+                color:
+                    var(--navy);
+            }
+
+            .jobs-mobile-menu a:hover,
+            .jobs-mobile-menu a.active {
+
+                background:
+                    #edf6f7;
+
+                color:
+                    var(--teal);
+            }
+
+            .jobs-hero {
+
+                min-height:
+                    auto;
+
+                padding:
+                    130px 0 70px;
+            }
+
+            .jobs-hero-inner {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .jobs-hero h1 {
+
+                letter-spacing:
+                    -3px;
+            }
+
+            .jobs-visual {
+
+                min-height:
+                    350px;
+            }
+
+            .jobs-intro-inner {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    20px;
+            }
+
+            .jobs-intro-number {
+
+                font-size:
+                    60px;
+            }
+
+            .coming-inner {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    45px;
+            }
+
+            .career-flow {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                gap:
+                    40px;
+            }
+
+            .career-flow::before {
+
+                display:
+                    none;
+            }
+
+            .ecosystem-inner {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .alerts-card {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+            .jobs-cta-card {
+
+                padding:
+                    55px 35px;
+            }
+        }
+
+
+        @media (max-width:600px) {
+
+            .jobs-logo {
+
+                width:
+                    175px;
+            }
+
+            .jobs-hero h1 {
+
+                font-size:
+                    51px;
+
+                letter-spacing:
+                    -2.5px;
+            }
+
+            .jobs-hero-description {
+
+                font-size:
+                    15px;
+            }
+
+            .jobs-visual {
+
+                min-height:
+                    300px;
+            }
+
+            .jobs-orbit.large {
+
+                width:
+                    290px;
+
+                height:
+                    290px;
+            }
+
+            .jobs-orbit.small {
+
+                width:
+                    210px;
+
+                height:
+                    210px;
+            }
+
+            .jobs-core {
+
+                width:
+                    130px;
+
+                height:
+                    130px;
+            }
+
+            .jobs-core strong {
+
+                font-size:
+                    23px;
+            }
+
+            .jobs-floating-card {
+
+                min-width:
+                    145px;
+
+                padding:
+                    11px;
+            }
+
+            .jobs-floating-card strong {
+
+                font-size:
+                    10px;
+            }
+
+            .jobs-floating-card.one {
+
+                right:
+                    -5px;
+            }
+
+            .jobs-floating-card.two {
+
+                left:
+                    -5px;
+            }
+
+            .jobs-floating-card.three {
+
+                right:
+                    -15px;
+
+                top:
+                    145px;
+            }
+
+            .jobs-intro {
+
+                padding:
+                    70px 0;
+            }
+
+            .jobs-intro h2 {
+
+                font-size:
+                    34px;
+
+                letter-spacing:
+                    -1.5px;
+            }
+
+            .coming-section,
+            .opportunities,
+            .career-section,
+            .ecosystem {
+
+                padding:
+                    75px 0;
+            }
+
+            .coming-left h2 {
+
+                font-size:
+                    44px;
+
+                letter-spacing:
+                    -2px;
+            }
+
+            .coming-card {
+
+                padding:
+                    27px;
+            }
+
+            .section-heading {
+
+                display:
+                    block;
+            }
+
+            .section-heading p {
+
+                margin-top:
+                    20px;
+            }
+
+            .opportunity-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .career-flow {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .career-step {
+
+                text-align:
+                    left;
+
+                display:
+                    grid;
+
+                grid-template-columns:
+                    70px 1fr;
+
+                gap:
+                    15px;
+
+                align-items:
+                    center;
+            }
+
+            .career-step-number {
+
+                margin:
+                    0;
+            }
+
+            .career-step p {
+
+                grid-column:
+                    2;
+            }
+
+            .ecosystem-card {
+
+                min-height:
+                    290px;
+
+                padding:
+                    30px;
+            }
+
+            .alerts-section {
+
+                padding:
+                    65px 0;
+            }
+
+            .alerts-card {
+
+                padding:
+                    35px 25px;
+            }
+
+            .alerts-card h2 {
+
+                font-size:
+                    27px;
+            }
+
+            .jobs-cta {
+
+                padding:
+                    65px 0;
+            }
+
+            .jobs-cta-card {
+
+                padding:
+                    45px 25px;
+
+                border-radius:
+                    24px;
+            }
+
+            .jobs-cta-card h2 {
+
+                font-size:
+                    43px;
+
+                letter-spacing:
+                    -2px;
+            }
+
+            .footer-top {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    35px;
+            }
+
+            .footer-bottom {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="jobs-page">
+
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <header
+        class="jobs-navbar"
+        id="jobsNavbar"
+    >
+
+        <div class="jobs-nav-inner">
+
+
+            <a
+                href="../index.html"
+                class="jobs-logo"
+            >
+
+                <img
+                    src="../assets/images/logo.png"
+                    alt="NexTalent"
+                >
+
+            </a>
+
+
+            <nav class="jobs-nav-links">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="courses.html">
+                    Courses
+                </a>
+
+                <a
+                    href="jobs.html"
+                    class="active"
+                >
+                    Jobs
+                </a>
+
+                <a href="candidates.html">
+                    Candidates
+                </a>
+
+                <a href="recruiters.html">
+                    Recruiters
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <div class="jobs-nav-actions">
+
+                <a
+                    href="contact.html"
+                    class="jobs-talk"
+                >
+                    Talk to Us
+                </a>
+
+                <a
+                    href="courses.html"
+                    class="jobs-nav-button"
+                >
+                    Explore Courses
+                </a>
+
+            </div>
+
+
+            <button
+                class="jobs-menu-toggle"
+                id="jobsMenuToggle"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+
+        <div
+            class="jobs-mobile-menu"
+            id="jobsMobileMenu"
+        >
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a
+                href="jobs.html"
+                class="active"
+            >
+                Jobs
+            </a>
+
+            <a href="candidates.html">
+                Candidates
+            </a>
+
+            <a href="recruiters.html">
+                Recruiters
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="jobs-hero">
+
+        <div class="jobs-hero-inner">
+
+
+            <div class="jobs-hero-content reveal">
+
+                <div class="jobs-eyebrow">
+
+                    <span></span>
+
+                    Career opportunities
+
+                </div>
+
+
+                <h1>
+
+                    Your next
+                    <br>
+
+                    <span>opportunity</span>
+                    starts here.
+
+                </h1>
+
+
+                <p class="jobs-hero-description">
+
+                    NexTalent is building a career ecosystem that
+                    connects skills, people and future opportunities.
+                    Job discovery is coming soon.
+
+                </p>
+
+
+                <div class="jobs-hero-actions">
+
+                    <a
+                        href="#comingSoon"
+                        class="jobs-primary-button"
+                    >
+                        Explore What's Coming
+                    </a>
+
+
+                    <a
+                        href="courses.html"
+                        class="jobs-secondary-button"
+                    >
+                        Build Your Skills
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="jobs-visual reveal">
+
+                <div class="jobs-orbit large"></div>
+
+                <div class="jobs-orbit small"></div>
+
+
+                <div class="jobs-core">
+
+                    <strong>
+                        Jobs
+                    </strong>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </div>
+
+
+                <div class="jobs-floating-card one">
+
+                    <small>
+                        Future opportunities
+                    </small>
+
+                    <strong>
+                        Discover roles
+                    </strong>
+
+                </div>
+
+
+                <div class="jobs-floating-card two">
+
+                    <small>
+                        Skills
+                    </small>
+
+                    <strong>
+                        Match what you know
+                    </strong>
+
+                </div>
+
+
+                <div class="jobs-floating-card three">
+
+                    <small>
+                        Growth
+                    </small>
+
+                    <strong>
+                        Build your career
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         INTRO
+         ===================================================== -->
+
+    <section class="jobs-intro">
+
+        <div class="jobs-intro-inner">
+
+            <div class="jobs-intro-number">
+                01
+            </div>
+
+
+            <div>
+
+                <h2>
+
+                    A job is more than
+                    <span>a vacancy.</span>
+
+                </h2>
+
+
+                <p>
+
+                    The NexTalent vision is to connect learning
+                    and career growth. As the platform develops,
+                    opportunities will be designed around skills,
+                    capabilities and the needs of organizations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         COMING SOON
+         ===================================================== -->
+
+    <section
+        class="coming-section"
+        id="comingSoon"
+    >
+
+        <div class="coming-inner">
+
+
+            <div class="coming-left reveal">
+
+                <div class="coming-label">
+                    What's happening now
+                </div>
+
+
+                <h2>
+
+                    The job board is
+                    <span>coming soon.</span>
+
+                </h2>
+
+
+                <p>
+
+                    We are currently building the foundation
+                    for a better way to discover career
+                    opportunities through NexTalent.
+
+                    <br><br>
+
+                    There are no active vacancies listed at
+                    this time.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="coming-card reveal">
+
+                <div class="status-pill">
+
+                    <i></i>
+
+                    Launching soon
+
+                </div>
+
+
+                <h3>
+                    NexTalent Jobs
+                </h3>
+
+
+                <p>
+
+                    Future opportunities will appear here as
+                    the NexTalent career ecosystem develops.
+
+                    We will focus on creating a structured
+                    experience for discovering opportunities,
+                    understanding required skills and
+                    connecting candidates with organizations.
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="coming-card-button"
+                >
+                    Contact NexTalent →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         OPPORTUNITIES
+         ===================================================== -->
+
+    <section class="opportunities">
+
+        <div class="opportunities-inner">
+
+
+            <div class="section-heading reveal">
+
+                <div>
+
+                    <small>
+                        Future job experience
+                    </small>
+
+                    <h2>
+                        More than job listings.
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    NexTalent is designed to eventually connect
+                    career discovery with the skills people are
+                    building.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="opportunity-grid">
+
+
+                <!-- CARD 01 -->
+
+                <div class="opportunity-card reveal">
+
+                    <div class="opportunity-number">
+                        01
+                    </div>
+
+
+                    <div class="opportunity-icon">
+                        ↗
+                    </div>
+
+
+                    <h3>
+                        Discover
+                    </h3>
+
+
+                    <p>
+
+                        Explore future opportunities across
+                        different technology and professional
+                        areas.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 02 -->
+
+                <div class="opportunity-card reveal">
+
+                    <div class="opportunity-number">
+                        02
+                    </div>
+
+
+                    <div class="opportunity-icon">
+                        ◎
+                    </div>
+
+
+                    <h3>
+                        Match Skills
+                    </h3>
+
+
+                    <p>
+
+                        Understand the skills and capabilities
+                        associated with future roles.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 03 -->
+
+                <div class="opportunity-card reveal">
+
+                    <div class="opportunity-number">
+                        03
+                    </div>
+
+
+                    <div class="opportunity-icon">
+                        +
+                    </div>
+
+
+                    <h3>
+                        Upskill
+                    </h3>
+
+
+                    <p>
+
+                        Identify skill gaps and use learning
+                        resources to continue developing.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 04 -->
+
+                <div class="opportunity-card reveal">
+
+                    <div class="opportunity-number">
+                        04
+                    </div>
+
+
+                    <div class="opportunity-icon">
+                        →
+                    </div>
+
+
+                    <h3>
+                        Grow
+                    </h3>
+
+
+                    <p>
+
+                        Keep building experience and capabilities
+                        throughout your professional journey.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CAREER JOURNEY
+         ===================================================== -->
+
+    <section class="career-section">
+
+        <div class="career-inner">
+
+
+            <div class="career-heading reveal">
+
+                <small>
+                    The NexTalent journey
+                </small>
+
+
+                <h2>
+                    Learn first.
+                    Then move forward.
+                </h2>
+
+
+                <p>
+
+                    Career development is a continuous process.
+                    NexTalent connects learning and future
+                    opportunity into one journey.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="career-flow">
+
+
+                <div class="career-step reveal">
+
+                    <div class="career-step-number">
+                        01
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Explore
+                        </h3>
+
+                        <p>
+                            Discover skills, industries and
+                            career directions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="career-step reveal">
+
+                    <div class="career-step-number">
+                        02
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Learn
+                        </h3>
+
+                        <p>
+                            Build practical knowledge through
+                            focused courses.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="career-step reveal">
+
+                    <div class="career-step-number">
+                        03
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Practice
+                        </h3>
+
+                        <p>
+                            Apply your knowledge through
+                            exercises and projects.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="career-step reveal">
+
+                    <div class="career-step-number">
+                        04
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Grow
+                        </h3>
+
+                        <p>
+                            Continue developing toward future
+                            opportunities.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ECOSYSTEM
+         ===================================================== -->
+
+    <section class="ecosystem">
+
+        <div class="ecosystem-inner">
+
+
+            <!-- CANDIDATE -->
+
+            <div class="ecosystem-card candidate reveal">
+
+                <div class="number">
+                    02
+                </div>
+
+
+                <h3>
+                    For Candidates
+                </h3>
+
+
+                <p>
+
+                    Build your skills today so you are better
+                    prepared for opportunities tomorrow.
+
+                    Explore learning paths, strengthen your
+                    capabilities and continue developing your
+                    professional profile.
+
+                </p>
+
+
+                <a href="candidates.html">
+                    Explore Candidate Journey →
+                </a>
+
+            </div>
+
+
+
+            <!-- EMPLOYER -->
+
+            <div class="ecosystem-card employer reveal">
+
+                <div class="number">
+                    03
+                </div>
+
+
+                <h3>
+                    For Organizations
+                </h3>
+
+
+                <p>
+
+                    Organizations will eventually be able to
+                    connect with talent and support employee
+                    development through the NexTalent ecosystem.
+
+                </p>
+
+
+                <a href="recruiters.html">
+                    Explore Recruiter Solutions →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         JOB ALERT
+         ===================================================== -->
+
+    <section class="alerts-section">
+
+        <div class="alerts-card reveal">
+
+
+            <div>
+
+                <h2>
+                    Want to stay connected?
+                </h2>
+
+
+                <p>
+
+                    Get in touch with NexTalent to learn about
+                    upcoming platform developments, courses and
+                    future career opportunities.
+
+                </p>
+
+            </div>
+
+
+            <a
+                href="contact.html"
+                class="alerts-button"
+            >
+                Contact NexTalent →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA
+         ===================================================== -->
+
+    <section class="jobs-cta">
+
+        <div class="jobs-cta-card reveal">
+
+
+            <h2>
+
+                Don't wait for the
+                opportunity.
+
+                <span>
+                    Build toward it.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Start developing the skills that can support
+                your future career journey with NexTalent.
+
+            </p>
+
+
+            <a
+                href="courses.html"
+                class="jobs-cta-button"
+            >
+                Explore Courses →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="jobs-footer">
+
+        <div class="jobs-footer-inner">
+
+
+            <div class="footer-top">
+
+
+                <div class="footer-brand">
+
+                    <img
+                        src="../assets/images/logo.png"
+                        alt="NexTalent"
+                    >
+
+
+                    <p>
+
+                        NexTalent is building a connected
+                        ecosystem for learning, career growth,
+                        talent and workplace upskilling.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Explore
+                    </h4>
+
+
+                    <a href="courses.html">
+                        Courses
+                    </a>
+
+
+                    <a href="jobs.html">
+                        Jobs
+                    </a>
+
+
+                    <a href="candidates.html">
+                        Candidates
+                    </a>
+
+
+                    <a href="recruiters.html">
+                        Recruiters
+                    </a>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Company
+                    </h4>
+
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+
+                    <a href="contact.html">
+                        Partnerships
+                    </a>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Contact
+                    </h4>
+
+
+                    <a href="tel:7499869128">
+                        7499 869 128
+                    </a>
+
+
+                    <a href="mailto:nextalentindia@gmail.com">
+                        nextalentindia@gmail.com
+                    </a>
+
+
+                    <a
+                        href="https://www.linkedin.com/in/nex-talent-2652a8435"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        LinkedIn
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 NexTalent. All rights reserved.
+                </span>
+
+
+                <span>
+                    Learn • Grow • Lead the Future
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    const jobsNavbar =
+        document.getElementById(
+            "jobsNavbar"
+        );
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (window.scrollY > 20) {
+
+                jobsNavbar.classList.add(
+                    "scrolled"
+                );
+
+            } else {
+
+                jobsNavbar.classList.remove(
+                    "scrolled"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
+
+    const jobsMenuToggle =
+        document.getElementById(
+            "jobsMenuToggle"
+        );
+
+
+    const jobsMobileMenu =
+        document.getElementById(
+            "jobsMobileMenu"
+        );
+
+
+    jobsMenuToggle.addEventListener(
+        "click",
+        () => {
+
+            jobsMobileMenu.classList.toggle(
+                "open"
+            );
+
+
+            jobsMenuToggle.textContent =
+                jobsMobileMenu.classList.contains(
+                    "open"
+                )
+                    ? "✕"
+                    : "☰";
+
+        }
+    );
+
+
+    document
+        .querySelectorAll(
+            ".jobs-mobile-menu a"
+        )
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    jobsMobileMenu.classList.remove(
+                        "open"
+                    );
+
+                    jobsMenuToggle.textContent =
+                        "☰";
+
+                }
+            );
+
+        });
+
+
+
+    /* =====================================================
+       SCROLL REVEAL
+       ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold:
+                    0.10
+            }
+
+        );
+
+
+    revealElements.forEach(
+        element => {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       RESIZE
+       ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 850
+            ) {
+
+                jobsMobileMenu.classList.remove(
+                    "open"
+                );
+
+                jobsMenuToggle.textContent =
+                    "☰";
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+</html>

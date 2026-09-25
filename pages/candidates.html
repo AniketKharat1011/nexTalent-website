@@ -1,0 +1,3216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Candidates | NexTalent</title>
+
+    <meta
+        name="description"
+        content="Build your skills, strengthen your profile, and prepare for your next career opportunity with NexTalent."
+    >
+
+    <link rel="icon" href="../assets/images/logo.png">
+
+    <style>
+        /* =========================================================
+           NEX TALENT — CANDIDATES PAGE
+           Premium Editorial Design
+        ========================================================= */
+
+        :root {
+            --navy: #073b73;
+            --navy-dark: #052b55;
+            --blue: #0a4d8c;
+            --teal: #159eac;
+            --teal-dark: #087e8b;
+            --orange: #f7941d;
+            --orange-dark: #e87800;
+
+            --white: #ffffff;
+            --background: #eef4f8;
+            --background-light: #f7fafc;
+
+            --text: #14213d;
+            --text-light: #5b6878;
+            --border: #d8e3eb;
+
+            --shadow-sm: 0 10px 30px rgba(7, 59, 115, 0.08);
+            --shadow-md: 0 20px 55px rgba(7, 59, 115, 0.12);
+
+            --radius-sm: 14px;
+            --radius-md: 24px;
+            --radius-lg: 34px;
+
+            --container: 1240px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .candidate-container {
+            width: min(var(--container), calc(100% - 48px));
+            margin: auto;
+        }
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .candidate-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            padding: 18px 0;
+
+            transition:
+                background .3s ease,
+                box-shadow .3s ease,
+                padding .3s ease;
+        }
+
+        .candidate-nav.scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 8px 30px rgba(7, 59, 115, .08);
+            padding: 12px 0;
+        }
+
+        .candidate-nav-inner {
+            width: min(var(--container), calc(100% - 48px));
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .candidate-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .candidate-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .candidate-nav-links a {
+            position: relative;
+
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+
+            padding: 8px 0;
+
+            transition: color .25s ease;
+        }
+
+        .candidate-nav-links a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--teal);
+
+            transition: width .25s ease;
+        }
+
+        .candidate-nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .candidate-nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .candidate-nav-cta {
+            padding: 12px 20px !important;
+
+            background: var(--navy);
+            color: var(--white) !important;
+
+            border-radius: 100px;
+
+            box-shadow: 0 8px 20px rgba(7, 59, 115, .18);
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+        .candidate-nav-cta::after {
+            display: none;
+        }
+
+        .candidate-nav-cta:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .candidate-menu-btn {
+            display: none;
+
+            border: 0;
+            background: transparent;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+        }
+
+        .candidate-menu-btn span {
+            display: block;
+
+            width: 22px;
+            height: 2px;
+
+            background: var(--navy);
+
+            margin: 5px auto;
+
+            transition: .3s ease;
+        }
+
+        .candidate-mobile-menu {
+            display: none;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .candidate-hero {
+            position: relative;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(21, 158, 172, .17),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 15% 80%,
+                    rgba(247, 148, 29, .09),
+                    transparent 27%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f5f9fb 0%,
+                    #e6f0f5 100%
+                );
+        }
+
+        .candidate-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            border: 1px solid rgba(7, 59, 115, .08);
+            border-radius: 50%;
+
+            right: -230px;
+            top: 100px;
+        }
+
+        .candidate-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            border: 1px solid rgba(21, 158, 172, .12);
+            border-radius: 50%;
+
+            right: -80px;
+            top: 215px;
+        }
+
+        .candidate-hero-grid {
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+
+            align-items: center;
+
+            gap: 80px;
+
+            padding-top: 90px;
+        }
+
+        .candidate-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 24px;
+
+            color: var(--teal-dark);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .candidate-eyebrow::before {
+            content: "";
+
+            width: 28px;
+            height: 2px;
+
+            background: var(--orange);
+        }
+
+        .candidate-hero h1 {
+            max-width: 760px;
+
+            font-family: "Trebuchet MS", Inter, sans-serif;
+
+            font-size: clamp(48px, 6vw, 82px);
+
+            line-height: .98;
+            letter-spacing: -.055em;
+
+            color: var(--navy);
+        }
+
+        .candidate-hero h1 span {
+            color: var(--teal);
+        }
+
+        .candidate-hero-text {
+            max-width: 600px;
+
+            margin-top: 28px;
+
+            color: var(--text-light);
+
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .candidate-hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            margin-top: 34px;
+        }
+
+        .candidate-primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            padding: 0 25px;
+
+            border-radius: 100px;
+
+            background: var(--navy);
+            color: var(--white);
+
+            font-size: 14px;
+            font-weight: 700;
+
+            box-shadow: 0 15px 30px rgba(7, 59, 115, .17);
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .candidate-primary-btn:hover {
+            transform: translateY(-3px);
+            background: var(--blue);
+            box-shadow: 0 18px 35px rgba(7, 59, 115, .22);
+        }
+
+        .candidate-secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            padding: 0 24px;
+
+            border-radius: 100px;
+
+            border: 1px solid var(--border);
+
+            background: rgba(255,255,255,.55);
+
+            color: var(--navy);
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition:
+                background .25s ease,
+                transform .25s ease;
+        }
+
+        .candidate-secondary-btn:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* =========================================================
+           HERO VISUAL
+        ========================================================= */
+
+        .candidate-hero-visual {
+            position: relative;
+
+            min-height: 560px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .candidate-orbit {
+            position: absolute;
+
+            width: 440px;
+            height: 440px;
+
+            border: 1px solid rgba(7, 59, 115, .12);
+
+            border-radius: 50%;
+        }
+
+        .candidate-orbit.two {
+            width: 340px;
+            height: 340px;
+
+            border-color: rgba(21, 158, 172, .16);
+
+            transform: rotate(30deg);
+        }
+
+        .candidate-orbit.three {
+            width: 530px;
+            height: 530px;
+
+            border-color: rgba(247, 148, 29, .10);
+
+            transform: rotate(-25deg);
+        }
+
+        .candidate-core {
+            position: relative;
+            z-index: 3;
+
+            width: 190px;
+            height: 190px;
+
+            border-radius: 50%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #1b9eae,
+                    var(--navy) 70%
+                );
+
+            color: white;
+
+            box-shadow:
+                0 35px 80px rgba(7,59,115,.28),
+                inset 0 0 0 10px rgba(255,255,255,.08);
+        }
+
+        .candidate-core-small {
+            font-size: 11px;
+
+            text-transform: uppercase;
+            letter-spacing: .16em;
+
+            opacity: .75;
+
+            margin-bottom: 7px;
+        }
+
+        .candidate-core-title {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -.04em;
+        }
+
+        .candidate-core-line {
+            width: 38px;
+            height: 2px;
+
+            background: var(--orange);
+
+            margin-top: 12px;
+        }
+
+        .candidate-floating {
+            position: absolute;
+            z-index: 5;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 14px 17px;
+
+            background: rgba(255,255,255,.90);
+            backdrop-filter: blur(12px);
+
+            border: 1px solid rgba(255,255,255,.8);
+
+            border-radius: 16px;
+
+            box-shadow: 0 18px 45px rgba(7,59,115,.13);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            color: var(--navy);
+        }
+
+        .candidate-floating-icon {
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: var(--background);
+
+            font-size: 17px;
+        }
+
+        .candidate-floating.one {
+            top: 65px;
+            right: 45px;
+        }
+
+        .candidate-floating.two {
+            left: 15px;
+            top: 170px;
+        }
+
+        .candidate-floating.three {
+            right: 5px;
+            bottom: 90px;
+        }
+
+        .candidate-floating.four {
+            left: 65px;
+            bottom: 55px;
+        }
+
+        /* =========================================================
+           MARQUEE / STAT STRIP
+        ========================================================= */
+
+        .candidate-stat-strip {
+            position: relative;
+            z-index: 5;
+
+            background: var(--navy);
+
+            color: white;
+        }
+
+        .candidate-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .candidate-stat {
+            padding: 35px 30px;
+
+            border-right: 1px solid rgba(255,255,255,.10);
+        }
+
+        .candidate-stat:last-child {
+            border-right: 0;
+        }
+
+        .candidate-stat-number {
+            font-size: 28px;
+            font-weight: 800;
+
+            color: white;
+
+            margin-bottom: 5px;
+        }
+
+        .candidate-stat-label {
+            color: rgba(255,255,255,.63);
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .candidate-intro {
+            position: relative;
+
+            padding: 120px 0;
+
+            background: var(--navy-dark);
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .candidate-intro::after {
+            content: "01";
+
+            position: absolute;
+
+            right: 4%;
+            bottom: -65px;
+
+            font-size: 210px;
+            font-weight: 900;
+
+            line-height: 1;
+
+            color: rgba(255,255,255,.035);
+        }
+
+        .candidate-intro-grid {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+
+            gap: 100px;
+
+            align-items: start;
+        }
+
+        .candidate-section-number {
+            color: var(--orange);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: .18em;
+        }
+
+        .candidate-intro h2 {
+            margin-top: 20px;
+
+            font-size: clamp(38px, 5vw, 65px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .candidate-intro-content {
+            max-width: 700px;
+        }
+
+        .candidate-intro-content p {
+            color: rgba(255,255,255,.70);
+
+            font-size: 18px;
+            line-height: 1.8;
+
+            margin-bottom: 24px;
+        }
+
+        .candidate-intro-highlight {
+            margin-top: 35px;
+
+            padding-left: 22px;
+
+            border-left: 3px solid var(--teal);
+
+            color: white;
+
+            font-size: 19px;
+            font-weight: 600;
+
+            line-height: 1.65;
+        }
+
+        /* =========================================================
+           BENEFITS
+        ========================================================= */
+
+        .candidate-benefits {
+            padding: 125px 0;
+
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(21,158,172,.07),
+                    transparent 30%
+                ),
+                var(--background-light);
+        }
+
+        .candidate-section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            gap: 50px;
+
+            margin-bottom: 60px;
+        }
+
+        .candidate-section-label {
+            color: var(--teal-dark);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .candidate-section-head h2 {
+            max-width: 680px;
+
+            margin-top: 15px;
+
+            color: var(--navy);
+
+            font-size: clamp(38px, 4.5vw, 60px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .candidate-section-description {
+            max-width: 420px;
+
+            color: var(--text-light);
+
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .candidate-benefit-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .candidate-benefit-card {
+            position: relative;
+
+            min-height: 320px;
+
+            padding: 30px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            background: white;
+
+            overflow: hidden;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                border-color .3s ease;
+        }
+
+        .candidate-benefit-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+            height: 130px;
+
+            border-radius: 50%;
+
+            background: rgba(21,158,172,.07);
+
+            right: -55px;
+            top: -55px;
+        }
+
+        .candidate-benefit-card:hover {
+            transform: translateY(-8px);
+
+            border-color: rgba(21,158,172,.35);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .candidate-benefit-number {
+            color: rgba(7,59,115,.16);
+
+            font-size: 54px;
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+        .candidate-benefit-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: var(--background);
+
+            color: var(--navy);
+
+            font-size: 21px;
+        }
+
+        .candidate-benefit-card h3 {
+            margin-top: 25px;
+
+            color: var(--navy);
+
+            font-size: 21px;
+
+            letter-spacing: -.025em;
+        }
+
+        .candidate-benefit-card p {
+            margin-top: 10px;
+
+            color: var(--text-light);
+
+            font-size: 14px;
+
+            line-height: 1.65;
+        }
+
+        /* =========================================================
+           JOURNEY
+        ========================================================= */
+
+        .candidate-journey {
+            position: relative;
+
+            padding: 125px 0;
+
+            background: linear-gradient(
+                135deg,
+                #e6f0f5,
+                #f3f7f9
+            );
+
+            overflow: hidden;
+        }
+
+        .candidate-journey::before {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            border: 1px solid rgba(7,59,115,.07);
+
+            border-radius: 50%;
+
+            left: -300px;
+            top: 80px;
+        }
+
+        .candidate-journey-header {
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+
+            gap: 90px;
+
+            margin-bottom: 70px;
+        }
+
+        .candidate-journey-header h2 {
+            color: var(--navy);
+
+            font-size: clamp(40px, 5vw, 64px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .candidate-journey-header p {
+            max-width: 620px;
+
+            color: var(--text-light);
+
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .candidate-journey-line {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .candidate-journey-line::before {
+            content: "";
+
+            position: absolute;
+
+            left: 12%;
+            right: 12%;
+            top: 54px;
+
+            height: 1px;
+
+            background: rgba(7,59,115,.18);
+        }
+
+        .candidate-step {
+            position: relative;
+            z-index: 2;
+
+            text-align: center;
+        }
+
+        .candidate-step-circle {
+            width: 108px;
+            height: 108px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: white;
+
+            border: 1px solid rgba(7,59,115,.12);
+
+            color: var(--navy);
+
+            font-size: 30px;
+            font-weight: 900;
+
+            box-shadow: 0 15px 35px rgba(7,59,115,.08);
+
+            transition:
+                background .3s ease,
+                color .3s ease,
+                transform .3s ease;
+        }
+
+        .candidate-step:hover .candidate-step-circle {
+            background: var(--navy);
+
+            color: white;
+
+            transform: translateY(-6px);
+        }
+
+        .candidate-step-number {
+            display: block;
+
+            margin-top: 25px;
+
+            color: var(--orange);
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: .15em;
+        }
+
+        .candidate-step h3 {
+            margin-top: 8px;
+
+            color: var(--navy);
+
+            font-size: 19px;
+        }
+
+        .candidate-step p {
+            max-width: 210px;
+
+            margin: 9px auto 0;
+
+            color: var(--text-light);
+
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           SKILLS SECTION
+        ========================================================= */
+
+        .candidate-skills {
+            padding: 125px 0;
+
+            background: white;
+        }
+
+        .candidate-skills-layout {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 90px;
+
+            align-items: center;
+        }
+
+        .candidate-skills-visual {
+            position: relative;
+
+            min-height: 510px;
+
+            border-radius: var(--radius-lg);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--navy),
+                    var(--blue)
+                );
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .candidate-skills-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 360px;
+            height: 360px;
+
+            border: 1px solid rgba(255,255,255,.12);
+
+            border-radius: 50%;
+
+            right: -120px;
+            top: -100px;
+        }
+
+        .candidate-skills-visual::after {
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            border: 1px solid rgba(21,158,172,.30);
+
+            border-radius: 50%;
+
+            left: -120px;
+            bottom: -100px;
+        }
+
+        .candidate-skill-panel {
+            position: absolute;
+
+            left: 45px;
+            right: 45px;
+            top: 45px;
+            bottom: 45px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            z-index: 2;
+        }
+
+        .candidate-skill-label {
+            color: rgba(255,255,255,.55);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: .17em;
+            text-transform: uppercase;
+        }
+
+        .candidate-skill-title {
+            max-width: 380px;
+
+            margin-top: 12px;
+
+            color: white;
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            letter-spacing: -.045em;
+        }
+
+        .candidate-skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 35px;
+        }
+
+        .candidate-skill-tag {
+            padding: 10px 14px;
+
+            border: 1px solid rgba(255,255,255,.15);
+
+            border-radius: 100px;
+
+            background: rgba(255,255,255,.08);
+
+            color: rgba(255,255,255,.88);
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .candidate-skills-copy .candidate-section-label {
+            margin-bottom: 16px;
+        }
+
+        .candidate-skills-copy h2 {
+            color: var(--navy);
+
+            font-size: clamp(40px, 4.5vw, 60px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .candidate-skills-copy > p {
+            margin-top: 24px;
+
+            color: var(--text-light);
+
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .candidate-check-list {
+            display: grid;
+
+            gap: 14px;
+
+            margin-top: 30px;
+        }
+
+        .candidate-check {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 12px;
+
+            color: var(--text);
+
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .candidate-check-mark {
+            flex: 0 0 auto;
+
+            width: 23px;
+            height: 23px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(21,158,172,.12);
+
+            color: var(--teal-dark);
+
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           OPPORTUNITY / PROFILE
+        ========================================================= */
+
+        .candidate-profile {
+            padding: 120px 0;
+
+            background: var(--background);
+        }
+
+        .candidate-profile-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .candidate-profile-card {
+            min-height: 390px;
+
+            padding: 42px;
+
+            border-radius: var(--radius-lg);
+
+            border: 1px solid var(--border);
+
+            background: white;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .candidate-profile-card.dark {
+            background: var(--navy);
+
+            border-color: var(--navy);
+
+            color: white;
+        }
+
+        .candidate-profile-card.dark::after {
+            content: "02";
+
+            position: absolute;
+
+            right: -20px;
+            bottom: -45px;
+
+            font-size: 170px;
+            font-weight: 900;
+
+            color: rgba(255,255,255,.035);
+        }
+
+        .candidate-profile-card h3 {
+            max-width: 470px;
+
+            font-size: 34px;
+
+            line-height: 1.05;
+
+            letter-spacing: -.04em;
+        }
+
+        .candidate-profile-card:not(.dark) h3 {
+            color: var(--navy);
+        }
+
+        .candidate-profile-card p {
+            max-width: 500px;
+
+            margin-top: 18px;
+
+            font-size: 15px;
+            line-height: 1.75;
+
+            color: var(--text-light);
+        }
+
+        .candidate-profile-card.dark p {
+            color: rgba(255,255,255,.65);
+        }
+
+        .candidate-profile-list {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 28px;
+        }
+
+        .candidate-profile-list div {
+            padding: 15px;
+
+            border-radius: 14px;
+
+            background: var(--background);
+
+            color: var(--navy);
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .candidate-profile-card.dark .candidate-profile-list div {
+            background: rgba(255,255,255,.07);
+
+            color: rgba(255,255,255,.85);
+        }
+
+        /* =========================================================
+           UPSKILLING
+        ========================================================= */
+
+        .candidate-upskill {
+            padding: 125px 0;
+
+            background: white;
+        }
+
+        .candidate-upskill-header {
+            max-width: 800px;
+
+            margin-bottom: 60px;
+        }
+
+        .candidate-upskill-header h2 {
+            margin-top: 15px;
+
+            color: var(--navy);
+
+            font-size: clamp(40px, 5vw, 62px);
+
+            line-height: .98;
+
+            letter-spacing: -.05em;
+        }
+
+        .candidate-upskill-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .candidate-upskill-card {
+            min-height: 280px;
+
+            padding: 32px;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            background: var(--background-light);
+
+            transition:
+                transform .3s ease,
+                background .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .candidate-upskill-card:hover {
+            transform: translateY(-7px);
+
+            background: white;
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .candidate-upskill-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: var(--navy);
+
+            color: white;
+
+            font-size: 20px;
+        }
+
+        .candidate-upskill-card h3 {
+            margin-top: 26px;
+
+            color: var(--navy);
+
+            font-size: 20px;
+        }
+
+        .candidate-upskill-card p {
+            margin-top: 10px;
+
+            color: var(--text-light);
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .candidate-cta {
+            padding: 110px 0;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(21,158,172,.18),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--navy)
+                );
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .candidate-cta-inner {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns: 1.2fr .8fr;
+
+            align-items: center;
+
+            gap: 70px;
+        }
+
+        .candidate-cta-inner::after {
+            content: "03";
+
+            position: absolute;
+
+            right: -15px;
+            bottom: -100px;
+
+            font-size: 250px;
+            font-weight: 900;
+
+            color: rgba(255,255,255,.035);
+
+            line-height: 1;
+        }
+
+        .candidate-cta h2 {
+            position: relative;
+            z-index: 2;
+
+            max-width: 800px;
+
+            font-size: clamp(42px, 5vw, 70px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .candidate-cta h2 span {
+            color: #6bd5dd;
+        }
+
+        .candidate-cta-copy {
+            position: relative;
+            z-index: 2;
+        }
+
+        .candidate-cta-copy p {
+            color: rgba(255,255,255,.68);
+
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .candidate-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 25px;
+
+            padding: 15px 24px;
+
+            border-radius: 100px;
+
+            background: white;
+
+            color: var(--navy);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .candidate-cta-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow: 0 15px 30px rgba(0,0,0,.16);
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .candidate-footer {
+            padding: 70px 0 30px;
+
+            background: #031f3d;
+
+            color: white;
+        }
+
+        .candidate-footer-top {
+            display: grid;
+
+            grid-template-columns: 1.3fr .7fr .7fr .9fr;
+
+            gap: 50px;
+
+            padding-bottom: 55px;
+
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .candidate-footer-brand img {
+            width: 155px;
+
+            margin-bottom: 20px;
+
+            filter: brightness(0) invert(1);
+        }
+
+        .candidate-footer-brand p {
+            max-width: 300px;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .candidate-footer-column h4 {
+            margin-bottom: 18px;
+
+            color: white;
+
+            font-size: 12px;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+        .candidate-footer-column a {
+            display: block;
+
+            margin-bottom: 11px;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: 13px;
+
+            transition: color .2s ease;
+        }
+
+        .candidate-footer-column a:hover {
+            color: white;
+        }
+
+        .candidate-footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-top: 25px;
+
+            color: rgba(255,255,255,.4);
+
+            font-size: 11px;
+        }
+
+        .candidate-footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .candidate-footer-social a {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,.12);
+
+            color: rgba(255,255,255,.65);
+
+            font-size: 11px;
+        }
+
+        /* =========================================================
+           REVEAL ANIMATION
+        ========================================================= */
+
+        .candidate-reveal {
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .candidate-reveal.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .candidate-hero-grid {
+                gap: 35px;
+            }
+
+            .candidate-benefit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .candidate-skills-layout {
+                gap: 45px;
+            }
+
+            .candidate-footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .candidate-container,
+            .candidate-nav-inner {
+                width: min(100% - 32px, var(--container));
+            }
+
+            .candidate-nav {
+                padding: 13px 0;
+            }
+
+            .candidate-nav-links {
+                display: none;
+            }
+
+            .candidate-menu-btn {
+                display: block;
+            }
+
+            .candidate-mobile-menu {
+                position: absolute;
+
+                top: calc(100% + 8px);
+
+                left: 16px;
+                right: 16px;
+
+                padding: 18px;
+
+                background: rgba(255,255,255,.97);
+
+                backdrop-filter: blur(18px);
+
+                border: 1px solid var(--border);
+
+                border-radius: 20px;
+
+                box-shadow: var(--shadow-md);
+            }
+
+            .candidate-mobile-menu.open {
+                display: block;
+            }
+
+            .candidate-mobile-menu a {
+                display: block;
+
+                padding: 13px 10px;
+
+                border-bottom: 1px solid var(--border);
+
+                color: var(--navy);
+
+                font-size: 14px;
+                font-weight: 700;
+            }
+
+            .candidate-mobile-menu a:last-child {
+                border-bottom: 0;
+            }
+
+            .candidate-hero {
+                min-height: auto;
+
+                padding: 130px 0 70px;
+            }
+
+            .candidate-hero-grid {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                padding-top: 20px;
+            }
+
+            .candidate-eyebrow {
+                justify-content: center;
+            }
+
+            .candidate-hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .candidate-hero-actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .candidate-hero-visual {
+                min-height: 460px;
+            }
+
+            .candidate-floating.one {
+                right: 5%;
+            }
+
+            .candidate-floating.two {
+                left: 2%;
+            }
+
+            .candidate-floating.three {
+                right: 0;
+            }
+
+            .candidate-floating.four {
+                left: 5%;
+            }
+
+            .candidate-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .candidate-stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .candidate-stat:nth-child(-n+2) {
+                border-bottom: 1px solid rgba(255,255,255,.10);
+            }
+
+            .candidate-intro-grid,
+            .candidate-journey-header,
+            .candidate-skills-layout,
+            .candidate-cta-inner {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .candidate-section-head {
+                display: block;
+            }
+
+            .candidate-section-description {
+                margin-top: 20px;
+            }
+
+            .candidate-journey-line {
+                grid-template-columns: repeat(2, 1fr);
+
+                row-gap: 50px;
+            }
+
+            .candidate-journey-line::before {
+                display: none;
+            }
+
+            .candidate-profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .candidate-upskill-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .candidate-footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .candidate-hero h1 {
+                font-size: 47px;
+            }
+
+            .candidate-hero-text {
+                font-size: 16px;
+            }
+
+            .candidate-hero-actions {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .candidate-primary-btn,
+            .candidate-secondary-btn {
+                width: 100%;
+            }
+
+            .candidate-hero-visual {
+                min-height: 380px;
+
+                transform: scale(.82);
+                margin: -35px 0;
+            }
+
+            .candidate-floating {
+                transform: scale(.85);
+            }
+
+            .candidate-floating.one {
+                right: 0;
+                top: 40px;
+            }
+
+            .candidate-floating.two {
+                left: -5px;
+                top: 125px;
+            }
+
+            .candidate-floating.three {
+                right: -10px;
+                bottom: 65px;
+            }
+
+            .candidate-floating.four {
+                left: 0;
+                bottom: 30px;
+            }
+
+            .candidate-orbit.three {
+                width: 450px;
+                height: 450px;
+            }
+
+            .candidate-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .candidate-stat {
+                border-right: 0;
+
+                border-bottom: 1px solid rgba(255,255,255,.10);
+            }
+
+            .candidate-stat:last-child {
+                border-bottom: 0;
+            }
+
+            .candidate-intro,
+            .candidate-benefits,
+            .candidate-journey,
+            .candidate-skills,
+            .candidate-profile,
+            .candidate-upskill {
+                padding: 85px 0;
+            }
+
+            .candidate-benefit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .candidate-benefit-card {
+                min-height: 280px;
+            }
+
+            .candidate-journey-line {
+                grid-template-columns: 1fr;
+            }
+
+            .candidate-skills-visual {
+                min-height: 430px;
+            }
+
+            .candidate-skill-panel {
+                left: 28px;
+                right: 28px;
+            }
+
+            .candidate-skill-title {
+                font-size: 35px;
+            }
+
+            .candidate-profile-card {
+                min-height: auto;
+
+                padding: 30px;
+            }
+
+            .candidate-profile-list {
+                grid-template-columns: 1fr;
+            }
+
+            .candidate-cta {
+                padding: 85px 0;
+            }
+
+            .candidate-footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .candidate-footer-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="candidate-nav" id="candidateNav">
+
+    <div class="candidate-nav-inner">
+
+        <a href="../index.html" class="candidate-logo">
+            <img src="../assets/images/logo.png" alt="NexTalent">
+        </a>
+
+        <nav class="candidate-nav-links">
+
+            <a href="../index.html">Home</a>
+
+            <a href="courses.html">Courses</a>
+
+            <a href="jobs.html">Jobs</a>
+
+            <a href="candidates.html">Candidates</a>
+
+            <a href="recruiters.html">Recruiters</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html" class="candidate-nav-cta">
+                Contact
+            </a>
+
+        </nav>
+
+        <button
+            class="candidate-menu-btn"
+            id="candidateMenuBtn"
+            aria-label="Open menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <div class="candidate-mobile-menu" id="candidateMobileMenu">
+
+        <a href="../index.html">Home</a>
+
+        <a href="courses.html">Courses</a>
+
+        <a href="jobs.html">Jobs</a>
+
+        <a href="candidates.html">Candidates</a>
+
+        <a href="recruiters.html">Recruiters</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="candidate-hero">
+
+    <div class="candidate-container">
+
+        <div class="candidate-hero-grid">
+
+            <div class="candidate-hero-content candidate-reveal">
+
+                <div class="candidate-eyebrow">
+                    Candidate Journey
+                </div>
+
+                <h1>
+                    Build your skills.
+                    <span>Build your future.</span>
+                </h1>
+
+                <p class="candidate-hero-text">
+                    Your career journey is more than finding a job.
+                    Learn practical skills, strengthen your profile,
+                    prepare for opportunities, and keep growing with
+                    NexTalent.
+                </p>
+
+                <div class="candidate-hero-actions">
+
+                    <a
+                        href="courses.html"
+                        class="candidate-primary-btn"
+                    >
+                        Explore Courses →
+                    </a>
+
+                    <a
+                        href="jobs.html"
+                        class="candidate-secondary-btn"
+                    >
+                        Explore Opportunities
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="candidate-hero-visual candidate-reveal">
+
+                <div class="candidate-orbit three"></div>
+
+                <div class="candidate-orbit"></div>
+
+                <div class="candidate-orbit two"></div>
+
+
+                <div class="candidate-core">
+
+                    <div class="candidate-core-small">
+                        Your Journey
+                    </div>
+
+                    <div class="candidate-core-title">
+                        NexTalent
+                    </div>
+
+                    <div class="candidate-core-line"></div>
+
+                </div>
+
+
+                <div class="candidate-floating one">
+
+                    <div class="candidate-floating-icon">
+                        ✦
+                    </div>
+
+                    <span>Learn</span>
+
+                </div>
+
+
+                <div class="candidate-floating two">
+
+                    <div class="candidate-floating-icon">
+                        ↗
+                    </div>
+
+                    <span>Build Skills</span>
+
+                </div>
+
+
+                <div class="candidate-floating three">
+
+                    <div class="candidate-floating-icon">
+                        ✓
+                    </div>
+
+                    <span>Prepare</span>
+
+                </div>
+
+
+                <div class="candidate-floating four">
+
+                    <div class="candidate-floating-icon">
+                        ∞
+                    </div>
+
+                    <span>Grow</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STAT STRIP
+========================================================= -->
+
+<section class="candidate-stat-strip">
+
+    <div class="candidate-container">
+
+        <div class="candidate-stats">
+
+            <div class="candidate-stat">
+
+                <div class="candidate-stat-number">
+                    Learn
+                </div>
+
+                <div class="candidate-stat-label">
+                    Build relevant technical and professional skills.
+                </div>
+
+            </div>
+
+
+            <div class="candidate-stat">
+
+                <div class="candidate-stat-number">
+                    Practice
+                </div>
+
+                <div class="candidate-stat-label">
+                    Turn concepts into practical experience.
+                </div>
+
+            </div>
+
+
+            <div class="candidate-stat">
+
+                <div class="candidate-stat-number">
+                    Prepare
+                </div>
+
+                <div class="candidate-stat-label">
+                    Strengthen your profile for future opportunities.
+                </div>
+
+            </div>
+
+
+            <div class="candidate-stat">
+
+                <div class="candidate-stat-number">
+                    Grow
+                </div>
+
+                <div class="candidate-stat-label">
+                    Keep learning as your career moves forward.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section class="candidate-intro">
+
+    <div class="candidate-container">
+
+        <div class="candidate-intro-grid">
+
+            <div class="candidate-reveal">
+
+                <div class="candidate-section-number">
+                    01 / CANDIDATE
+                </div>
+
+                <h2>
+                    A career is built,
+                    not simply found.
+                </h2>
+
+            </div>
+
+
+            <div class="candidate-intro-content candidate-reveal">
+
+                <p>
+                    The technology and business landscape keeps
+                    changing. New tools appear, expectations evolve,
+                    and employers increasingly look for practical
+                    capabilities alongside qualifications.
+                </p>
+
+                <p>
+                    NexTalent is designed to help candidates approach
+                    that journey step by step — from learning a skill
+                    to practicing it, strengthening a profile, and
+                    preparing for future opportunities.
+                </p>
+
+                <div class="candidate-intro-highlight">
+                    Learn something useful. Practice it. Build evidence
+                    of what you can do. Then keep moving forward.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BENEFITS
+========================================================= -->
+
+<section class="candidate-benefits">
+
+    <div class="candidate-container">
+
+        <div class="candidate-section-head candidate-reveal">
+
+            <div>
+
+                <div class="candidate-section-label">
+                    Why NexTalent
+                </div>
+
+                <h2>
+                    Everything starts
+                    with capability.
+                </h2>
+
+            </div>
+
+            <p class="candidate-section-description">
+                NexTalent brings learning, practical development and
+                career preparation into one candidate journey.
+            </p>
+
+        </div>
+
+
+        <div class="candidate-benefit-grid">
+
+            <article class="candidate-benefit-card candidate-reveal">
+
+                <div>
+
+                    <div class="candidate-benefit-number">
+                        01
+                    </div>
+
+                    <div class="candidate-benefit-icon">
+                        ◇
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Learn Relevant Skills
+                    </h3>
+
+                    <p>
+                        Develop practical knowledge across technology,
+                        data, AI, cloud, automation, web development
+                        and other career-focused areas.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="candidate-benefit-card candidate-reveal">
+
+                <div>
+
+                    <div class="candidate-benefit-number">
+                        02
+                    </div>
+
+                    <div class="candidate-benefit-icon">
+                        ⌘
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Practice What You Learn
+                    </h3>
+
+                    <p>
+                        Move beyond theory through exercises,
+                        projects and practical learning experiences.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="candidate-benefit-card candidate-reveal">
+
+                <div>
+
+                    <div class="candidate-benefit-number">
+                        03
+                    </div>
+
+                    <div class="candidate-benefit-icon">
+                        ↗
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Strengthen Your Profile
+                    </h3>
+
+                    <p>
+                        Build a stronger foundation of skills,
+                        projects and learning experiences that can
+                        support your career development.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="candidate-benefit-card candidate-reveal">
+
+                <div>
+
+                    <div class="candidate-benefit-number">
+                        04
+                    </div>
+
+                    <div class="candidate-benefit-icon">
+                        ∞
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Keep Growing
+                    </h3>
+
+                    <p>
+                        Continue learning and adapting as technology,
+                        roles and career requirements change.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     JOURNEY
+========================================================= -->
+
+<section class="candidate-journey">
+
+    <div class="candidate-container">
+
+        <div class="candidate-journey-header candidate-reveal">
+
+            <h2>
+                Your journey
+                has four moves.
+            </h2>
+
+            <p>
+                Career development does not have to happen all at
+                once. Start with where you are, build one capability
+                at a time, and gradually move toward the opportunities
+                you want to pursue.
+            </p>
+
+        </div>
+
+
+        <div class="candidate-journey-line">
+
+            <div class="candidate-step candidate-reveal">
+
+                <div class="candidate-step-circle">
+                    01
+                </div>
+
+                <span class="candidate-step-number">
+                    EXPLORE
+                </span>
+
+                <h3>
+                    Discover
+                </h3>
+
+                <p>
+                    Explore career paths, technologies and skills that
+                    interest you.
+                </p>
+
+            </div>
+
+
+            <div class="candidate-step candidate-reveal">
+
+                <div class="candidate-step-circle">
+                    02
+                </div>
+
+                <span class="candidate-step-number">
+                    LEARN
+                </span>
+
+                <h3>
+                    Build
+                </h3>
+
+                <p>
+                    Learn practical concepts through structured
+                    courses and resources.
+                </p>
+
+            </div>
+
+
+            <div class="candidate-step candidate-reveal">
+
+                <div class="candidate-step-circle">
+                    03
+                </div>
+
+                <span class="candidate-step-number">
+                    PRACTICE
+                </span>
+
+                <h3>
+                    Apply
+                </h3>
+
+                <p>
+                    Work on exercises and projects to turn knowledge
+                    into capability.
+                </p>
+
+            </div>
+
+
+            <div class="candidate-step candidate-reveal">
+
+                <div class="candidate-step-circle">
+                    04
+                </div>
+
+                <span class="candidate-step-number">
+                    GROW
+                </span>
+
+                <h3>
+                    Move Forward
+                </h3>
+
+                <p>
+                    Prepare for opportunities and continue developing
+                    throughout your career.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SKILLS
+========================================================= -->
+
+<section class="candidate-skills">
+
+    <div class="candidate-container">
+
+        <div class="candidate-skills-layout">
+
+            <div class="candidate-skills-visual candidate-reveal">
+
+                <div class="candidate-skill-panel">
+
+                    <div class="candidate-skill-label">
+                        Skill Stack
+                    </div>
+
+                    <div class="candidate-skill-title">
+                        Build a capability stack that grows with you.
+                    </div>
+
+                    <div class="candidate-skill-tags">
+
+                        <span class="candidate-skill-tag">
+                            Python
+                        </span>
+
+                        <span class="candidate-skill-tag">
+                            Data
+                        </span>
+
+                        <span class="candidate-skill-tag">
+                            AI
+                        </span>
+
+                        <span class="candidate-skill-tag">
+                            Cloud
+                        </span>
+
+                        <span class="candidate-skill-tag">
+                            Power BI
+                        </span>
+
+                        <span class="candidate-skill-tag">
+                            Automation
+                        </span>
+
+                        <span class="candidate-skill-tag">
+                            Web
+                        </span>
+
+                        <span class="candidate-skill-tag">
+                            DevOps
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="candidate-skills-copy candidate-reveal">
+
+                <div class="candidate-section-label">
+                    Skills First
+                </div>
+
+                <h2>
+                    Your degree is a starting point.
+                </h2>
+
+                <p>
+                    Building useful skills alongside your education or
+                    existing experience can help you create a stronger
+                    foundation for the next stage of your career.
+                </p>
+
+                <div class="candidate-check-list">
+
+                    <div class="candidate-check">
+
+                        <span class="candidate-check-mark">
+                            ✓
+                        </span>
+
+                        <span>
+                            Learn tools and technologies relevant to
+                            modern roles.
+                        </span>
+
+                    </div>
+
+
+                    <div class="candidate-check">
+
+                        <span class="candidate-check-mark">
+                            ✓
+                        </span>
+
+                        <span>
+                            Build practical projects that demonstrate
+                            what you have learned.
+                        </span>
+
+                    </div>
+
+
+                    <div class="candidate-check">
+
+                        <span class="candidate-check-mark">
+                            ✓
+                        </span>
+
+                        <span>
+                            Develop a habit of continuous learning.
+                        </span>
+
+                    </div>
+
+
+                    <div class="candidate-check">
+
+                        <span class="candidate-check-mark">
+                            ✓
+                        </span>
+
+                        <span>
+                            Prepare yourself for changing career
+                            requirements.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROFILE / OPPORTUNITY
+========================================================= -->
+
+<section class="candidate-profile">
+
+    <div class="candidate-container">
+
+        <div class="candidate-profile-grid">
+
+            <div class="candidate-profile-card dark candidate-reveal">
+
+                <h3>
+                    Turn learning into a stronger professional profile.
+                </h3>
+
+                <p>
+                    A course is only one part of development. Practical
+                    projects, technical skills and continuous learning
+                    can help you build a clearer picture of what you
+                    can contribute.
+                </p>
+
+                <div class="candidate-profile-list">
+
+                    <div>
+                        Technical Skills
+                    </div>
+
+                    <div>
+                        Projects
+                    </div>
+
+                    <div>
+                        Learning Experience
+                    </div>
+
+                    <div>
+                        Career Preparation
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="candidate-profile-card candidate-reveal">
+
+                <h3>
+                    When opportunities arrive, be ready for them.
+                </h3>
+
+                <p>
+                    NexTalent is building an ecosystem where candidates
+                    can discover learning opportunities, develop skills
+                    and eventually connect with career opportunities.
+                </p>
+
+                <div class="candidate-profile-list">
+
+                    <div>
+                        Explore
+                    </div>
+
+                    <div>
+                        Learn
+                    </div>
+
+                    <div>
+                        Practice
+                    </div>
+
+                    <div>
+                        Grow
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     UPSKILLING
+========================================================= -->
+
+<section class="candidate-upskill">
+
+    <div class="candidate-container">
+
+        <div class="candidate-upskill-header candidate-reveal">
+
+            <div class="candidate-section-label">
+                Keep Growing
+            </div>
+
+            <h2>
+                Your first role is not
+                the end of learning.
+            </h2>
+
+        </div>
+
+
+        <div class="candidate-upskill-grid">
+
+            <article class="candidate-upskill-card candidate-reveal">
+
+                <div class="candidate-upskill-icon">
+                    ↗
+                </div>
+
+                <h3>
+                    For Students
+                </h3>
+
+                <p>
+                    Build practical skills alongside your academic
+                    journey and start developing project experience.
+                </p>
+
+            </article>
+
+
+            <article class="candidate-upskill-card candidate-reveal">
+
+                <div class="candidate-upskill-icon">
+                    ◇
+                </div>
+
+                <h3>
+                    For Fresh Graduates
+                </h3>
+
+                <p>
+                    Strengthen your technical foundation and prepare
+                    for the transition from education into professional
+                    environments.
+                </p>
+
+            </article>
+
+
+            <article class="candidate-upskill-card candidate-reveal">
+
+                <div class="candidate-upskill-icon">
+                    ∞
+                </div>
+
+                <h3>
+                    For Working Professionals
+                </h3>
+
+                <p>
+                    Continue developing new capabilities as tools,
+                    technologies and responsibilities evolve.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="candidate-cta">
+
+    <div class="candidate-container">
+
+        <div class="candidate-cta-inner">
+
+            <h2 class="candidate-reveal">
+                Don't wait for the
+                opportunity.
+                <span>Build toward it.</span>
+            </h2>
+
+            <div class="candidate-cta-copy candidate-reveal">
+
+                <p>
+                    Start with a skill. Turn it into practice.
+                    Keep building until you are ready for the next
+                    step.
+                </p>
+
+                <a
+                    href="courses.html"
+                    class="candidate-cta-button"
+                >
+                    Start Learning →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="candidate-footer">
+
+    <div class="candidate-container">
+
+        <div class="candidate-footer-top">
+
+            <div class="candidate-footer-brand">
+
+                <a href="../index.html">
+                    <img
+                        src="../assets/images/logo.png"
+                        alt="NexTalent"
+                    >
+                </a>
+
+                <p>
+                    Learn skills. Build capability. Grow toward the
+                    future you want to create.
+                </p>
+
+            </div>
+
+
+            <div class="candidate-footer-column">
+
+                <h4>
+                    Explore
+                </h4>
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="courses.html">
+                    Courses
+                </a>
+
+                <a href="jobs.html">
+                    Jobs
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </div>
+
+
+            <div class="candidate-footer-column">
+
+                <h4>
+                    Ecosystem
+                </h4>
+
+                <a href="candidates.html">
+                    Candidates
+                </a>
+
+                <a href="recruiters.html">
+                    Recruiters
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="candidate-footer-column">
+
+                <h4>
+                    Connect
+                </h4>
+
+                <a href="tel:7499869128">
+                    7499 869 128
+                </a>
+
+                <a href="mailto:nextalentindia@gmail.com">
+                    nextalentindia@gmail.com
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/nex-talent-2652a8435"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+
+                <a href="contact.html">
+                    Send an Enquiry
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="candidate-footer-bottom">
+
+            <div>
+                © 2026 NexTalent. All rights reserved.
+            </div>
+
+            <div class="candidate-footer-social">
+
+                <a
+                    href="https://www.linkedin.com/in/nex-talent-2652a8435"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                >
+                    in
+                </a>
+
+                <a
+                    href="mailto:nextalentindia@gmail.com"
+                    aria-label="Email"
+                >
+                    @
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* ---------------------------------------------------------
+       NAVBAR SCROLL
+    --------------------------------------------------------- */
+
+    const candidateNav =
+        document.getElementById("candidateNav");
+
+    function updateCandidateNav() {
+
+        if (window.scrollY > 40) {
+            candidateNav.classList.add("scrolled");
+        } else {
+            candidateNav.classList.remove("scrolled");
+        }
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateCandidateNav,
+        { passive: true }
+    );
+
+    updateCandidateNav();
+
+
+    /* ---------------------------------------------------------
+       MOBILE MENU
+    --------------------------------------------------------- */
+
+    const candidateMenuBtn =
+        document.getElementById("candidateMenuBtn");
+
+    const candidateMobileMenu =
+        document.getElementById("candidateMobileMenu");
+
+    candidateMenuBtn.addEventListener("click", () => {
+
+        candidateMobileMenu.classList.toggle("open");
+
+    });
+
+
+    candidateMobileMenu
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                candidateMobileMenu.classList.remove("open");
+
+            });
+
+        });
+
+
+    /* ---------------------------------------------------------
+       SCROLL REVEAL
+    --------------------------------------------------------- */
+
+    const candidateRevealElements =
+        document.querySelectorAll(".candidate-reveal");
+
+    const candidateRevealObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        candidateRevealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    candidateRevealElements.forEach(element => {
+
+        candidateRevealObserver.observe(element);
+
+    });
+
+
+    /* ---------------------------------------------------------
+       CLOSE MOBILE MENU ON RESIZE
+    --------------------------------------------------------- */
+
+    window.addEventListener("resize", () => {
+
+        if (window.innerWidth > 800) {
+
+            candidateMobileMenu.classList.remove("open");
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
