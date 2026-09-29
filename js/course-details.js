@@ -1,175 +1,324 @@
 /* =========================================================
-   NEX TALENT — COURSE DETAILS
-   ========================================================= */
+   NEX TALENT
+   COURSE DETAILS RENDERER
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const container = document.getElementById("courseContainer");
+    const container =
+        document.getElementById("courseContainer");
 
     if (!container) {
-        console.error("Course container not found.");
         return;
     }
 
 
     /* =====================================================
-       GET COURSE FROM URL
-       ===================================================== */
+       GET COURSE KEY
+    ===================================================== */
 
-    const params = new URLSearchParams(
-        window.location.search
-    );
+    const params =
+        new URLSearchParams(window.location.search);
 
-    const courseId = params.get("course");
-
-
-    if (!courseId) {
-
-        showCourseError(
-            "No course selected.",
-            "Please return to the Courses page and select a course."
-        );
-
-        return;
-    }
+    const courseKey =
+        params.get("course");
 
 
     /* =====================================================
        GET COURSE DATA
-       ===================================================== */
+    ===================================================== */
 
-    let course = null;
-
-
-    /*
-       Your data/courses.js should contain the course
-       objects. This supports several possible variable
-       names so the page is more tolerant.
-    */
-
-    if (
-        typeof courses !== "undefined" &&
-        courses[courseId]
-    ) {
-
-        course = courses[courseId];
-
-    }
-    else if (
-        typeof courseData !== "undefined" &&
-        courseData[courseId]
-    ) {
-
-        course = courseData[courseId];
-
-    }
-    else if (
-        typeof courseCatalog !== "undefined" &&
-        courseCatalog[courseId]
-    ) {
-
-        course = courseCatalog[courseId];
-
-    }
-    else if (
-        window.nexTalentCourses &&
-        window.nexTalentCourses[courseId]
-    ) {
-
-        course = window.nexTalentCourses[courseId];
-
-    }
+    const courseCatalog =
+        window.nexTalentCourses ||
+        window.courses ||
+        {};
 
 
-    /* =====================================================
-       COURSE NOT FOUND
-       ===================================================== */
+    const course =
+        courseCatalog[courseKey];
+
 
     if (!course) {
 
-        console.error(
-            "Course not found:",
-            courseId
-        );
+        container.innerHTML = `
 
-        showCourseError(
-            "Course not found.",
-            "The course you are looking for does not exist or the course data could not be loaded."
-        );
+            <div class="course-error">
+
+                <h2>
+                    Course not found
+                </h2>
+
+                <p>
+                    The course you are looking for
+                    could not be found.
+                </p>
+
+                <a href="courses.html">
+                    ← Back to Courses
+                </a>
+
+            </div>
+
+        `;
 
         return;
+
     }
 
 
     /* =====================================================
-       RENDER COURSE
-       ===================================================== */
+       HELPERS
+    ===================================================== */
 
-    renderCourse(course, courseId);
+    function escapeHTML(value) {
 
-});
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
 
 
-/* =========================================================
-   RENDER COURSE
-   ========================================================= */
+    function getArray(value) {
 
-function renderCourse(course, courseId) {
+        if (!Array.isArray(value)) {
+            return [];
+        }
 
-    const container =
-        document.getElementById(
-            "courseContainer"
-        );
+        return value;
+
+    }
+
+
+    function getCourseShortName(title) {
+
+        if (!title) {
+            return "Course";
+        }
+
+        if (
+            title
+                .toLowerCase()
+                .includes("python")
+        ) {
+            return "Python";
+
+        }
+
+        if (
+            title
+                .toLowerCase()
+                .includes("power bi")
+        ) {
+            return "Power BI";
+
+        }
+
+        if (
+            title
+                .toLowerCase()
+                .includes("generative ai")
+        ) {
+            return "Generative AI";
+
+        }
+
+        if (
+            title
+                .toLowerCase()
+                .includes("uipath")
+        ) {
+            return "UiPath";
+
+        }
+
+        if (
+            title
+                .toLowerCase()
+                .includes("azure")
+        ) {
+            return "Azure";
+
+        }
+
+        if (
+            title
+                .toLowerCase()
+                .includes("full stack")
+        ) {
+            return "Full Stack";
+
+        }
+
+        if (
+            title
+                .toLowerCase()
+                .includes("devops")
+        ) {
+            return "DevOps";
+
+        }
+
+        if (
+            title
+                .toLowerCase()
+                .includes("playwright")
+        ) {
+            return "Playwright";
+
+        }
+
+        return "NexTalent";
+
+    }
+
+
+    function getCourseFocus(course) {
+
+        const category =
+            (course.category || "")
+                .toLowerCase();
+
+
+        if (
+            category.includes("testing")
+        ) {
+            return "UI + API";
+
+        }
+
+        if (
+            category.includes("programming")
+        ) {
+            return "Programming + Data";
+
+        }
+
+        if (
+            category.includes("analytics")
+        ) {
+            return "Analytics";
+
+        }
+
+        if (
+            category.includes("intelligence")
+        ) {
+            return "AI + LLMs";
+
+        }
+
+        if (
+            category.includes("automation")
+        ) {
+            return "Process Automation";
+
+        }
+
+        if (
+            category.includes("cloud")
+        ) {
+            return "Cloud + Infrastructure";
+
+        }
+
+        if (
+            category.includes("web")
+        ) {
+            return "Frontend + Backend";
+
+        }
+
+        if (
+            category.includes("devops")
+        ) {
+            return "CI/CD + Cloud";
+
+        }
+
+        return "Practical Skills";
+
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    const shortName =
+        getCourseShortName(course.title);
+
+    const focus =
+        getCourseFocus(course);
 
 
     container.innerHTML = `
 
         <!-- =================================================
              COURSE HERO
-             ================================================= -->
+        ================================================= -->
 
-        <section class="course-hero">
+        <section class="detail-hero">
 
-            <div class="course-hero-inner">
-
-
-                <div class="course-hero-content reveal">
-
-                    <a
-                        href="courses.html#courseLibrary"
-                        class="course-back"
-                    >
-                        ← Back to Courses
-                    </a>
+            <div class="courses-container detail-hero-inner">
 
 
-                    <div class="course-category-badge">
-                        ${safe(course.category)}
-                    </div>
+                <!-- HERO CONTENT -->
+
+                <div class="detail-hero-content reveal">
+
+                    <span class="detail-category">
+
+                        ${escapeHTML(
+                            course.category || "Learning"
+                        )}
+
+                    </span>
 
 
                     <h1>
-                        ${safe(course.title)}
+
+                        ${escapeHTML(
+                            course.title
+                        )}
+
                     </h1>
 
 
-                    <p class="course-description">
-                        ${safe(course.description)}
+                    <p class="detail-description">
+
+                        ${escapeHTML(
+                            course.description || ""
+                        )}
+
                     </p>
 
 
-                    <div class="course-meta-large">
+                    <div class="detail-meta">
 
                         <span>
-                            ${safe(course.level)}
+                            ${escapeHTML(
+                                course.level || "All Levels"
+                            )}
                         </span>
 
                         <span>
-                            ${safe(course.duration)}
+                            ${escapeHTML(
+                                course.duration || "Flexible"
+                            )}
                         </span>
 
                         <span>
-                            ${safe(course.lessons)}
+                            ${escapeHTML(
+                                course.lessons || "Practical Lessons"
+                            )}
                         </span>
 
                     </div>
@@ -177,66 +326,69 @@ function renderCourse(course, courseId) {
                 </div>
 
 
+                <!-- HERO VISUAL -->
 
-                <!-- =========================================
-                     HERO VISUAL
-                     ========================================= -->
+                <div class="detail-visual reveal">
 
-                <div class="course-hero-visual reveal">
+                    <div class="detail-ring one"></div>
 
-                    <div class="course-orbit one"></div>
+                    <div class="detail-ring two"></div>
 
-                    <div class="course-orbit two"></div>
+                    <div class="detail-ring three"></div>
 
 
-                    <div class="course-visual-core">
+                    <div class="detail-core">
 
                         <strong>
-                            ${getShortTitle(course.title)}
+
+                            ${escapeHTML(
+                                shortName
+                            )}
+
                         </strong>
 
-                        <span>
-                            NexTalent Course
-                        </span>
+                        <small>
+                            LEARN • PRACTICE • GROW
+                        </small>
 
                     </div>
 
 
-                    <div class="visual-chip one">
-
-                        <small>
-                            Duration
-                        </small>
+                    <div class="detail-chip one">
 
                         <strong>
-                            ${safe(course.duration)}
+                            01
                         </strong>
+
+                        ${escapeHTML(
+                            course.level || "Learning"
+                        )}
 
                     </div>
 
 
-                    <div class="visual-chip two">
-
-                        <small>
-                            Level
-                        </small>
+                    <div class="detail-chip two">
 
                         <strong>
-                            ${safe(course.level)}
+                            02
                         </strong>
+
+                        ${escapeHTML(
+                            course.duration || "Practical"
+                        )}
 
                     </div>
 
 
-                    <div class="visual-chip three">
-
-                        <small>
-                            Learning
-                        </small>
+                    <div class="detail-chip three">
 
                         <strong>
-                            ${safe(course.lessons)}
+                            03
                         </strong>
+
+                        ${escapeHTML(
+                            focus
+                        )}
 
                     </div>
 
@@ -250,129 +402,331 @@ function renderCourse(course, courseId) {
 
         <!-- =================================================
              COURSE MAIN
-             ================================================= -->
+        ================================================= -->
 
-        <section class="course-main">
+        <section class="detail-main">
 
-            <div class="course-main-inner">
-
-
-                <!-- =========================================
-                     LEFT CONTENT
-                     ========================================= -->
-
-                <div class="course-main-content">
-
-                    <h2>
-                        Build practical skills
-                        that move you forward.
-                    </h2>
+            <div class="courses-container detail-layout">
 
 
-                    <p>
-                        This NexTalent course is designed to help
-                        learners understand the fundamentals,
-                        practice important concepts and apply
-                        their knowledge through practical work.
-                    </p>
+                <!-- =================================================
+                     MAIN CONTENT
+                ================================================= -->
+
+                <div class="detail-content">
 
 
-
-                    <!-- =====================================
+                    <!-- =================================================
                          SKILLS
-                         ===================================== -->
+                    ================================================= -->
 
-                    ${
-                        renderSkills(
-                            course.skills
-                        )
-                    }
+                    <section class="detail-section reveal">
+
+                        <div class="detail-section-heading">
+
+                            <div class="detail-number">
+                                01
+                            </div>
+
+                            <h2>
+                                Skills you'll build
+                            </h2>
+
+                        </div>
+
+
+                        <div class="skills-grid">
+
+                            ${getArray(course.skills)
+                                .map(function (skill) {
+
+                                    return `
+
+                                        <div class="skill-item">
+
+                                            ${escapeHTML(skill)}
+
+                                        </div>
+
+                                    `;
+
+                                })
+                                .join("")
+                            }
+
+                        </div>
+
+                    </section>
 
 
 
-                    <!-- =====================================
+                    <!-- =================================================
                          CURRICULUM
-                         ===================================== -->
+                    ================================================= -->
 
-                    ${
-                        renderCurriculum(
-                            course.curriculum
-                        )
-                    }
+                    <section class="detail-section reveal">
+
+                        <div class="detail-section-heading">
+
+                            <div class="detail-number">
+                                02
+                            </div>
+
+                            <h2>
+                                Curriculum
+                            </h2>
+
+                        </div>
+
+
+                        <div class="curriculum-list">
+
+                            ${renderCurriculum(
+                                course.curriculum
+                            )}
+
+                        </div>
+
+                    </section>
 
 
 
-                    <!-- =====================================
+                    <!-- =================================================
                          PROJECTS
-                         ===================================== -->
+                    ================================================= -->
 
-                    ${
-                        renderProjects(
-                            course.projects
-                        )
-                    }
+                    <section class="detail-section reveal">
+
+                        <div class="detail-section-heading">
+
+                            <div class="detail-number">
+                                03
+                            </div>
+
+                            <h2>
+                                Projects you'll build
+                            </h2>
+
+                        </div>
+
+
+                        <div class="projects-grid">
+
+                            ${getArray(course.projects)
+                                .map(function (project, index) {
+
+                                    return `
+
+                                        <article class="project-card">
+
+                                            <span class="project-number">
+
+                                                PROJECT
+                                                ${String(index + 1).padStart(2, "0")}
+
+                                            </span>
+
+
+                                            <h3>
+
+                                                ${escapeHTML(project)}
+
+                                            </h3>
+
+                                        </article>
+
+                                    `;
+
+                                })
+                                .join("")
+                            }
+
+                        </div>
+
+                    </section>
 
 
 
-                    <!-- =====================================
+                    <!-- =================================================
                          AUDIENCE
-                         ===================================== -->
+                    ================================================= -->
 
-                    ${
-                        renderAudience(
-                            course.audience
-                        )
-                    }
+                    <section class="detail-section reveal">
+
+                        <div class="detail-section-heading">
+
+                            <div class="detail-number">
+                                04
+                            </div>
+
+                            <h2>
+                                Who this course is for
+                            </h2>
+
+                        </div>
+
+
+                        <div class="audience-list">
+
+                            ${getArray(course.audience)
+                                .map(function (item) {
+
+                                    return `
+
+                                        <div class="audience-item">
+
+                                            ${escapeHTML(item)}
+
+                                        </div>
+
+                                    `;
+
+                                })
+                                .join("")
+                            }
+
+                        </div>
+
+                    </section>
 
 
 
-                    <!-- =====================================
-                         COURSE INCLUDES
-                         ===================================== -->
+                    <!-- =================================================
+                         INCLUDES
+                    ================================================= -->
 
-                    ${
-                        renderIncludes(
-                            course.includes
-                        )
-                    }
+                    <section class="detail-section reveal">
+
+                        <div class="detail-section-heading">
+
+                            <div class="detail-number">
+                                05
+                            </div>
+
+                            <h2>
+                                What's included
+                            </h2>
+
+                        </div>
+
+
+                        <div class="includes-grid">
+
+                            ${getArray(course.includes)
+                                .map(function (item) {
+
+                                    return `
+
+                                        <div class="include-item">
+
+                                            ${escapeHTML(item)}
+
+                                        </div>
+
+                                    `;
+
+                                })
+                                .join("")
+                            }
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         CTA
+                    ================================================= -->
+
+                    <section class="detail-cta reveal">
+
+                        <div class="detail-cta-card">
+
+                            <div class="section-label">
+
+                                BUILD YOUR NEXT SKILL
+
+                            </div>
+
+
+                            <h2>
+
+                                Ready to move
+                                <span style="color:#65d0d7;">
+                                    forward?
+                                </span>
+
+                            </h2>
+
+
+                            <p>
+
+                                Explore the course, build practical
+                                skills and prepare yourself for
+                                the evolving workplace.
+
+                            </p>
+
+
+                            <a
+                                href="contact.html"
+                                class="detail-cta-button"
+                            >
+
+                                Talk to Us →
+
+                            </a>
+
+                        </div>
+
+                    </section>
+
 
                 </div>
 
 
 
-                <!-- =========================================
+                <!-- =================================================
                      SIDEBAR
-                     ========================================= -->
+                ================================================= -->
 
-                <aside class="course-sidebar">
+                <aside class="detail-sidebar">
 
                     <div class="enroll-card">
 
-                        <div class="enroll-label">
-                            Course Information
-                        </div>
+                        <span class="enroll-label">
+
+                            COURSE INFORMATION
+
+                        </span>
 
 
                         <h3>
-                            ${safe(course.title)}
+
+                            ${escapeHTML(
+                                course.title
+                            )}
+
                         </h3>
 
 
                         <div class="price">
 
-                            ${safe(
-                                course.price ||
-                                "Coming Soon"
+                            ${escapeHTML(
+                                course.price || "Coming Soon"
                             )}
 
                         </div>
 
 
                         <a
-                            href="contact.html?course=${encodeURIComponent(courseId)}"
+                            href="contact.html"
                             class="enroll-button"
                         >
-                            Enquire About This Course
+
+                            Enquire About Course
+
                         </a>
 
 
@@ -380,18 +734,6 @@ function renderCourse(course, courseId) {
 
 
                         <div class="quick-info">
-
-                            <div class="quick-info-item">
-
-                                <span>
-                                    Category
-                                </span>
-
-                                <strong>
-                                    ${safe(course.category)}
-                                </strong>
-
-                            </div>
 
 
                             <div class="quick-info-item">
@@ -401,7 +743,9 @@ function renderCourse(course, courseId) {
                                 </span>
 
                                 <strong>
-                                    ${safe(course.level)}
+                                    ${escapeHTML(
+                                        course.level || "-"
+                                    )}
                                 </strong>
 
                             </div>
@@ -414,7 +758,9 @@ function renderCourse(course, courseId) {
                                 </span>
 
                                 <strong>
-                                    ${safe(course.duration)}
+                                    ${escapeHTML(
+                                        course.duration || "-"
+                                    )}
                                 </strong>
 
                             </div>
@@ -427,63 +773,45 @@ function renderCourse(course, courseId) {
                                 </span>
 
                                 <strong>
-                                    ${safe(course.lessons)}
+                                    ${escapeHTML(
+                                        course.lessons || "-"
+                                    )}
                                 </strong>
 
                             </div>
+
+
+                            <div class="quick-info-item">
+
+                                <span>
+                                    Category
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        course.category || "-"
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="career-note">
+
+                            Practical learning,
+                            projects and career-focused
+                            guidance designed around
+                            real-world skills.
 
                         </div>
 
                     </div>
 
-
-                    <div class="career-note">
-
-                        <strong>
-                            Career-focused learning
-                        </strong>
-
-                        <p>
-                            Build skills, practice concepts and
-                            work toward applying your knowledge
-                            in practical scenarios.
-                        </p>
-
-                    </div>
-
                 </aside>
 
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             CTA
-             ================================================= -->
-
-        <section class="course-cta">
-
-            <div class="course-cta-card reveal">
-
-                <h2>
-                    Ready to build your
-                    <span>next skill?</span>
-                </h2>
-
-                <p>
-                    Connect with NexTalent to learn more about
-                    this course, upcoming batches and learning
-                    opportunities.
-                </p>
-
-                <a
-                    href="contact.html?course=${encodeURIComponent(courseId)}"
-                    class="course-cta-button"
-                >
-                    Talk to NexTalent →
-                </a>
 
             </div>
 
@@ -493,488 +821,213 @@ function renderCourse(course, courseId) {
 
 
     /* =====================================================
-       UPDATE PAGE TITLE
-       ===================================================== */
+       CURRICULUM RENDERER
+    ===================================================== */
+
+    function renderCurriculum(curriculum) {
+
+        const items =
+            getArray(curriculum);
+
+
+        if (!items.length) {
+
+            return `
+
+                <div class="curriculum-item">
+
+                    <div class="curriculum-number">
+                        01
+                    </div>
+
+                    <h4>
+                        Curriculum details coming soon.
+                    </h4>
+
+                </div>
+
+            `;
+
+        }
+
+
+        let html = "";
+
+        let itemNumber = 1;
+
+
+        items.forEach(function (item) {
+
+            const text =
+                String(item);
+
+
+            /*
+                Playwright contains:
+
+                Module 1: Introduction to Playwright
+                Module 2: TypeScript Programming
+                etc.
+
+                Render module headings differently.
+            */
+
+            const isModule =
+                /^Module\s+\d+/i.test(text);
+
+
+            if (isModule) {
+
+                html += `
+
+                    <div
+                        class="curriculum-item"
+                        style="
+                            background:
+                                linear-gradient(
+                                    135deg,
+                                    #eef8f9,
+                                    #e6f2f5
+                                );
+                            border-color:
+                                rgba(21,158,172,.16);
+                        "
+                    >
+
+                        <div
+                            class="curriculum-number"
+                            style="
+                                background:#073b73;
+                                color:white;
+                            "
+                        >
+
+                            ${String(
+                                itemNumber
+                            ).padStart(2, "0")}
+
+                        </div>
+
+
+                        <h4>
+
+                            ${escapeHTML(text)}
+
+                        </h4>
+
+                    </div>
+
+                `;
+
+
+                itemNumber++;
+
+                return;
+
+            }
+
+
+            html += `
+
+                <div class="curriculum-item">
+
+                    <div class="curriculum-number">
+
+                        ${String(
+                            itemNumber
+                        ).padStart(2, "0")}
+
+                    </div>
+
+
+                    <h4>
+
+                        ${escapeHTML(text)}
+
+                    </h4>
+
+                </div>
+
+            `;
+
+
+            itemNumber++;
+
+        });
+
+
+        return html;
+
+    }
+
+
+    /* =====================================================
+       UPDATE DOCUMENT TITLE
+    ===================================================== */
 
     document.title =
         `${course.title} | NexTalent`;
 
 
     /* =====================================================
-       ACTIVATE REVEAL
-       ===================================================== */
+       REVEAL ANIMATION
+    ===================================================== */
 
-    setTimeout(
-        initializeReveal,
-        50
-    );
+    const revealElements =
+        document.querySelectorAll(".reveal");
 
-}
 
+    if ("IntersectionObserver" in window) {
 
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
 
-/* =========================================================
-   SKILLS
-   ========================================================= */
+                    entries.forEach(
+                        function (entry) {
 
-function renderSkills(skills) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-    if (
-        !Array.isArray(skills) ||
-        skills.length === 0
-    ) {
+                                entry.target.classList.add(
+                                    "active"
+                                );
 
-        return "";
+                                observer.unobserve(
+                                    entry.target
+                                );
 
-    }
-
-
-    return `
-
-        <section class="detail-section">
-
-            <div class="detail-section-header">
-
-                <span class="detail-number">
-                    01
-                </span>
-
-                <h2>
-                    Skills you'll build
-                </h2>
-
-            </div>
-
-
-            <div class="skills-grid">
-
-                ${skills.map(skill => `
-
-                    <div class="skill-item">
-
-                        ${safe(skill)}
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </section>
-
-    `;
-}
-
-
-
-/* =========================================================
-   CURRICULUM
-   ========================================================= */
-
-function renderCurriculum(curriculum) {
-
-    if (
-        !Array.isArray(curriculum) ||
-        curriculum.length === 0
-    ) {
-
-        return "";
-
-    }
-
-
-    return `
-
-        <section class="detail-section">
-
-            <div class="detail-section-header">
-
-                <span class="detail-number">
-                    02
-                </span>
-
-                <h2>
-                    Course curriculum
-                </h2>
-
-            </div>
-
-
-            <div class="curriculum-list">
-
-                ${curriculum.map(
-                    (item, index) => `
-
-                    <div class="curriculum-item">
-
-                        <div class="curriculum-number">
-
-                            ${String(
-                                index + 1
-                            ).padStart(2, "0")}
-
-                        </div>
-
-
-                        <strong>
-                            ${safe(item)}
-                        </strong>
-
-                    </div>
-
-                `
-                ).join("")}
-
-            </div>
-
-        </section>
-
-    `;
-}
-
-
-
-/* =========================================================
-   PROJECTS
-   ========================================================= */
-
-function renderProjects(projects) {
-
-    if (
-        !Array.isArray(projects) ||
-        projects.length === 0
-    ) {
-
-        return "";
-
-    }
-
-
-    return `
-
-        <section class="detail-section">
-
-            <div class="detail-section-header">
-
-                <span class="detail-number">
-                    03
-                </span>
-
-                <h2>
-                    Practical projects
-                </h2>
-
-            </div>
-
-
-            <div class="projects-grid">
-
-                ${projects.map(
-                    (project, index) => `
-
-                    <div class="project-card">
-
-                        <span>
-                            Project ${String(
-                                index + 1
-                            ).padStart(2, "0")}
-                        </span>
-
-                        <strong>
-                            ${safe(project)}
-                        </strong>
-
-                    </div>
-
-                `
-                ).join("")}
-
-            </div>
-
-        </section>
-
-    `;
-}
-
-
-
-/* =========================================================
-   AUDIENCE
-   ========================================================= */
-
-function renderAudience(audience) {
-
-    if (
-        !Array.isArray(audience) ||
-        audience.length === 0
-    ) {
-
-        return "";
-
-    }
-
-
-    return `
-
-        <section class="detail-section">
-
-            <div class="detail-section-header">
-
-                <span class="detail-number">
-                    04
-                </span>
-
-                <h2>
-                    Who this course is for
-                </h2>
-
-            </div>
-
-
-            <div class="audience-list">
-
-                ${audience.map(
-                    item => `
-
-                    <div class="audience-item">
-
-                        ${safe(item)}
-
-                    </div>
-
-                `
-                ).join("")}
-
-            </div>
-
-        </section>
-
-    `;
-}
-
-
-
-/* =========================================================
-   INCLUDES
-   ========================================================= */
-
-function renderIncludes(includes) {
-
-    if (
-        !Array.isArray(includes) ||
-        includes.length === 0
-    ) {
-
-        return "";
-
-    }
-
-
-    return `
-
-        <section class="detail-section">
-
-            <div class="detail-section-header">
-
-                <span class="detail-number">
-                    05
-                </span>
-
-                <h2>
-                    What's included
-                </h2>
-
-            </div>
-
-
-            <div class="includes-grid">
-
-                ${includes.map(
-                    item => `
-
-                    <div class="include-item">
-
-                        ✓ ${safe(item)}
-
-                    </div>
-
-                `
-                ).join("")}
-
-            </div>
-
-        </section>
-
-    `;
-}
-
-
-
-/* =========================================================
-   SHORT COURSE TITLE
-   ========================================================= */
-
-function getShortTitle(title) {
-
-    if (!title) {
-        return "NT";
-    }
-
-
-    const words =
-        title
-            .replace(/&/g, "")
-            .split(/\s+/)
-            .filter(Boolean);
-
-
-    if (words.length === 1) {
-
-        return words[0]
-            .substring(0, 3)
-            .toUpperCase();
-
-    }
-
-
-    return words
-        .slice(0, 2)
-        .map(word => word[0])
-        .join("")
-        .toUpperCase();
-
-}
-
-
-
-/* =========================================================
-   SAFE HTML
-   ========================================================= */
-
-function safe(value) {
-
-    if (
-        value === undefined ||
-        value === null
-    ) {
-
-        return "";
-
-    }
-
-
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
-
-/* =========================================================
-   ERROR
-   ========================================================= */
-
-function showCourseError(
-    title,
-    message
-) {
-
-    const container =
-        document.getElementById(
-            "courseContainer"
-        );
-
-
-    container.innerHTML = `
-
-        <div class="course-error">
-
-            <div class="course-error-box">
-
-                <h2>
-                    ${safe(title)}
-                </h2>
-
-                <p>
-                    ${safe(message)}
-                </p>
-
-                <a href="courses.html">
-                    ← Browse Courses
-                </a>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-
-/* =========================================================
-   REVEAL
-   ========================================================= */
-
-function initializeReveal() {
-
-    const elements =
-        document.querySelectorAll(
-            ".reveal"
-        );
-
-
-    if (!elements.length) {
-        return;
-    }
-
-
-    const observer =
-        new IntersectionObserver(
-
-            entries => {
-
-                entries.forEach(
-                    entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-                            observer.unobserve(
-                                entry.target
-                            );
+                            }
 
                         }
+                    );
 
-                    }
-                );
-
-            },
-
-            {
-                threshold: 0.08
-            }
-
-        );
-
-
-    elements.forEach(
-        element => {
-
-            observer.observe(
-                element
+                },
+                {
+                    threshold: 0.08
+                }
             );
 
-        }
-    );
 
-}
+        revealElements.forEach(
+            function (element) {
+
+                observer.observe(element);
+
+            }
+        );
+
+    } else {
+
+        revealElements.forEach(
+            function (element) {
+
+                element.classList.add("active");
+
+            }
+        );
+
+    }
+
+});

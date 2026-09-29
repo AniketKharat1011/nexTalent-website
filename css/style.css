@@ -4222,45 +4222,6 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
-
-    .contact-hero {
-        padding: 65px 0 50px;
-    }
-
-    .contact-section {
-        padding: 60px 0;
-    }
-
-    .contact-item {
-        padding: 20px;
-    }
-
-    .contact-icon {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        font-size: 19px;
-    }
-
-    .contact-panel {
-        padding: 28px 22px;
-    }
-
-    .contact-panel h2 {
-        font-size: 27px;
-    }
-
-    .contact-actions {
-        flex-direction: column;
-    }
-
-    .contact-action {
-        width: 100%;
-    }
-}
-
-
 /* =====================================================
    CONTACT PAGE - NAVBAR LOGO FIX
 ===================================================== */
@@ -4283,8 +4244,171 @@ footer {
     object-fit: contain;
 }
 
+/* =========================================================
+   CONTACT PAGE - NAVBAR RESET
+   ========================================================= */
+
+/* Header */
+.site-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 82px;
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Navbar */
+.navbar {
+    height: 82px;
+    width: 100%;
+}
+
+/* Navbar container */
+.nav-container {
+    width: min(1180px, 92%);
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+/* Logo */
+.site-header .brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 170px;
+    height: 55px;
+
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.site-header .brand-logo {
+    display: block;
+
+    width: 170px !important;
+    height: auto !important;
+
+    max-width: 170px !important;
+    max-height: 55px !important;
+
+    object-fit: contain;
+}
+
+/* Navigation links */
+.site-header .nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 28px;
+
+    margin-left: auto;
+}
+
+.site-header .nav-menu a {
+    position: relative;
+
+    color: #14213d;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+.site-header .nav-menu a:hover {
+    color: #073b73;
+}
+
+/* Nav actions */
+.site-header .nav-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-left: 10px;
+
+    white-space: nowrap;
+}
+
+.site-header .login-link {
+    color: #14213d;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    padding: 10px 15px;
+}
+
+.site-header .nav-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 20px;
+
+    border-radius: 50px;
+
+    background: #073b73;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+/* Mobile menu button */
+.site-header .mobile-menu-btn {
+    display: none;
+
+    border: 0;
+    background: transparent;
+
+    font-size: 26px;
+    color: #073b73;
+
+    padding: 5px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 800px) {
+
+    .site-header {
+        height: 72px;
+    }
+
+    .navbar {
+        height: 72px;
+    }
+
+    .nav-container {
+        width: 90%;
+    }
 
     .site-header .brand {
         width: 140px;
@@ -4297,4 +4421,153 @@ footer {
         max-height: 50px !important;
     }
 
+    .site-header .nav-menu,
+    .site-header .nav-actions {
+        display: none;
+    }
+
+    .site-header .mobile-menu-btn {
+        display: block;
+    }
+}
+
+/* ================================
+   Playwright Course
+================================ */
+
+.course-playwright {
+    background:
+        linear-gradient(
+            135deg,
+            #073b73 0%,
+            #159eac 55%,
+            #f7941d 100%
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-playwright span {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+/* =========================================================
+   PLAYWRIGHT COURSE VISUAL
+   ========================================================= */
+
+.course-visual.playwright {
+    background:
+        linear-gradient(
+            135deg,
+            #073b73 0%,
+            #159eac 58%,
+            #f7941d 100%
+        );
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Playwright browser illustration */
+
+.playwright-visual {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.playwright-browser {
+    width: 190px;
+    height: 125px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+        0 20px 45px rgba(5, 43, 85, 0.28);
+    transform: rotate(-3deg);
+}
+
+
+/* Browser top bar */
+
+.playwright-browser-top {
+    height: 27px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px;
+    background: #eef4f8;
+}
+
+
+.playwright-browser-top span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #cbd5e1;
+}
+
+
+/* Browser content */
+
+.playwright-browser-content {
+    position: relative;
+    padding: 20px 18px;
+}
+
+
+.playwright-line {
+    height: 6px;
+    border-radius: 5px;
+    background: #dce5ed;
+    margin-bottom: 10px;
+}
+
+
+.playwright-line.long {
+    width: 75%;
+}
+
+
+.playwright-line.medium {
+    width: 58%;
+}
+
+
+.playwright-line.short {
+    width: 42%;
+}
+
+
+/* Automation check */
+
+.playwright-check {
+    position: absolute;
+    right: 18px;
+    bottom: 15px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #159eac;
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 20px rgba(21, 158, 172, 0.28);
 }
